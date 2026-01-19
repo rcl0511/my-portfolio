@@ -174,7 +174,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <SectionHeader title="My Contributions" subtitle="수행 역할 및 성과" />
             <div className="bg-slate-900 rounded-[32px] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
                <div className="relative z-10">
-                 <h3 className="text-sky-400 font-black text-xs uppercase tracking-[0.3em] mb-6">Development Role</h3>
+                 <h3 className="text-sky-400 font-black text-15px uppercase tracking-[0.3em] mb-6">Development Role</h3>
                  <p className="text-xl md:text-m font-medium leading-relaxed text-slate-200 mb-8">
                     Frontend(React)와 Backend(FastAPI) 전반을 주도적으로 개발
                     <span className="block mt-3" />

@@ -80,7 +80,7 @@ export const PROJECTS_DATA: Project[] = [
     id: "smart-barricade",
     title: "Smart Barricade",
     type: "Team Project",
-    period: "2023.03 - 2023.06",
+    period: "2025.09 - 2025.12",
     contribution: "50%",
     platform: "IoT / Android",
     isPatent: false,
@@ -102,7 +102,7 @@ export const PROJECTS_DATA: Project[] = [
       "캡스톤 디자인 대상 수상 및 지역 우수 성과 전시회 대표 참가",
     ],
     links: {
-      github: "https://github.com/rcl0511",
+      github: "https://github.com/rcl0511/smart-barricade-app",
       video: "#",
     },
   },

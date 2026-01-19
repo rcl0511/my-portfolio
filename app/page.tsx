@@ -103,7 +103,7 @@ export default function CompletePortfolio() {
 
                 <div className="space-y-8">
                   <div className="group">
-                    <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest mb-2 group-hover:text-emerald-400 transition-colors">
+                    <p className="text-[15px] font-bold text-slate-300 uppercase tracking-widest mb-2 group-hover:text-emerald-400 transition-colors">
                       Name / Education
                     </p>
                     <p className="text-xl font-bold text-slate-900">
@@ -156,13 +156,13 @@ export default function CompletePortfolio() {
                     <div className="absolute left-0 top-1 p-2 bg-white border border-slate-100 shadow-sm rounded-full z-10 text-emerald-500">
                       <Monitor size={14} />
                     </div>
-                    <p className="text-[10px] font-bold text-emerald-500 font-mono">
+                    <p className="text-[15px] font-bold text-emerald-500 font-mono">
                       2022 — 2025
                     </p>
-                    <h4 className="font-bold text-slate-900 mt-1">
+                    <h4 className="font-bold text-slate-1000 mt-1">
                       의약품 도매업체 전산관리
                     </h4>
-                    <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+                    <p className="text-[15px] text-slate-500 mt-2 leading-relaxed">
                       거래처 자료관리 및 전산 시스템 운영, 반복 업무 자동화 아이디어 도출
                     </p>
                   </div>
@@ -171,13 +171,13 @@ export default function CompletePortfolio() {
                     <div className="absolute left-0 top-1 p-2 bg-white border border-slate-100 shadow-sm rounded-full z-10 text-emerald-500">
                       <Pill size={14} />
                     </div>
-                    <p className="text-[10px] font-bold text-slate-400 font-mono">
+                    <p className="text-[15px] font-bold text-slate-400 font-mono">
                       2024.03 — 09
                     </p>
-                    <h4 className="font-bold text-slate-900 mt-1">
+                    <h4 className="font-bold text-slate-1000 mt-1">
                       약국 전산 및 운영 관리
                     </h4>
-                    <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+                    <p className="text-[15px] text-slate-500 mt-2 leading-relaxed">
                       약국 청구 시스템 전산 처리 및 의약품 재고 최적화 관리
                     </p>
                   </div>
@@ -187,7 +187,7 @@ export default function CompletePortfolio() {
 
             {/* 우측: 스킬 */}
             <div className="lg:w-2/3">
-              <h2 className="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em] mb-10 lg:text-right">
+              <h2 className="text-[20px] font-black text-slate-300 uppercase tracking-[0.3em] mb-10 lg:text-right">
                 Stack & Capabilities
               </h2>
 
@@ -293,7 +293,7 @@ export default function CompletePortfolio() {
   );
 }
 
-// ✅ Frontend만 Primary로 강조 + 나머지는 Proof로 올라운더 어필
+// 
 function SkillCard({
   title,
   icon,
@@ -329,7 +329,7 @@ function SkillCard({
           <div>
             <h4 className="text-lg font-bold text-slate-900">{title}</h4>
             {proof ? (
-              <p className="text-[11px] font-bold text-slate-400 mt-1">
+              <p className="text-[15px] font-bold text-slate-400 mt-1">
                 <span className="text-emerald-600">Proof:</span> {proof}
               </p>
             ) : null}
@@ -337,20 +337,20 @@ function SkillCard({
         </div>
 
         {isPrimary ? (
-          <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-black tracking-widest border border-emerald-100">
+          <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[15px] font-black tracking-widest border border-emerald-100">
             PRIMARY
           </span>
         ) : null}
       </div>
 
-      <p className="text-xs text-slate-500 leading-relaxed mb-6">{desc}</p>
+      <p className="text-[15px] text-slate-500 leading-relaxed mb-6">{desc}</p>
 
       <div className="flex flex-wrap gap-2">
         {skills.map((s: string) => (
           <span
             key={s}
             className={[
-              "px-3 py-1 rounded-full text-[10px] font-bold transition-colors",
+              "px-3 py-1 rounded-full text-[15px] font-bold transition-colors",
               isPrimary
                 ? "bg-emerald-50 border border-emerald-100 text-emerald-700"
                 : "bg-white border border-slate-100 text-slate-400 group-hover:text-emerald-600 group-hover:border-emerald-100",
