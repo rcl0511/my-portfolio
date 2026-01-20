@@ -32,22 +32,22 @@ export default function ProjectDetailPage({ project }: { project: any }) {
       <section className="relative py-20 md:py-32 px-6 md:px-20 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-emerald-600 font-mono text-xs tracking-widest uppercase">{project.period}</span>
+            <span className="text-blue-600 font-mono text-xs tracking-widest uppercase">{project.period}</span>
             <h1 className="text-5xl md:text-7xl font-black text-slate-900 mt-4 mb-6 tracking-tighter">
               {project.title}
             </h1>
             
             <div className="flex flex-wrap gap-6 mb-8 text-sm">
               <div className="flex items-center gap-2 font-bold">
-                <CheckCircle2 size={18} className="text-emerald-500" />
+                <CheckCircle2 size={18} className="text-blue-500" />
                 Contribution: {project.contribution}
               </div>
               <div className="flex items-center gap-2 font-bold">
-                <Monitor size={18} className="text-emerald-500" />
+                <Monitor size={18} className="text-blue-500" />
                 {project.platform}
               </div>
               <div className="flex items-center gap-2 font-bold">
-                <Zap size={18} className="text-emerald-500" />
+                <Zap size={18} className="text-blue-500" />
                 {project.type}
               </div>
             </div>
@@ -77,16 +77,16 @@ export default function ProjectDetailPage({ project }: { project: any }) {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-emerald-600 mb-4">✓ Solution</h3>
+                  <h3 className="text-lg font-bold text-blue-600 mb-4">✓ Solution</h3>
                   {project.solution.map((s: string, i: number) => (
                     <motion.div 
                       key={i}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 + i * 0.1 }}
-                      className="flex gap-4 p-4 bg-emerald-50/50 rounded-xl border border-emerald-100"
+                      className="flex gap-4 p-4 bg-blue-50/50 rounded-xl border border-blue-100"
                     >
-                      <span className="text-emerald-600 font-bold text-lg flex-shrink-0">→</span>
+                      <span className="text-blue-600 font-bold text-lg flex-shrink-0">→</span>
                       <p className="text-slate-700 leading-relaxed">{s}</p>
                     </motion.div>
                   ))}
@@ -114,7 +114,7 @@ export default function ProjectDetailPage({ project }: { project: any }) {
                       transition={{ delay: 0.3 + i * 0.1 }}
                       className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors"
                     >
-                      <span className="text-emerald-500 font-bold">✓</span>
+                      <span className="text-blue-500 font-bold">✓</span>
                       <span className="text-slate-700">{f}</span>
                     </motion.div>
                   ))}
@@ -137,7 +137,7 @@ export default function ProjectDetailPage({ project }: { project: any }) {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.4 + i * 0.05 }}
-                      className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-bold text-slate-700 hover:border-emerald-300 hover:text-emerald-600 transition-all text-center"
+                      className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-bold text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-all text-center"
                     >
                       {t}
                     </motion.div>
@@ -168,9 +168,9 @@ export default function ProjectDetailPage({ project }: { project: any }) {
 
               {/* 특허 배지 */}
               {project.isPatent && (
-                <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-2xl text-center">
-                  <p className="text-sm font-black text-emerald-600 uppercase tracking-widest mb-2">✨ Patent Pending</p>
-                  <p className="text-xs text-emerald-600 leading-relaxed">이 프로젝트는 현재 특허 출원 진행 중입니다.</p>
+                <div className="p-6 bg-blue-50 border border-blue-200 rounded-2xl text-center">
+                  <p className="text-sm font-black text-blue-600 uppercase tracking-widest mb-2">✨ Patent Pending</p>
+                  <p className="text-xs text-blue-600 leading-relaxed">이 프로젝트는 현재 특허 출원 진행 중입니다.</p>
                 </div>
               )}
             </div>
@@ -182,7 +182,7 @@ export default function ProjectDetailPage({ project }: { project: any }) {
       <section className="py-20 md:py-32 px-6 md:px-20 bg-slate-50 border-t border-slate-100">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-black text-slate-900 mb-12 tracking-tighter">Explore Other Projects</h2>
-          <Link href="/#projects" className="inline-block px-8 py-4 bg-slate-900 hover:bg-emerald-600 text-white font-bold rounded-full transition-all text-sm tracking-widest uppercase">
+          <Link href="/#projects" className="inline-block px-8 py-4 bg-slate-900 hover:bg-blue-600 text-white font-bold rounded-full transition-all text-sm tracking-widest uppercase">
             Back to All Projects
           </Link>
         </div>

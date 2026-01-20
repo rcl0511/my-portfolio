@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 
 import { PROJECTS_DATA } from "@/components/projects.data";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ========================================================================== */
 export default async function SmartBarricadePage() {
@@ -32,13 +33,13 @@ export default async function SmartBarricadePage() {
   if (!project) return notFound();
 
   return (
-    <main className="min-h-screen bg-[#F9FBFC] text-slate-900 font-sans selection:bg-emerald-100 overflow-x-hidden">
+    <main className="min-h-screen bg-[#F9FBFC] text-slate-900 font-sans selection:bg-blue-100 overflow-x-hidden">
       {/* 1) NAV */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 px-6 md:px-20 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link
             href="/#projects"
-            className="group inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-emerald-600 transition-colors"
+            className="group inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors"
           >
             <ArrowLeft
               size={16}
@@ -55,27 +56,30 @@ export default async function SmartBarricadePage() {
       {/* 2) HERO */}
       <section className="relative overflow-visible bg-slate-950 pt-20 pb-20 px-6 md:px-20">
         <div className="absolute inset-0 opacity-20 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/3 w-[520px] h-[520px] bg-emerald-600 rounded-full blur-[150px]" />
+          <div className="absolute top-0 left-1/3 w-[520px] h-[520px] bg-blue-700 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-1/4 w-[420px] h-[420px] bg-cyan-600 rounded-full blur-[130px]" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        {/* 프로젝트 네비게이션 아이콘 */}
+        <HeroNavigation currentProjectId="smart-barricade" />
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-8">
           <div className="lg:col-span-7">
             
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-600 text-white text-s font-black tracking-widest shadow-lg shadow-emerald-300/40">
+              <span className="inline-flex items-center px-4 py-2 rounded-full bg-blue-700 text-white text-s font-black tracking-widest shadow-lg shadow-blue-300/40">
                 🏆 2025 SMU 캡스톤 디자인 경진대회 대상(교내)
               </span>
-              <span className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-600 text-white text-s font-black tracking-widest shadow-lg shadow-emerald-300/40">
+              <span className="inline-flex items-center px-4 py-2 rounded-full bg-blue-700 text-white text-s font-black tracking-widest shadow-lg shadow-blue-300/40">
                 🏆 2025 기계인더피날레(과 대회) 1등
               </span>
-              <span className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-600 text-white text-s font-black tracking-widest shadow-lg shadow-emerald-300/40">
+              <span className="inline-flex items-center px-4 py-2 rounded-full bg-blue-700 text-white text-s font-black tracking-widest shadow-lg shadow-blue-300/40">
                 대학 성과발표 대표 참가
               </span>
             </div>
 
             <div className="flex gap-2 mb-6">
-              <MiniBadge text="Pressure → 판단 → 물리 제어" color="emerald" />
+              <MiniBadge text="Pressure → 판단 → 물리 제어" color="blue" />
               <MiniBadge text="BLE + WiFi SoftAP" color="sky" />
             </div>
 
@@ -84,9 +88,7 @@ export default async function SmartBarricadePage() {
             </h1>
 
             <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-10">
-              무단 침입·차량 진입·위험 접근을 <b>물리적 압력(하중)</b>으로 감지하고,
-              위험 판단 후 <b>액추에이터 제어(EXTEND/RETRACT)</b>까지 이어지는 현장
-              대응형 IoT 안전 바리케이드.
+                아두이노 센서 기반 스마트 제어 어플리케이션 시스템
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -105,9 +107,9 @@ export default async function SmartBarricadePage() {
           </div>
 
           {/* 우측: 앱 화면(연결 상태 이미지) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end py-10">
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <PhoneImageMockup
-              src="https://github.com/user-attachments/assets/948f4d8d-8437-471b-96db-5a611e0916a8"
+              src= "https://github.com/user-attachments/assets/f2d1c70a-7888-4606-8fa3-9d1237cb4b51"
               title="Connected State (BLE + WiFi AP)"
             />
           </div>
@@ -118,7 +120,7 @@ export default async function SmartBarricadePage() {
       <section className="max-w-7xl mx-auto px-6 md:px-20 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <DataFlowCard
-            icon={<Gauge className="text-emerald-600" />}
+            icon={<Gauge className="text-blue-600" />}
             title="Load Cell x3 (HX711)"
             desc="실시간 하중(W1,W2,W3) 측정 + 대표값 W 산출"
           />
@@ -151,11 +153,11 @@ export default async function SmartBarricadePage() {
                   "군중 밀집 상황에서 위험을 ‘정량화’하기 어렵고, 사후 대응에 의존하는 한계가 있습니다. Smart Barricade는 물리적 하중(압력) 데이터를 기반으로 위험을 감지하고, 현장 물리 제어(게이트/액추에이터)까지 연결합니다."}
               </p>
 
-              <div className="p-6 bg-emerald-50 rounded-2xl border border-emerald-100">
-                <div className="flex items-center gap-2 text-emerald-800 mb-4 font-bold">
+              <div className="p-6 bg-blue-50 rounded-2xl border border-blue-100">
+                <div className="flex items-center gap-2 text-blue-800 mb-4 font-bold">
                   <ShieldAlert size={20} /> 설계 핵심
                 </div>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-[13px] text-emerald-900/70 font-medium">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-[13px] text-blue-900/70 font-medium">
                   <li className="flex gap-2">
                     <span>•</span> 압력/하중 기반 감지(시각 의존 X)
                   </li>
@@ -243,6 +245,28 @@ GET /cmd?act=EXTEND`}
             </div>
           </article>
 
+          {/* Solution */}
+          <article>
+            <SectionHeader
+              title="Solution"
+              subtitle="해결 방안 및 시스템 설계"
+            />
+            <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
+              <div className="space-y-6">
+                {project.solution?.map((sol, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-black text-sm">
+                      {idx + 1}
+                    </div>
+                    <p className="text-lg text-slate-700 leading-relaxed flex-1">
+                      {sol}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+
           {/* Engineering Stack */}
           <article>
             <SectionHeader
@@ -252,7 +276,7 @@ GET /cmd?act=EXTEND`}
             <div className="space-y-6">
               <TechTable tech={project.tech ?? []} />
               <div className="p-6 bg-slate-100 rounded-2xl text-[18px] md:text-[20px] text-slate-600 font-medium flex items-start gap-4">
-                <Info size={28} className="shrink-0 text-emerald-600 mt-0.5" />
+                <Info size={28} className="shrink-0 text-blue-600 mt-0.5" />
                 <span>
                   현장 통신을 위해 BLE와 WiFi(AP)를 병행하고, 하중 센서의 노이즈는
                   필터링(중앙값/평활화)로 안정화했습니다.
@@ -269,7 +293,7 @@ GET /cmd?act=EXTEND`}
             />
             <div className="bg-slate-900 rounded-[32px] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
               <div className="relative z-10">
-                <h3 className="text-emerald-400 font-black text-xs uppercase tracking-[0.3em] mb-6">
+                <h3 className="text-blue-400 font-black text-xs uppercase tracking-[0.3em] mb-6">
                   Development Role
                 </h3>
                 <p className="text-xl md:text-m font-medium leading-relaxed text-slate-200 mb-8 whitespace-pre-line">
@@ -302,7 +326,7 @@ GET /cmd?act=EXTEND`}
               ]}
             />
 
-            <div className="bg-gradient-to-br from-emerald-600 to-cyan-700 rounded-[32px] p-8 text-white shadow-xl">
+            <div className="bg-gradient-to-br from-blue-700 to-cyan-700 rounded-[32px] p-8 text-white shadow-xl">
               <div className="flex items-center gap-2 mb-8">
                 <Sparkles size={18} />
                 <h3 className="font-bold uppercase text-[10px] tracking-widest">
@@ -373,11 +397,11 @@ function MiniBadge({
   color,
 }: {
   text: string;
-  color: "sky" | "emerald";
+  color: "sky" | "blue";
 }) {
   const styles = {
     sky: "bg-sky-500/10 border-sky-400/20 text-sky-400",
-    emerald: "bg-emerald-500/10 border-emerald-400/20 text-emerald-400",
+    blue: "bg-blue-500/10 border-blue-400/20 text-blue-400",
   };
   return (
     <span
@@ -391,7 +415,7 @@ function MiniBadge({
 function SectionHeader({ title, subtitle }: { title: string; subtitle: string }) {
   return (
     <div className="mb-10">
-      <p className="text-emerald-600 font-black text-xs uppercase tracking-widest mb-2">
+      <p className="text-blue-600 font-black text-xs uppercase tracking-widest mb-2">
         {subtitle}
       </p>
       <div className="flex items-center gap-6">
@@ -421,7 +445,7 @@ function DataFlowCard({
                  flex flex-col items-center text-center group
                  hover:-translate-y-2 transition-all duration-300"
     >
-      <div className="mb-4 p-4 bg-slate-50 rounded-2xl group-hover:scale-110 group-hover:bg-emerald-50 transition-all duration-300">
+      <div className="mb-4 p-4 bg-slate-50 rounded-2xl group-hover:scale-110 group-hover:bg-blue-50 transition-all duration-300">
         {icon}
       </div>
       <h3 className="font-black text-slate-900 mb-2">{title}</h3>
@@ -442,7 +466,7 @@ function ApproachItem({
   content: string;
 }) {
   return (
-    <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 bg-white hover:border-emerald-100 transition-colors">
+    <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 bg-white hover:border-blue-100 transition-colors">
       <div className="shrink-0 flex flex-col items-center">
         <span className="text-2xl font-black text-slate-200">{num}</span>
         <div className="mt-3 w-10 h-10 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center">
@@ -502,7 +526,7 @@ function SummaryCard({ title, items }: { title: string; items: any[] }) {
 function ResultBadge({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="bg-white/10 rounded-2xl p-5 border border-white/10 backdrop-blur-md transition-transform hover:scale-[1.02]">
-      <p className="text-[10px] font-bold text-emerald-100 uppercase mb-2 tracking-tighter">
+      <p className="text-[10px] font-bold text-blue-100 uppercase mb-2 tracking-tighter">
         {label}
       </p>
       <p className="text-sm font-bold leading-relaxed">{value}</p>
@@ -513,7 +537,7 @@ function ResultBadge({ label, value }: { label: string; value: React.ReactNode }
 function CheckLine({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
     <div className="flex items-center gap-3 rounded-2xl bg-white/5 border border-white/10 px-4 py-3">
-      <div className="text-emerald-300">{icon}</div>
+      <div className="text-blue-300">{icon}</div>
       <p className="text-[13px] font-semibold text-slate-100">{text}</p>
     </div>
   );
@@ -548,10 +572,49 @@ function ImageCard({
   );
 }
 
+function HeroNavigation({ currentProjectId }: { currentProjectId: string }) {
+  const featuredProjects = PROJECTS_DATA.filter(
+    (p) => p.id === "sosai" || p.id === "smart-barricade" || p.id === "onliner" || p.id === "baseball-news"
+  );
+
+  const currentIndex = featuredProjects.findIndex(
+    (p) => p.id === currentProjectId
+  );
+
+  if (currentIndex === -1) return null;
+
+  const prevProject = currentIndex > 0 ? featuredProjects[currentIndex - 1] : null;
+  const nextProject = currentIndex < featuredProjects.length - 1 ? featuredProjects[currentIndex + 1] : null;
+
+  return (
+    <>
+      {/* 왼쪽 화살표 */}
+      {prevProject && (
+        <Link
+          href={`/projects/${prevProject.id}`}
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 group p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full border border-white/20 hover:border-white/40 transition-all hover:scale-110"
+        >
+          <ChevronLeft size={32} className="text-white group-hover:text-indigo-200 transition-colors" />
+        </Link>
+      )}
+
+      {/* 오른쪽 화살표 */}
+      {nextProject && (
+        <Link
+          href={`/projects/${nextProject.id}`}
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 group p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full border border-white/20 hover:border-white/40 transition-all hover:scale-110"
+        >
+          <ChevronRight size={32} className="text-white group-hover:text-indigo-200 transition-colors" />
+        </Link>
+      )}
+    </>
+  );
+}
+
 function PhoneImageMockup({ src, title }: { src: string; title: string }) {
   return (
     <div className="relative group w-full max-w-[320px] lg:max-w-[360px] transition-all duration-700 hover:scale-105">
-      <div className="absolute -inset-4 bg-emerald-500 rounded-[4rem] blur-3xl opacity-20 group-hover:opacity-40 transition duration-1000" />
+      <div className="absolute -inset-4 bg-blue-500 rounded-[4rem] blur-3xl opacity-20 group-hover:opacity-40 transition duration-1000" />
 
       <div className="relative bg-slate-900 rounded-[3.5rem] p-3.5 border-[8px] border-slate-800 shadow-[0_50px_100px_-20px_rgba(16,185,129,0.35)] overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-slate-800 rounded-b-3xl z-20 flex justify-center items-end pb-1.5">
@@ -589,7 +652,7 @@ function PrimaryButton({
   return (
     <a
       href={href}
-      className="flex items-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full font-black text-sm transition-all shadow-lg shadow-emerald-600/20 active:scale-95"
+      className="flex items-center gap-3 px-8 py-4 bg-blue-700 hover:bg-blue-600 text-white rounded-full font-black text-sm transition-all shadow-lg shadow-blue-600/20 active:scale-95"
     >
       {icon} {children}
     </a>

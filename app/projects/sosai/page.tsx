@@ -4,9 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft, Github, ExternalLink, Calendar, Layers,
-  Percent, Sparkles, CheckCircle2, Wrench, ShieldCheck,
-  Gauge, Monitor, Workflow, Siren, ChevronRight, Database,
-  BrainCircuit, MicVocal, ServerCrash, ShieldAlert, Info
+  Percent, Sparkles, CheckCircle2, Wrench, ShieldCheck, Workflow, ChevronLeft, ChevronRight, Database,
+  BrainCircuit, MicVocal, ServerCrash, ShieldAlert, Info, Layout, Server, Cpu
 } from "lucide-react";
 
 import { PROJECTS_DATA } from "@/components/projects.data";
@@ -53,11 +52,14 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-600 rounded-full blur-[120px]" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        {/* 프로젝트 네비게이션 아이콘 */}
+        <HeroNavigation currentProjectId="sosai" />
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-8">
           <div className="lg:col-span-7">
             <div className="flex gap-2 mb-6">
               <Badge text="Medical Data Driven AI" color="sky" />
-              <Badge text="Production Ready" color="emerald" />
+              <Badge text="Production Ready" color="blue" />
             </div>
             <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
               {project.title}
@@ -81,7 +83,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </div>
 
           {/* 노트북에서 핸드폰 목업으로 교체된 부분 */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end py-10">
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <MobileMockup url={project.links?.demo || ""} />
           </div>
         </div>
@@ -101,7 +103,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             desc="표준 매뉴얼 + 개인화 맞춤 문구 생성"
           />
           <DataFlowCard 
-            icon={<MicVocal className="text-emerald-500" />}
+            icon={<MicVocal className="text-blue-500" />}
             title="TTS Broadcast"
             desc="주변인 행동 유도를 위한 단계별 음성 안내"
           />
@@ -159,11 +161,33 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
           </article>
 
+          {/* Solution */}
+          <article>
+            <SectionHeader
+              title="Solution"
+              subtitle="해결 방안 및 시스템 설계"
+            />
+            <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
+              <div className="space-y-6">
+                {project.solution?.map((sol, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-black text-sm">
+                      {idx + 1}
+                    </div>
+                    <p className="text-lg text-slate-700 leading-relaxed flex-1">
+                      {sol}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+
           <article>
             <SectionHeader title="Engineering Stack" subtitle="사용된 기술 스택" />
             <div className="space-y-6">
               <TechTable tech={project.tech ?? []} />
-              <div className="p-6 bg-slate-100 rounded-2xl text-[18px] md:text-[20px] text-slate-600 font-medium flex items-start gap-4">
+              <div className="p-6 bg-slate-100 rounded-2xl text-[10Px] md:text-[15px] text-slate-600 font-medium flex items-start gap-4">
                 <Info size={28} className="shrink-0 text-sky-500 mt-0.5" />
                 <span>Nginx 리버스 프록시와 SSL 설정을 통해 보안 통신을 구현하고, AWS EC2 내에서 안정적인 API 환경을 구축</span>
               </div>
@@ -171,17 +195,36 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </article>
 
           <article>
-            <SectionHeader title="My Contributions" subtitle="수행 역할 및 성과" />
+            <SectionHeader title="My Contributions" subtitle="수행 역할 및 구현 포인트" />
             <div className="bg-slate-900 rounded-[32px] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
-               <div className="relative z-10">
-                 <h3 className="text-sky-400 font-black text-15px uppercase tracking-[0.3em] mb-6">Development Role</h3>
-                 <p className="text-xl md:text-m font-medium leading-relaxed text-slate-200 mb-8">
-                    Frontend(React)와 Backend(FastAPI) 전반을 주도적으로 개발
-                    <span className="block mt-3" />
-                    EC2 배포, MongoDB 연동, 사용자 정보 기반 응급 대응 플로우 설계.
-                 </p>
-               </div>
-               <Workflow className="absolute -bottom-10 -right-10 text-white/5 w-64 h-64 rotate-12" />
+              <div className="relative z-10">
+                <h3 className="text-sky-400 font-black text-xs uppercase tracking-[0.3em] mb-6">
+                  Development Role
+                </h3>
+                <p className="text-xl md:text-m font-medium leading-relaxed text-slate-200 mb-8 whitespace-pre-line">
+                  {project.role}
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[13px] text-slate-200/90 font-medium">
+                  <CheckLine
+                    icon={<Database size={16} />}
+                    text="MongoDB 연동 및 사용자 데이터 기반 위험도 분석"
+                  />
+                  <CheckLine
+                    icon={<BrainCircuit size={16} />}
+                    text="SBERT + OpenAI LLM 기반 맞춤형 가이드 생성"
+                  />
+                  <CheckLine
+                    icon={<MicVocal size={16} />}
+                    text="gTTS를 활용한 Voice-First UX 설계"
+                  />
+                  <CheckLine
+                    icon={<ServerCrash size={16} />}
+                    text="AWS EC2 + Nginx + systemd 인프라 구축"
+                  />
+                </div>
+              </div>
+              <Workflow className="absolute -bottom-10 -right-10 text-white/5 w-64 h-64 rotate-12" />
             </div>
           </article>
         </div>
@@ -231,9 +274,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
 function MobileMockup({ url }: { url: string }) {
   return (
-    <div className="relative group w-full max-w-[320px] lg:max-w-[360px] transition-all duration-700 hover:scale-105">
+    <div className="relative group w-full max-w-[320px] lg:max-w-[360px] transition-all duration-700">
       {/* 파란색 그림자 광원 효과 */}
-      <div className="absolute -inset-4 bg-sky-500 rounded-[4rem] blur-3xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+      <div className="absolute -inset-4 bg-sky-500 rounded-[4rem] blur-3xl opacity-20 transition duration-1000"></div>
       
       {/* 핸드폰 프레임 */}
       <div className="relative bg-slate-900 rounded-[3.5rem] p-3.5 border-[8px] border-slate-800 shadow-[0_50px_100px_-20px_rgba(14,165,233,0.3)] overflow-hidden">
@@ -264,10 +307,10 @@ function MobileMockup({ url }: { url: string }) {
   );
 }
 
-function Badge({ text, color }: { text: string; color: "sky" | "emerald" }) {
+function Badge({ text, color }: { text: string; color: "sky" | "blue" }) {
   const styles = {
     sky: "bg-sky-500/10 border-sky-400/20 text-sky-400",
-    emerald: "bg-emerald-500/10 border-emerald-400/20 text-emerald-400",
+    blue: "bg-blue-500/10 border-blue-400/20 text-blue-400",
   };
   return (
     <span className={`px-3 py-1 rounded-full border text-[10px] font-black uppercase tracking-widest ${styles[color]}`}>
@@ -363,6 +406,15 @@ function OutlineButton({ href, children, icon }: { href: string; children: React
   );
 }
 
+function CheckLine({ icon, text }: { icon: React.ReactNode; text: string }) {
+  return (
+    <div className="flex items-center gap-3">
+      <div className="text-sky-400 shrink-0">{icon}</div>
+      <span>{text}</span>
+    </div>
+  );
+}
+
 function TechTable({ tech }: { tech: string[] }) {
   const mapping = [
     { group: "Frontend", keywords: ["react", "next", "tailwind", "framer", "netlify", "vite"] },
@@ -395,5 +447,44 @@ function TechTable({ tech }: { tech: string[] }) {
         ))}
       </div>
     </div>
+  );
+}
+
+function HeroNavigation({ currentProjectId }: { currentProjectId: string }) {
+  const featuredProjects = PROJECTS_DATA.filter(
+    (p) => p.id === "sosai" || p.id === "smart-barricade" || p.id === "onliner" || p.id === "baseball-news"
+  );
+
+  const currentIndex = featuredProjects.findIndex(
+    (p) => p.id === currentProjectId
+  );
+
+  if (currentIndex === -1) return null;
+
+  const prevProject = currentIndex > 0 ? featuredProjects[currentIndex - 1] : null;
+  const nextProject = currentIndex < featuredProjects.length - 1 ? featuredProjects[currentIndex + 1] : null;
+
+  return (
+    <>
+      {/* 왼쪽 화살표 */}
+      {prevProject && (
+        <Link
+          href={`/projects/${prevProject.id}`}
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 group p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full border border-white/20 hover:border-white/40 transition-all hover:scale-110"
+        >
+          <ChevronLeft size={32} className="text-white group-hover:text-indigo-200 transition-colors" />
+        </Link>
+      )}
+
+      {/* 오른쪽 화살표 */}
+      {nextProject && (
+        <Link
+          href={`/projects/${nextProject.id}`}
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 group p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full border border-white/20 hover:border-white/40 transition-all hover:scale-110"
+        >
+          <ChevronRight size={32} className="text-white group-hover:text-indigo-200 transition-colors" />
+        </Link>
+      )}
+    </>
   );
 }

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 
 export type Project = {
   id: string;
@@ -36,16 +36,18 @@ export type Project = {
  */
 export function ProjectCard({ project }: { project: Project }) {
   const href = `/projects/${project.id}`;
-  const isFeatured = project.id === "sosai" || project.id === "smart-barricade";
+  const isFeatured = project.id === "sosai" || project.id === "smart-barricade" || project.id === "onliner" || project.id === "baseball-news";
 
   return (
-    <Link href={href} className="block">
+    <>
       {isFeatured ? (
-        <FeaturedProjectCard project={project} />
+        <FeaturedProjectCard project={project} href={href} />
       ) : (
-        <DefaultProjectCard project={project} />
+        <Link href={href} className="block">
+          <DefaultProjectCard project={project} />
+        </Link>
       )}
-    </Link>
+    </>
   );
 }
 
@@ -54,9 +56,11 @@ export function ProjectCard({ project }: { project: Project }) {
  * - SOSAI: HIRA + 특허 / demo iframe phone preview
  * - Smart Barricade: 수상/대표참가 뱃지 / 이미지 phone preview
  */
-function FeaturedProjectCard({ project }: { project: Project }) {
+function FeaturedProjectCard({ project, href }: { project: Project; href: string }) {
   const isSOSAI = project.id === "sosai";
   const isBarricade = project.id === "smart-barricade";
+  const isOnliner = project.id === "onliner";
+  const isFastball = project.id === "baseball-news";
 
   // Smart Barricade 폰 프리뷰(연결 화면 이미지)
   // (너가 올린 "연결됐을때 이미지" 링크)
@@ -69,10 +73,17 @@ function FeaturedProjectCard({ project }: { project: Project }) {
         "🏆 HIRA 보건의료 창업아이디어대회 입상",
         project.isPatent ? "국내 특허 출원 진행 중" : null,
       ].filter(Boolean) as string[]
-    : [
+    : isBarricade
+    ? [
         "🏆 2025 숙명여대 캡스톤 디자인 대상",
         "🏆 2025 기계인더피날레(과 대회) 1등",
-        
+      ]
+    : isOnliner
+    ? [
+        "멀티테넌트 SaaS"        
+      ]
+    : [
+        "졸업프로젝트",
       ];
 
   return (
@@ -81,14 +92,17 @@ function FeaturedProjectCard({ project }: { project: Project }) {
       transition={{ type: "spring", stiffness: 250, damping: 22 }}
       className={[
         "group relative overflow-hidden rounded-[36px] border",
-        "bg-white shadow-sm hover:shadow-2xl hover:shadow-emerald-200/60 transition-all duration-500",
-        "md:col-span-2 border-emerald-200/70",
+        "bg-white shadow-sm hover:shadow-2xl hover:shadow-blue-200/60 transition-all duration-500",
+        "border-blue-200/70",
       ].join(" ")}
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-emerald-200/30 blur-3xl" />
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/40 via-white to-slate-50/60" />
+        <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-blue-200/30 blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-50/40 via-white to-slate-50/60" />
       </div>
+
+      {/* 프로젝트 상세 페이지로 이동하는 링크 (전체 카드) */}
+      <Link href={href} className="absolute inset-0 z-10" aria-label={`${project.title} 프로젝트 상세보기`} />
 
       <div className="relative p-10 md:p-12">
         {/* 헤더 */}
@@ -99,14 +113,14 @@ function FeaturedProjectCard({ project }: { project: Project }) {
               {badges.map((b) => (
                 <span
                   key={b}
-                  className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-600 text-white text-[15px] font-black tracking-widest shadow-lg shadow-emerald-300/40"
+                  className="inline-flex items-center px-4 py-2 rounded-full bg-blue-600 text-white text-[15px] font-black tracking-widest shadow-lg shadow-blue-300/40"
                 >
                   {b}
                 </span>
               ))}
             </div>
 
-            <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.2em] mb-2">
+            <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-2">
               {project.type}
             </p>
 
@@ -126,10 +140,28 @@ function FeaturedProjectCard({ project }: { project: Project }) {
 
         {/* Preview */}
         {isSOSAI && project.links?.demo ? (
-          <PhonePreviewIframe url={project.links.demo} />
+          <div className="relative z-20" onClick={(e) => e.stopPropagation()}>
+            <PhonePreviewIframe url={project.links.demo} />
+          </div>
         ) : null}
 
-        {isBarricade ? <PhonePreviewImage src={barricadePreviewImg} /> : null}
+        {isBarricade ? (
+          <div className="relative z-20" onClick={(e) => e.stopPropagation()}>
+            <PhonePreviewImage src={barricadePreviewImg} />
+          </div>
+        ) : null}
+
+        {isOnliner && project.links?.demo ? (
+          <div className="relative z-20" onClick={(e) => e.stopPropagation()}>
+            <DesktopPreviewLink url="https://onlinerr.netlify.app/vendor/dashboard" />
+          </div>
+        ) : null}
+
+        {isFastball && project.links?.demo ? (
+          <div className="relative z-20" onClick={(e) => e.stopPropagation()}>
+            <DesktopPreviewLink url={project.links.demo} />
+          </div>
+        ) : null}
       </div>
     </motion.article>
   );
@@ -137,21 +169,32 @@ function FeaturedProjectCard({ project }: { project: Project }) {
 
 function PhonePreviewIframe({ url }: { url: string }) {
   return (
-    <div className="mt-10 flex justify-center">
-      <div className="relative w-[260px] md:w-[320px] aspect-[9/19.5] rounded-[44px] bg-slate-900 shadow-[0_30px_90px_rgba(0,0,0,0.35)] p-[10px]">
+    <div className="mt-10 flex flex-col items-center gap-4">
+      {/* 안내 문구 */}
+      <div className="bg-sky-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg">
+        실제 웹사이트입니다 클릭해보세요
+      </div>
+      
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-[260px] md:w-[320px] aspect-[9/19.5] rounded-[44px] bg-slate-900 shadow-[0_30px_90px_rgba(0,0,0,0.35)] p-[10px] block"
+      >
         <div className="relative w-full h-full rounded-[36px] bg-black overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-7 bg-black rounded-b-3xl z-20" />
           <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-slate-700 z-30" />
           <iframe
             src={url}
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full pointer-events-none"
             loading="lazy"
             referrerPolicy="no-referrer"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
             title="phone-preview"
           />
         </div>
-      </div>
+      </a>
     </div>
   );
 }
@@ -185,6 +228,31 @@ function PhonePreviewImage({ src }: { src: string }) {
   );
 }
 
+function DesktopPreviewLink({ url }: { url: string }) {
+  const displayUrl = url.replace("https://", "").replace("http://", "");
+  return (
+    <div className="mt-10 flex flex-col items-center gap-4">
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          window.open(url, '_blank', 'noopener,noreferrer');
+        }}
+        className="group flex items-center gap-3 px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full font-black text-sm transition-all shadow-lg shadow-indigo-600/20 active:scale-95"
+      >
+        <ExternalLink size={18} />
+        실제 웹사이트 바로가기
+      </a>
+      <p className="text-xs text-slate-500 font-medium">
+        {displayUrl}
+      </p>
+    </div>
+  );
+}
+
 
 /**
  * DefaultProjectCard (나머지 프로젝트)
@@ -207,7 +275,7 @@ function DefaultProjectCard({ project }: { project: Project }) {
       <div className="p-10">
         <div className="flex justify-between items-start mb-6">
           <div className="min-w-0">
-            <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.2em] mb-2">
+            <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-2">
               {project.type}
             </p>
             <h3 className="text-3xl font-black text-slate-900 tracking-tighter leading-none">
@@ -231,7 +299,7 @@ function DefaultProjectCard({ project }: { project: Project }) {
           {project.tech.slice(0, 8).map((t: string) => (
             <span
               key={t}
-              className="px-3 py-1 bg-slate-50 text-slate-400 text-[10px] font-bold rounded-full uppercase tracking-tight group-hover:text-emerald-600 group-hover:bg-emerald-50 transition-colors"
+              className="px-3 py-1 bg-slate-50 text-slate-400 text-[10px] font-bold rounded-full uppercase tracking-tight group-hover:text-blue-600 group-hover:bg-blue-50 transition-colors"
             >
               {t}
             </span>
