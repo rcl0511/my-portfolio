@@ -21,6 +21,7 @@ import {
   Info,
   Radar,
   Cable,
+  Zap,
 } from "lucide-react";
 
 import { PROJECTS_DATA } from "@/components/projects.data";
@@ -35,7 +36,7 @@ export default async function SmartBarricadePage() {
   return (
     <main className="min-h-screen bg-[#F9FBFC] text-slate-900 font-sans selection:bg-blue-100 overflow-x-hidden">
       {/* 1) NAV */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 px-6 md:px-20 py-4">
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 md:px-20 py-3 md:py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link
             href="/#projects"
@@ -54,7 +55,7 @@ export default async function SmartBarricadePage() {
       </nav>
 
       {/* 2) HERO */}
-      <section className="relative overflow-visible bg-slate-950 pt-20 pb-20 px-6 md:px-20">
+      <section className="relative overflow-visible bg-slate-950 pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 md:px-20">
         <div className="absolute inset-0 opacity-20 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/3 w-[520px] h-[520px] bg-blue-700 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-1/4 w-[420px] h-[420px] bg-cyan-600 rounded-full blur-[130px]" />
@@ -63,11 +64,11 @@ export default async function SmartBarricadePage() {
         {/* 프로젝트 네비게이션 아이콘 */}
         <HeroNavigation currentProjectId="smart-barricade" />
 
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-8">
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center py-4 md:py-8">
           <div className="lg:col-span-7">
             
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="inline-flex items-center px-4 py-2 rounded-full bg-blue-700 text-white text-s font-black tracking-widest shadow-lg shadow-blue-300/40">
+            <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-4 md:mb-6">
+              <span className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-blue-700 text-white text-xs md:text-sm font-black tracking-widest shadow-lg shadow-blue-300/40">
                 🏆 2025 SMU 캡스톤 디자인 경진대회 대상(교내)
               </span>
               <span className="inline-flex items-center px-4 py-2 rounded-full bg-blue-700 text-white text-s font-black tracking-widest shadow-lg shadow-blue-300/40">
@@ -78,16 +79,13 @@ export default async function SmartBarricadePage() {
               </span>
             </div>
 
-            <div className="flex gap-2 mb-6">
-              <MiniBadge text="Pressure → 판단 → 물리 제어" color="blue" />
-              <MiniBadge text="BLE + WiFi SoftAP" color="sky" />
-            </div>
+            
 
-            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-4 md:mb-6 leading-tight">
               {project.title}
             </h1>
 
-            <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-10">
+            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mb-6 md:mb-10">
                 아두이노 센서 기반 스마트 제어 어플리케이션 시스템
             </p>
 
@@ -116,153 +114,224 @@ export default async function SmartBarricadePage() {
         </div>
       </section>
 
-      {/* 3) REAL-TIME FLOW SNAPSHOT */}
-      <section className="max-w-7xl mx-auto px-6 md:px-20 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <DataFlowCard
-            icon={<Gauge className="text-blue-600" />}
-            title="Load Cell x3 (HX711)"
-            desc="실시간 하중(W1,W2,W3) 측정 + 대표값 W 산출"
-          />
-          <DataFlowCard
-            icon={<Bluetooth className="text-sky-600" />}
-            title="BLE Notify / Write"
-            desc="센서 스트림 수신 + MODE/EXTEND/RETRACT/STOP 제어"
-          />
-          <DataFlowCard
-            icon={<Wifi className="text-indigo-600" />}
-            title="WiFi SoftAP HTTP"
-            desc="전시/실험 환경 대응: /status, /cmd 로컬 제어"
-          />
-        </div>
-      </section>
+
 
       {/* 4) MAIN CONTENT */}
-      <section className="max-w-7xl mx-auto px-6 md:px-20 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-12 md:py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16">
         {/* LEFT */}
-        <div className="lg:col-span-8 space-y-24">
+        <div className="lg:col-span-8 space-y-16 md:space-y-20 lg:space-y-24">
           {/* Context */}
           <article>
             <SectionHeader
               title="Context & Problem"
               subtitle="왜 이 시스템이 필요한가"
             />
-            <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
-              <p className="text-lg text-slate-700 leading-relaxed whitespace-pre-line mb-10">
+            <div className="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
+              <p className="text-base md:text-lg text-slate-700 leading-relaxed whitespace-pre-line mb-6 md:mb-10">
                 {project.problem ??
                   "군중 밀집 상황에서 위험을 ‘정량화’하기 어렵고, 사후 대응에 의존하는 한계가 있습니다. Smart Barricade는 물리적 하중(압력) 데이터를 기반으로 위험을 감지하고, 현장 물리 제어(게이트/액추에이터)까지 연결합니다."}
               </p>
 
-              <div className="p-6 bg-blue-50 rounded-2xl border border-blue-100">
+              <div className="p-4 md:p-6 bg-blue-50 rounded-2xl border border-blue-100">
                 <div className="flex items-center gap-2 text-blue-800 mb-4 font-bold">
-                  <ShieldAlert size={20} /> 설계 핵심
+                  <Sparkles size={20} /> 우리의 접근
                 </div>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-[13px] text-blue-900/70 font-medium">
+                <p className="text-sm md:text-[15px] text-blue-900/80 font-medium mb-4">
+                  군중 안전 문제를 단순 통제가 아닌, <b>구조·제어·정보 전달이 결합된 시스템 문제</b>로 정의하고 새로운 접근을 시도했습니다.
+                </p>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-2 md:gap-y-3 text-xs md:text-[13px] text-blue-900/70 font-medium">
                   <li className="flex gap-2">
-                    <span>•</span> 압력/하중 기반 감지(시각 의존 X)
+                    <span>•</span> 압력/하중 기반 실시간 감지
                   </li>
                   <li className="flex gap-2">
-                    <span>•</span> 판단 → 액추에이터 제어까지 End-to-End
+                    <span>•</span> 능동형 구조 안정성 향상
                   </li>
                   <li className="flex gap-2">
-                    <span>•</span> BLE + WiFi(AP)로 현장 연결 안정성 확보
+                    <span>•</span> LED 기반 시각 안내 제공
                   </li>
                   <li className="flex gap-2">
-                    <span>•</span> 노이즈/오작동 최소화를 위한 필터링
+                    <span>•</span> 원격 모니터링 및 제어
                   </li>
                 </ul>
               </div>
             </div>
           </article>
 
-          {/* Communication Overview */}
+          {/* Barricade Hardware */}
           <article>
             <SectionHeader
-              title="Communication Overview"
-              subtitle="BLE + WiFi SoftAP 통신 구조"
+              title="Barricade Hardware"
+              subtitle="실물 바리케이드 시스템"
             />
-
-            <div className="space-y-4">
-              <ApproachItem
-                num="01"
-                icon={<Bluetooth size={18} className="text-sky-600" />}
-                title="BLE (Real-time Stream + Control)"
-                content={`ESP32 → Android: Notify
-W,W1,W2,W3,overloaded,autoMode,actuatorState
-
-Android → ESP32: Write
-MODE:AUTO / MODE:MANUAL / EXTEND / RETRACT / STOP`}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <ImageCard
+                title="오픈 전 상태"
+                desc="기본 상태의 스마트 바리케이드"
+                src="https://github.com/user-attachments/assets/7de933dc-c786-4e7b-afe0-24d696f14379"
               />
-              <ApproachItem
-                num="02"
-                icon={<Wifi size={18} className="text-indigo-600" />}
-                title="WiFi SoftAP (Local HTTP Control)"
-                content={`SSID: SmartBarricade_AP
-IP: 192.168.4.1
-
-GET /status
-GET /cmd?act=EXTEND`}
+              <ImageCard
+                title="오픈 후 상태"
+                desc="지지대 확장 및 LED 패널 작동 상태"
+                src="https://github.com/user-attachments/assets/0bf5b374-ed38-4d3f-8b38-f36995eb85f1"
               />
             </div>
+          </article>
 
-            <div className="mt-8 bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm">
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4">
-                Notify Field Spec
-              </p>
+          {/* Software Technology - 강조 */}
+          <article className="relative">
+            <div className="absolute -inset-6 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-3xl" />
+            
+            <div className="relative">
+              <SectionHeader
+                title="Software Technology"
+                subtitle="소프트웨어 핵심 기술 🚀"
+              />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <SpecPill label="W" value="대표 하중값(총합/평균)" />
-                <SpecPill label="W1,W2,W3" value="각 로드셀 측정값" />
-                <SpecPill label="overloaded" value="0=정상 / 1=과부하" />
-                <SpecPill label="autoMode" value="AUTO=1 / MANUAL=0" />
-                <SpecPill label="actuatorState" value="0=STOP / 1=EXTEND / 2=RETRACT" />
-              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-white rounded-2xl p-6 border-2 border-blue-200 shadow-sm">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-blue-100 rounded-xl">
+                      <Cpu className="text-blue-600" size={20} />
+                    </div>
+                    <h3 className="text-base font-black text-slate-900">ESP32 펌웨어</h3>
+                  </div>
+                  <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                    센서 데이터 수집 → 과부하 판정 → 액추에이터 제어
+                  </p>
+                  <div className="space-y-2 text-xs text-slate-500">
+                    <p>• 10kg 초과 시 자동 대응</p>
+                    <p>• 10초 유지 로직</p>
+                    <p>• AUTO/MANUAL 모드</p>
+                  </div>
+                </div>
 
-              <div className="mt-6 p-5 bg-slate-50 rounded-2xl border border-slate-200 text-[13px] text-slate-600 font-medium leading-relaxed">
-                Android 앱은 Notify 문자열을 <b>,</b> 기준으로 split하여 그래프/상태
-                카드/알림 UI에 반영합니다.
+                <div className="bg-white rounded-2xl p-6 border-2 border-indigo-200 shadow-sm">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-indigo-100 rounded-xl">
+                      <Wifi className="text-indigo-600" size={20} />
+                    </div>
+                    <h3 className="text-base font-black text-slate-900">BLE + WiFi 통신</h3>
+                  </div>
+                  <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                    이중 통신으로 현장 환경에 유연하게 대응
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="bg-blue-50 rounded-lg p-2 text-center">
+                      <p className="text-xs font-bold text-blue-700">BLE</p>
+                      <p className="text-xs text-slate-600">실시간</p>
+                    </div>
+                    <div className="bg-purple-50 rounded-lg p-2 text-center">
+                      <p className="text-xs font-bold text-purple-700">WiFi AP</p>
+                      <p className="text-xs text-slate-600">HTTP</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 border-2 border-purple-200 shadow-sm md:col-span-2">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-purple-100 rounded-xl">
+                      <Sparkles className="text-purple-600" size={20} />
+                    </div>
+                    <h3 className="text-base font-black text-slate-900">Android 앱 (Kotlin)</h3>
+                  </div>
+                  <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                    실시간 모니터링 + 원격 제어
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-slate-500">
+                    <p>• 실시간 그래프</p>
+                    <p>• 상태 모니터링</p>
+                    <p>• 원격 제어</p>
+                    <p>• BLE 연결 관리</p>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
 
-          {/* Architecture / Images */}
+          {/* Hardware Technology */}
+          <article>
+            <SectionHeader
+              title="Hardware Technology"
+              subtitle="하드웨어 핵심 기술"
+            />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-blue-50 rounded-xl">
+                    <Gauge className="text-blue-600" size={20} />
+                  </div>
+                  <h3 className="text-base font-black text-slate-900">로드셀 센서</h3>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  3개의 로드셀 + HX711로 하중 측정 → 중앙값 필터링으로 노이즈 제거
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-indigo-50 rounded-xl">
+                    <ShieldAlert className="text-indigo-600" size={20} />
+                  </div>
+                  <h3 className="text-base font-black text-slate-900">구조 안정성</h3>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  A자 브레이싱 + 지지대 확장으로 전도 안전율 <b className="text-green-600">5.9배</b> 향상
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-purple-50 rounded-xl">
+                    <Cpu className="text-purple-600" size={20} />
+                  </div>
+                  <h3 className="text-base font-black text-slate-900">액추에이터</h3>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  4채널 릴레이 제어 → 선형 액추에이터 작동 → LED 패널 연동
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-slate-50 rounded-xl">
+                    <Zap className="text-slate-600" size={20} />
+                  </div>
+                  <h3 className="text-base font-black text-slate-900">전원</h3>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  12V 외부 전원 + 배터리팩 → 독립 운용 가능
+                </p>
+              </div>
+            </div>
+          </article>
+
+          
+
+          {/* UI & Monitoring */}
           <article>
             <SectionHeader
               title="UI & Monitoring"
               subtitle="앱 화면 / 연결 상태"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <ImageCard
-                title="UI (Lower Section)"
-                desc="센서/모드/제어 영역(하단 UI)"
-                src="https://github.com/user-attachments/assets/22065484-616c-4e60-b2a3-43a813b78a84"
-              />
-              <ImageCard
-                title="Connected State"
-                desc="BLE 연결 상태 및 모니터링"
-                src="https://github.com/user-attachments/assets/948f4d8d-8437-471b-96db-5a611e0916a8"
-              />
-            </div>
-          </article>
-
-          {/* Solution */}
-          <article>
-            <SectionHeader
-              title="Solution"
-              subtitle="해결 방안 및 시스템 설계"
-            />
-            <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
-              <div className="space-y-6">
-                {project.solution?.map((sol, idx) => (
-                  <div key={idx} className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-black text-sm">
-                      {idx + 1}
-                    </div>
-                    <p className="text-lg text-slate-700 leading-relaxed flex-1">
-                      {sol}
-                    </p>
-                  </div>
-                ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 justify-items-center">
+              <div className="flex flex-col items-center">
+                <PhoneImageMockup
+                  src="https://github.com/user-attachments/assets/22065484-616c-4e60-b2a3-43a813b78a84"
+                  title="UI (Lower Section)"
+                />
+                <p className="mt-4 text-sm text-slate-600 font-medium text-center">
+                  센서/모드/제어 영역(하단 UI)
+                </p>
+              </div>
+              <div className="flex flex-col items-center">
+                <PhoneImageMockup
+                  src="https://github.com/user-attachments/assets/948f4d8d-8437-471b-96db-5a611e0916a8"
+                  title="Connected State"
+                />
+                <p className="mt-4 text-sm text-slate-600 font-medium text-center">
+                  BLE 연결 상태 및 모니터링
+                </p>
               </div>
             </div>
           </article>
@@ -337,50 +406,17 @@ GET /cmd?act=EXTEND`}
               <div className="space-y-4">
                 <ResultBadge
                   label="Sensor"
-                  value="Load Cell x3 (HX711) 기반 실시간 하중 감지"
+                  value="아두이노 센서 기반 실시간 하중 감지"
                 />
                 <ResultBadge
                   label="Control"
-                  value="THRESHOLD 초과 시 자동 EXTEND + 유지 로직"
+                  value="BLE/ WIFI 로 하드웨어 제어/ 조작"
                 />
-                <ResultBadge
-                  label="Comm"
-                  value={
-                    <>
-                      BLE 실시간 스트림 + WiFi(AP) 로컬 HTTP 제어
-                      <br />
-                      (/status, /cmd)
-                    </>
-                  }
-                />
+                
               </div>
             </div>
 
-            {project.links?.github ? (
-              <a
-                href={project.links.github}
-                target="_blank"
-                className="block bg-white rounded-[32px] border border-slate-200 p-7 hover:shadow-md transition-shadow"
-                rel="noreferrer"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2">
-                      Repository
-                    </p>
-                    <p className="text-lg font-black text-slate-900">
-                      View Source Code
-                    </p>
-                    <p className="text-sm text-slate-500 font-medium mt-1">
-                      GitHub에서 전체 코드 확인
-                    </p>
-                  </div>
-                  <div className="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center">
-                    <ExternalLink size={18} />
-                  </div>
-                </div>
-              </a>
-            ) : null}
+            
           </div>
         </aside>
       </section>
@@ -512,7 +548,7 @@ function SummaryCard({ title, items }: { title: string; items: any[] }) {
               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">
                 {it.label}
               </p>
-              <p className="font-bold text-slate-900 leading-tight break-words">
+              <p className="font-bold text-slate-900 leading-tight break-normal" style={{ wordBreak: 'keep-all' }}>
                 {it.value}
               </p>
             </div>
@@ -613,29 +649,30 @@ function HeroNavigation({ currentProjectId }: { currentProjectId: string }) {
 
 function PhoneImageMockup({ src, title }: { src: string; title: string }) {
   return (
-    <div className="relative group w-full max-w-[320px] lg:max-w-[360px] transition-all duration-700 hover:scale-105">
-      <div className="absolute -inset-4 bg-blue-500 rounded-[4rem] blur-3xl opacity-20 group-hover:opacity-40 transition duration-1000" />
+    <div className="flex justify-center">
+      <div className="relative w-[260px] md:w-[320px] aspect-[9/19.5]
+                      rounded-[44px] bg-slate-900
+                      shadow-[0_30px_90px_rgba(0,0,0,0.35)] p-[10px]">
 
-      <div className="relative bg-slate-900 rounded-[3.5rem] p-3.5 border-[8px] border-slate-800 shadow-[0_50px_100px_-20px_rgba(16,185,129,0.35)] overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-slate-800 rounded-b-3xl z-20 flex justify-center items-end pb-1.5">
-          <div className="w-10 h-1 bg-slate-700 rounded-full" />
-        </div>
+        <div className="relative w-full h-full rounded-[36px] bg-black overflow-hidden">
+          {/* notch */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2
+                          w-36 h-7 bg-black rounded-b-3xl z-20" />
 
-        <div className="aspect-[9/19.5] bg-black rounded-[2.8rem] overflow-hidden relative">
+          {/* image */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={src}
             alt={title}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="
+              absolute inset-0
+              w-full h-full
+              object-contain   
+              bg-black
+            "
           />
         </div>
-
-        <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/20 rounded-full" />
       </div>
-
-      <div className="absolute -left-2 top-24 w-2 h-12 bg-slate-800 rounded-l-md" />
-      <div className="absolute -left-2 top-40 w-2 h-20 bg-slate-800 rounded-l-md" />
-      <div className="absolute -right-2 top-32 w-2 h-24 bg-slate-800 rounded-r-md" />
     </div>
   );
 }

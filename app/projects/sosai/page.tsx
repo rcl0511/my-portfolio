@@ -46,7 +46,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       </nav>
 
       {/* 2. HERO SECTION */}
-      <section className="relative overflow-visible bg-slate-950 pt-20 pb-20 px-6 md:px-20">
+      <section className="relative overflow-visible bg-slate-950 pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 md:px-20">
         <div className="absolute inset-0 opacity-20 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-sky-600 rounded-full blur-[140px]" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-600 rounded-full blur-[120px]" />
@@ -55,16 +55,16 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {/* 프로젝트 네비게이션 아이콘 */}
         <HeroNavigation currentProjectId="sosai" />
 
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-8">
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center py-4 md:py-8">
           <div className="lg:col-span-7">
             <div className="flex gap-2 mb-6">
               <Badge text="Medical Data Driven AI" color="sky" />
               <Badge text="Production Ready" color="blue" />
             </div>
-            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-4 md:mb-6 leading-tight">
               {project.title}
             </h1>
-            <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-10">
+            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mb-6 md:mb-10">
               AI 기반 응급 상황 대응 및 지능형 음성 가이드 시스템
             </p>
 
@@ -90,8 +90,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       </section>
 
       {/* 3. 핵심 데이터 흐름 */}
-      <section className="max-w-7xl mx-auto px-6 md:px-20 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-12 md:py-16 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           <DataFlowCard 
             icon={<Database className="text-sky-500" />}
             title="User Profile DB"
@@ -111,21 +111,21 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       </section>
 
       {/* 4. MAIN CONTENT */}
-      <section className="max-w-7xl mx-auto px-6 md:px-20 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16">
-        <div className="lg:col-span-8 space-y-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-12 md:py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16">
+        <div className="lg:col-span-8 space-y-16 md:space-y-20 lg:space-y-24">
           
           <article>
             <SectionHeader title="Context & Design Principles" subtitle="기획 의도 및 설계 원칙" />
-            <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
-              <p className="text-lg text-slate-700 leading-relaxed whitespace-pre-line mb-10">
+            <div className="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
+              <p className="text-base md:text-lg text-slate-700 leading-relaxed whitespace-pre-line mb-6 md:mb-10">
                 {project.problem || "응급 상황에서 당황한 주변인이 정확한 처치를 할 수 있도록, 사용자의 의료 데이터를 기반으로 개인화된 가이드를 제공하는 것이 본 프로젝트의 핵심입니다."}
               </p>
               
-              <div className="p-6 bg-amber-50 rounded-2xl border border-amber-100 mb-10">
+              <div className="p-4 md:p-6 bg-amber-50 rounded-2xl border border-amber-100 mb-6 md:mb-10">
                 <div className="flex items-center gap-2 text-amber-700 mb-4 font-bold">
                   <ShieldAlert size={20} /> AI 응급 대응 원칙
                 </div>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-[13px] text-amber-800/80 font-medium">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-2 md:gap-y-3 text-xs md:text-[13px] text-amber-800/80 font-medium">
                   <li className="flex gap-2"><span>•</span> 생명 위협 징후 감지 시 119 신고 최우선 안내</li>
                   <li className="flex gap-2"><span>•</span> 짧고 명확한 단계별 행동 지침으로 구성</li>
                   <li className="flex gap-2"><span>•</span> 전문 용어 배제 및 쉬운 행동 가이드 중심</li>
@@ -432,13 +432,13 @@ function TechTable({ tech }: { tech: string[] }) {
     <div className="bg-white rounded-[32px] border border-slate-200 overflow-hidden shadow-sm">
       <div className="grid grid-cols-1 divide-y divide-slate-100">
         {buckets.map((b) => (
-          <div key={b.group} className="grid grid-cols-12 gap-4 p-7 items-center hover:bg-slate-50 transition-colors">
+          <div key={b.group} className="grid grid-cols-12 gap-3 md:gap-4 p-4 md:p-7 items-center hover:bg-slate-50 transition-colors">
             <div className="col-span-12 md:col-span-3 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
               {b.group}
             </div>
             <div className="col-span-12 md:col-span-9 flex flex-wrap gap-2">
               {b.items.map((item) => (
-                <span key={item} className="px-4 py-1.5 bg-white text-slate-700 rounded-xl text-xs font-bold border border-slate-200 shadow-sm">
+                <span key={item} className="px-3 py-1 md:px-4 md:py-1.5 bg-white text-slate-700 rounded-lg md:rounded-xl text-[10px] md:text-xs font-bold border border-slate-200 shadow-sm">
                   {item}
                 </span>
               ))}

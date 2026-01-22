@@ -104,7 +104,7 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
       {/* 프로젝트 상세 페이지로 이동하는 링크 (전체 카드) */}
       <Link href={href} className="absolute inset-0 z-10" aria-label={`${project.title} 프로젝트 상세보기`} />
 
-      <div className="relative p-10 md:p-12">
+      <div className="relative p-6 sm:p-8 md:p-10 lg:p-12">
         {/* 헤더 */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
           <div className="min-w-0">
@@ -128,7 +128,7 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
               {project.title}
             </h3>
 
-            <p className="mt-4 text-slate-600 leading-relaxed max-w-3xl">
+            <p className="mt-3 md:mt-4 text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
               {project.summary}
             </p>
 
@@ -272,13 +272,13 @@ function DefaultProjectCard({ project }: { project: Project }) {
         <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       </div>
 
-      <div className="p-10">
+      <div className="p-6 sm:p-8 md:p-10">
         <div className="flex justify-between items-start mb-6">
           <div className="min-w-0">
             <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-2">
               {project.type}
             </p>
-            <h3 className="text-3xl font-black text-slate-900 tracking-tighter leading-none">
+            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tighter leading-none">
               {project.title}
             </h3>
             <p className="mt-2 text-[11px] text-slate-400 font-mono uppercase tracking-widest">

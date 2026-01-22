@@ -40,7 +40,7 @@ export default async function FastballPage() {
   return (
     <main className="min-h-screen bg-[#F9FBFC] text-slate-900 font-sans selection:bg-indigo-100 overflow-x-hidden">
       {/* 1) NAV */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 px-6 md:px-20 py-4">
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 md:px-20 py-3 md:py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link
             href="/#projects"
@@ -59,7 +59,7 @@ export default async function FastballPage() {
       </nav>
 
       {/* 2) HERO */}
-      <section className="relative overflow-visible bg-slate-950 pt-20 pb-20 px-6 md:px-20">
+      <section className="relative overflow-visible bg-slate-950 pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 md:px-20">
         <div className="absolute inset-0 opacity-20 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/3 w-[520px] h-[520px] bg-indigo-600 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-1/4 w-[420px] h-[420px] bg-purple-600 rounded-full blur-[130px]" />
@@ -68,18 +68,18 @@ export default async function FastballPage() {
         {/* 프로젝트 네비게이션 아이콘 */}
         <HeroNavigation currentProjectId="baseball-news" />
 
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-8">
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center py-4 md:py-8">
           <div className="lg:col-span-7">
             <div className="flex gap-2 mb-6">
               <MiniBadge text="LLM + RAG" color="indigo" />
               <MiniBadge text="실서비스 배포" color="blue" />
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-4 md:mb-6 leading-tight">
               Fastball
             </h1>
 
-            <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-10">
+            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mb-6 md:mb-10">
               LLM과 RAG를 결합하여 스포츠 기사 작성을 자동화하는 AI 기반 기사 생성 시스템
             </p>
 
@@ -117,7 +117,7 @@ export default async function FastballPage() {
               href={project.links?.demo || "#"}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-4 px-12 py-8 bg-gradient-to-br from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-[32px] font-black text-lg transition-all shadow-2xl shadow-indigo-600/30 hover:shadow-indigo-600/50 active:scale-95 max-w-md w-full"
+              className="group flex flex-col items-center gap-3 md:gap-4 px-6 sm:px-8 md:px-12 py-6 md:py-8 bg-gradient-to-br from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-[24px] md:rounded-[32px] font-black text-base md:text-lg transition-all shadow-2xl shadow-indigo-600/30 hover:shadow-indigo-600/50 active:scale-95 max-w-md w-full"
             >
               <ExternalLink size={32} className="group-hover:scale-110 transition-transform" />
               <span>실제 웹사이트 바로가기</span>
@@ -131,8 +131,8 @@ export default async function FastballPage() {
       </section>
 
       {/* 3) 핵심 기능 플로우 */}
-      <section className="max-w-7xl mx-auto px-6 md:px-20 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-12 md:py-16 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           <DataFlowCard
             icon={<Search className="text-indigo-600" />}
             title="하이브리드 검색 (RAG)"
@@ -152,21 +152,21 @@ export default async function FastballPage() {
       </section>
 
       {/* 4) MAIN CONTENT */}
-      <section className="max-w-7xl mx-auto px-6 md:px-20 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-12 md:py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16">
         {/* LEFT */}
-        <div className="lg:col-span-8 space-y-24">
+        <div className="lg:col-span-8 space-y-16 md:space-y-20 lg:space-y-24">
           {/* Context */}
           <article>
             <SectionHeader
               title="Context & Problem"
               subtitle="기획 의도 및 문제 정의"
             />
-            <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
+            <div className="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
               <p className="text-lg text-slate-700 leading-relaxed whitespace-pre-line mb-10">
                 {project.problem}
               </p>
 
-              <div className="p-6 bg-indigo-50 rounded-2xl border border-indigo-100">
+              <div className="p-4 md:p-6 bg-indigo-50 rounded-2xl border border-indigo-100">
                 <div className="flex items-center gap-2 text-indigo-800 mb-4 font-bold">
                   <ShieldAlert size={20} /> 주요 문제점
                 </div>
@@ -194,7 +194,7 @@ export default async function FastballPage() {
               title="Solution"
               subtitle="해결 방안 및 시스템 설계"
             />
-            <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
+            <div className="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
               <div className="space-y-6">
                 {project.solution?.map((sol, idx) => (
                   <div key={idx} className="flex gap-4">
@@ -306,7 +306,7 @@ export default async function FastballPage() {
             />
             <div className="space-y-6">
               <TechTable tech={project.tech ?? []} />
-              <div className="p-6 bg-slate-100 rounded-2xl text-[18px] md:text-[20px] text-slate-600 font-medium flex items-start gap-4">
+              <div className="p-4 md:p-6 bg-slate-100 rounded-2xl text-base md:text-[18px] lg:text-[20px] text-slate-600 font-medium flex items-start gap-3 md:gap-4">
                 <Info size={28} className="shrink-0 text-indigo-600 mt-0.5" />
                 <span>
                   LLM과 RAG를 결합하여 단순 템플릿 기반이 아닌 문맥을 이해하는
@@ -323,12 +323,12 @@ export default async function FastballPage() {
               title="My Contributions"
               subtitle="수행 역할 및 구현 포인트"
             />
-            <div className="bg-slate-900 rounded-[32px] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+            <div className="bg-slate-900 rounded-[24px] md:rounded-[32px] p-6 md:p-8 lg:p-12 text-white shadow-xl relative overflow-hidden">
               <div className="relative z-10">
                 <h3 className="text-indigo-400 font-black text-xs uppercase tracking-[0.3em] mb-6">
                   Development Role
                 </h3>
-                <p className="text-xl md:text-m font-medium leading-relaxed text-slate-200 mb-8 whitespace-pre-line">
+                <p className="text-base md:text-lg lg:text-xl font-medium leading-relaxed text-slate-200 mb-6 md:mb-8 whitespace-pre-line">
                   {project.role}
                 </p>
 
@@ -509,7 +509,7 @@ function SummaryCard({ title, items }: { title: string; items: any[] }) {
               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">
                 {it.label}
               </p>
-              <p className="font-bold text-slate-900 leading-tight break-words">
+              <p className="font-bold text-slate-900 leading-tight break-normal" style={{ wordBreak: 'keep-all' }}>
                 {it.value}
               </p>
             </div>
@@ -829,7 +829,7 @@ function TechTable({ tech }: { tech: string[] }) {
             </div>
             <div className="col-span-12 md:col-span-9 flex flex-wrap gap-2">
               {b.items.map((item) => (
-                <span key={item} className="px-4 py-1.5 bg-white text-slate-700 rounded-xl text-xs font-bold border border-slate-200 shadow-sm">
+                <span key={item} className="px-3 py-1 md:px-4 md:py-1.5 bg-white text-slate-700 rounded-lg md:rounded-xl text-[10px] md:text-xs font-bold border border-slate-200 shadow-sm">
                   {item}
                 </span>
               ))}
