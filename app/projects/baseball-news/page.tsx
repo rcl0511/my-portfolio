@@ -72,7 +72,7 @@ export default async function FastballPage() {
           <div className="lg:col-span-7">
             <div className="flex gap-2 mb-6">
               <MiniBadge text="LLM + RAG" color="indigo" />
-              <MiniBadge text="실서비스 배포" color="blue" />
+              <MiniBadge text="졸업프로젝트" color="blue" />
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-4 md:mb-6 leading-tight">
@@ -92,22 +92,7 @@ export default async function FastballPage() {
                   소스코드
                 </OutlineButton>
               )}
-              {project.links?.demo && (
-                <OutlineButton
-                  href={project.links.demo}
-                  icon={<ExternalLink size={18} />}
-                >
-                  데모 사이트
-                </OutlineButton>
-              )}
-              {project.links?.video && (
-                <OutlineButton
-                  href={project.links.video}
-                  icon={<ExternalLink size={18} />}
-                >
-                  시연 영상
-                </OutlineButton>
-              )}
+              
             </div>
           </div>
 
@@ -130,82 +115,148 @@ export default async function FastballPage() {
         </div>
       </section>
 
-      {/* 3) 핵심 기능 플로우 */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-12 md:py-16 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-          <DataFlowCard
-            icon={<Search className="text-indigo-600" />}
-            title="하이브리드 검색 (RAG)"
-            desc="ChromaDB와 PostgreSQL을 활용한 문서 검색 및 리랭킹"
-          />
-          <DataFlowCard
-            icon={<Brain className="text-purple-600" />}
-            title="LLM 기사 생성"
-            desc="Claude API를 활용한 자연스러운 문체의 기사 자동 생성"
-          />
-          <DataFlowCard
-            icon={<Zap className="text-blue-600" />}
-            title="원스톱 워크플로우"
-            desc="데이터 업로드부터 기사 생성까지 웹에서 완결"
-          />
-        </div>
-      </section>
+      
 
       {/* 4) MAIN CONTENT */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-12 md:py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16">
         {/* LEFT */}
         <div className="lg:col-span-8 space-y-16 md:space-y-20 lg:space-y-24">
-          {/* Context */}
+          {/* Context & Problem + Competitive Advantage */}
           <article>
             <SectionHeader
               title="Context & Problem"
-              subtitle="기획 의도 및 문제 정의"
+              subtitle="반복적인 노동에서 벗어나다"
             />
-            <div className="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
-              <p className="text-lg text-slate-700 leading-relaxed whitespace-pre-line mb-10">
-                {project.problem}
-              </p>
+            <div className="space-y-6">
+              {/* 문제 정의 - 압축 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm">
+                <p className="text-lg text-slate-700 leading-relaxed mb-6">
+                  언론진흥재단 조사에 따르면 기자들은 하루 평균 <span className="font-black text-indigo-600">14건 이상</span>의 기사를 작성하며, 
+                  반복적인 데이터 정리와 초안 작성에 <span className="font-black text-rose-600">최소 30분 이상</span> 소요됩니다.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+                    <p className="text-xs font-black text-slate-400 uppercase tracking-wider mb-2">Problem</p>
+                    <p className="text-sm text-slate-700 font-medium">반복적 데이터 처리에 시간 소모</p>
+                  </div>
+                  <div className="bg-indigo-50 rounded-2xl p-5 border border-indigo-200">
+                    <p className="text-xs font-black text-indigo-600 uppercase tracking-wider mb-2">Solution</p>
+                    <p className="text-sm text-slate-700 font-medium">AI 기반 자동화로 고부가가치 업무에 집중</p>
+                  </div>
 
-              <div className="p-4 md:p-6 bg-indigo-50 rounded-2xl border border-indigo-100">
-                <div className="flex items-center gap-2 text-indigo-800 mb-4 font-bold">
-                  <ShieldAlert size={20} /> 주요 문제점
+                  
                 </div>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-[13px] text-indigo-900/70 font-medium">
-                  <li className="flex gap-2">
-                    <span>•</span> 기자 하루 평균 14건 이상의 기사 작성으로 시간 부족
-                  </li>
-                  <li className="flex gap-2">
-                    <span>•</span> 반복적인 데이터 정리와 초안 작성에 최소 30분 소요
-                  </li>
-                  <li className="flex gap-2">
-                    <span>•</span> 기존 템플릿 기반 도구는 획일적이고 딱딱한 기사 생성
-                  </li>
-                  <li className="flex gap-2">
-                    <span>•</span> 문맥 이해 없이 데이터만 나열하는 한계
-                  </li>
-                </ul>
               </div>
+
+    
             </div>
           </article>
 
-          {/* Solution */}
+          {/* Solution Architecture */}
           <article>
             <SectionHeader
-              title="Solution"
-              subtitle="해결 방안 및 시스템 설계"
+              title="Solution Architecture"
+              subtitle="AI 기반 자동화 기사 생성 시스템"
             />
-            <div className="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
-              <div className="space-y-6">
-                {project.solution?.map((sol, idx) => (
-                  <div key={idx} className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-black text-sm">
-                      {idx + 1}
+            
+            {/* 차별점 */}
+            <p className="text-lg text-slate-700 leading-relaxed mb-8">
+              기존 템플릿 기반 도구의 <span className="font-bold text-rose-600">획일적인 한계</span>를 
+              <span className="font-bold text-indigo-600"> LLM + RAG</span>로 극복. 
+              문맥을 이해하는 자연스러운 기사 생성과 원스톱 워크플로우를 제공합니다.
+            </p>
+
+            <div className="space-y-6">
+              {/* 1. 데이터 수집 자동화 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                <div className="flex items-start gap-6">
+                  <div className="shrink-0">
+                    <div className="w-14 h-14 bg-slate-700 rounded-2xl flex items-center justify-center text-white font-black text-xl">
+                      01
                     </div>
-                    <p className="text-lg text-slate-700 leading-relaxed flex-1">
-                      {sol}
-                    </p>
                   </div>
-                ))}
+                  <div className="flex-1">
+                    <h3 className="text-xl font-black text-slate-900 mb-3">자동화된 데이터 파이프라인</h3>
+                    <p className="text-base text-slate-600 leading-relaxed mb-4">
+                      <span className="font-semibold text-slate-900">AWS EventBridge</span>와 <span className="font-semibold text-slate-900">Lambda</span>를 활용한 스케줄 기반 자동 크롤링 시스템. 
+                      KBO 공식 홈페이지에서 매일 경기 데이터를 수집하여 최신 상태를 유지합니다.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">AWS EventBridge</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Lambda Functions</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Scheduled Crawling</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2. 하이브리드 데이터 검색 시스템 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                <div className="flex items-start gap-6">
+                  <div className="shrink-0">
+                    <div className="w-14 h-14 bg-slate-700 rounded-2xl flex items-center justify-center text-white font-black text-xl">
+                      02
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-black text-slate-900 mb-3">하이브리드 RAG 아키텍처</h3>
+                    <p className="text-base text-slate-600 leading-relaxed mb-4">
+                      <span className="font-semibold text-slate-900">ChromaDB (70%)</span>와 <span className="font-semibold text-slate-900">PostgreSQL (30%)</span>의 최적 비율로 데이터 검색을 수행합니다. 
+                      ChromaDB로 벡터 기반 시맨틱 검색을 통해 관련 문맥을 즉시 추출하고, 구조화된 정보 중 핵심만 선별하여 LLM에 전달합니다.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Vector Database</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Reranking Algorithm</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">7:3 Ratio Optimization</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. LLM 기반 자연어 생성 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                <div className="flex items-start gap-6">
+                  <div className="shrink-0">
+                    <div className="w-14 h-14 bg-slate-700 rounded-2xl flex items-center justify-center text-white font-black text-xl">
+                      03
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-black text-slate-900 mb-3">문맥 이해 기반 기사 생성</h3>
+                    <p className="text-base text-slate-600 leading-relaxed mb-4">
+                      CSV 경기 데이터를 <span className="font-semibold text-slate-900">Claude API</span>로 자연어 변환 후 임베딩하여 ChromaDB에 저장합니다. 
+                      노이즈를 제거하고 관련성 높은 정보만 활용하여 정확하고 맥락 있는 기사를 생성합니다.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Claude API</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Embedding Models</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Context-Aware Generation</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 4. 원스톱 웹 인터페이스 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                <div className="flex items-start gap-6">
+                  <div className="shrink-0">
+                    <div className="w-14 h-14 bg-slate-700 rounded-2xl flex items-center justify-center text-white font-black text-xl">
+                      04
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-black text-slate-900 mb-3">통합 웹 플랫폼</h3>
+                    <p className="text-base text-slate-600 leading-relaxed mb-4">
+                      <span className="font-semibold text-slate-900">React 프론트엔드</span>와 <span className="font-semibold text-slate-900">FastAPI 백엔드</span>를 통해 
+                      데이터 업로드, 기사 생성, 미리보기, 수정까지 모든 워크플로우를 단일 웹 인터페이스에서 완결합니다.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">React SPA</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">FastAPI Backend</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Real-time Preview</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
@@ -217,86 +268,27 @@ export default async function FastballPage() {
               subtitle="RAG 기반 기사 생성 시스템"
             />
 
-            {/* 아키텍처 다이어그램 */}
-            <div className="bg-white rounded-[32px] p-8 md:p-12 border border-slate-200 shadow-sm mb-8">
-              <ArchitectureDiagram />
+            {/* 아키텍처 이미지 */}
+            <div className="bg-white rounded-[32px] p-8 md:p-12 border-2 border-slate-200 shadow-lg mb-8">
+              <div className="mb-6">
+                <h3 className="text-2xl font-black text-slate-900 mb-2">시스템 전체 구조</h3>
+                <p className="text-slate-600">AWS 기반 자동화 시스템과 하이브리드 데이터 검색 구조</p>
+              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src="/assets/fastball-architecture.png" 
+                alt="Fastball Architecture Diagram"
+                className="w-full h-auto rounded-2xl border border-slate-200 shadow-md"
+              />
             </div>
 
-            <div className="space-y-6">
-              <ArchitectureCard
-                num="01"
-                icon={<Database className="text-indigo-600" size={24} />}
-                title="하이브리드 데이터 저장"
-                items={[
-                  "ChromaDB: 당일 경기 데이터를 자연어로 변환 후 벡터화하여 저장",
-                  "PostgreSQL: 방대한 정보를 저장하고 리랭커로 관련 정보만 우선 적용",
-                  "CSV 형태의 경기 데이터를 Claude로 자연어 문장 변환",
-                  "임베딩 모델을 통한 벡터화 및 FAISS/ChromaDB 저장",
-                ]}
-              />
-              <ArchitectureCard
-                num="02"
-                icon={<Brain className="text-purple-600" size={24} />}
-                title="RAG 기반 기사 생성"
-                items={[
-                  "ChromaDB와 PostgreSQL에서 검색된 정보를 7:3 비율로 Claude에 전달",
-                  "리랭커를 통한 관련성 높은 정보 우선 적용으로 기사 품질 향상",
-                  "문맥을 이해하고 자연스러운 문체로 기사 생성",
-                  "단순 데이터 나열이 아닌 맥락 있는 기사 작성",
-                ]}
-              />
-            </div>
+            
+
+            
+              
           </article>
 
-          {/* Core Features */}
-          <article>
-            <SectionHeader
-              title="Core Features"
-              subtitle="핵심 기능 상세"
-            />
-            <div className="space-y-6">
-              <FeatureCard
-                icon={<Search className="text-indigo-600" />}
-                title="스마트 검색 & 데이터 수집"
-                items={[
-                  "키워드 기반 웹 검색 및 사용자 문서 분석",
-                  "ChromaDB를 활용한 벡터 기반 문서 검색",
-                  "PostgreSQL을 통한 구조화된 데이터 검색",
-                  "리랭커를 통한 관련성 높은 정보 우선 추출",
-                ]}
-              />
-              <FeatureCard
-                icon={<Brain className="text-purple-600" />}
-                title="LLM 기반 기사 생성"
-                items={[
-                  "Claude API를 활용한 자연스러운 문체의 기사 생성",
-                  "경기 데이터를 자연어로 변환하여 문맥 이해",
-                  "7:3 비율로 ChromaDB와 PostgreSQL 데이터 결합",
-                  "사용자 맞춤화 입력 반영 (예: '투수 중심으로 요약')",
-                ]}
-              />
-              <FeatureCard
-                icon={<FileText className="text-blue-600" />}
-                title="자동 기사 포맷팅"
-                items={[
-                  "기사 형식(제목-소제목-본문) 자동 정렬 및 포매팅",
-                  "출처 명시 및 필터링 기능",
-                  "생성된 문단별로 참고 자료 시각적 표현",
-                  "PDF 또는 Word로 변환 가능",
-                ]}
-              />
-              <FeatureCard
-                icon={<Zap className="text-sky-600" />}
-                title="원스톱 워크플로우"
-                items={[
-                  "웹사이트 내에서 데이터 업로드부터 기사 생성까지 완결",
-                  "실시간 미리보기 제공",
-                  "빠르고 직관적인 사용자 경험",
-                  "기사 작성 시간 대폭 단축 (30분 → 수분)",
-                ]}
-              />
-            </div>
-          </article>
+          
 
           {/* Engineering Stack */}
           <article>
@@ -306,14 +298,7 @@ export default async function FastballPage() {
             />
             <div className="space-y-6">
               <TechTable tech={project.tech ?? []} />
-              <div className="p-4 md:p-6 bg-slate-100 rounded-2xl text-base md:text-[18px] lg:text-[20px] text-slate-600 font-medium flex items-start gap-3 md:gap-4">
-                <Info size={28} className="shrink-0 text-indigo-600 mt-0.5" />
-                <span>
-                  LLM과 RAG를 결합하여 단순 템플릿 기반이 아닌 문맥을 이해하는
-                  자연스러운 기사를 생성합니다. ChromaDB와 PostgreSQL을 활용한
-                  하이브리드 검색 시스템과 리랭커를 통해 기사 품질을 향상시켰습니다.
-                </span>
-              </div>
+     
             </div>
           </article>
 
@@ -391,27 +376,15 @@ export default async function FastballPage() {
 
               <div className="space-y-4">
                 <ResultBadge
-                  label="AI Technology"
-                  value="LLM + RAG 결합으로 문맥 이해 기반 기사 생성"
+                  label="AI 기술"
+                  value="졸업프로젝트"
                 />
+                
                 <ResultBadge
-                  label="Search System"
-                  value="ChromaDB + PostgreSQL 하이브리드 검색"
+                  label="자동화"
+                  value="AWS 기반 데이터 수집 파이프라인"
                 />
-                <ResultBadge
-                  label="Quality"
-                  value={
-                    <>
-                      리랭커를 통한 관련성 높은 정보 우선 적용
-                      <br />
-                      자연스러운 문체의 기사 자동 생성
-                    </>
-                  }
-                />
-                <ResultBadge
-                  label="Deployment"
-                  value="Netlify(FE) + Railway(BE) 실서비스 배포"
-                />
+                
               </div>
             </div>
           </div>
@@ -577,11 +550,27 @@ function ArchitectureDiagram() {
 
       {/* 다이어그램 */}
       <div className="space-y-6">
+        {/* User Layer */}
+        <div className="bg-gradient-to-r from-slate-50 to-slate-100 rounded-2xl p-6 border-2 border-slate-200">
+          <div className="flex items-center gap-3 mb-4">
+            <Users className="text-slate-600" size={24} />
+            <h4 className="text-lg font-black text-slate-900">Users (기자)</h4>
+          </div>
+          <div className="bg-white rounded-xl p-4 border border-slate-200">
+            <p className="text-sm text-slate-600">웹 인터페이스를 통한 기사 주제 입력 및 자료 업로드</p>
+          </div>
+        </div>
+
+        {/* Arrow */}
+        <div className="flex justify-center">
+          <div className="w-1 h-12 bg-gradient-to-b from-slate-300 to-indigo-300 rounded-full" />
+        </div>
+
         {/* Frontend Layer */}
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-6 border-2 border-indigo-200">
           <div className="flex items-center gap-3 mb-4">
             <Monitor className="text-indigo-600" size={24} />
-            <h4 className="text-lg font-black text-slate-900">Frontend (React)</h4>
+            <h4 className="text-lg font-black text-slate-900">Frontend (React + Netlify)</h4>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-white rounded-xl p-4 border border-indigo-100">
@@ -608,9 +597,9 @@ function ArchitectureDiagram() {
         <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border-2 border-purple-200">
           <div className="flex items-center gap-3 mb-4">
             <ServerCrash className="text-purple-600" size={24} />
-            <h4 className="text-lg font-black text-slate-900">Backend (FastAPI)</h4>
+            <h4 className="text-lg font-black text-slate-900">Backend (FastAPI + Railway)</h4>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="bg-white rounded-xl p-4 border border-purple-100">
               <p className="text-xs font-bold text-purple-600 uppercase mb-1">API 서버</p>
               <p className="text-sm text-slate-600">REST API 엔드포인트</p>
@@ -622,6 +611,10 @@ function ArchitectureDiagram() {
             <div className="bg-white rounded-xl p-4 border border-purple-100">
               <p className="text-xs font-bold text-purple-600 uppercase mb-1">RAG 시스템</p>
               <p className="text-sm text-slate-600">검색 및 리랭킹</p>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-purple-100">
+              <p className="text-xs font-bold text-purple-600 uppercase mb-1">데이터 처리</p>
+              <p className="text-sm text-slate-600">자연어 변환</p>
             </div>
           </div>
         </div>
@@ -635,63 +628,101 @@ function ArchitectureDiagram() {
         <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border-2 border-blue-200">
           <div className="flex items-center gap-3 mb-4">
             <Database className="text-blue-600" size={24} />
-            <h4 className="text-lg font-black text-slate-900">Database & Vector Store</h4>
+            <h4 className="text-lg font-black text-slate-900">Database & Vector Store (AWS RDS + ChromaDB)</h4>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-white rounded-xl p-4 border border-blue-100">
-              <p className="text-xs font-bold text-blue-600 uppercase mb-1">ChromaDB</p>
-              <p className="text-sm text-slate-600">벡터 기반 문서 검색</p>
+              <p className="text-xs font-bold text-blue-600 uppercase mb-1">ChromaDB (70%)</p>
+              <p className="text-sm text-slate-600 mb-2">벡터 기반 문서 검색</p>
+              <p className="text-xs text-slate-500">리랭킹 없이 바로 활용</p>
             </div>
             <div className="bg-white rounded-xl p-4 border border-blue-100">
-              <p className="text-xs font-bold text-blue-600 uppercase mb-1">PostgreSQL</p>
-              <p className="text-sm text-slate-600">구조화된 데이터 저장</p>
+              <p className="text-xs font-bold text-blue-600 uppercase mb-1">PostgreSQL (30%)</p>
+              <p className="text-sm text-slate-600 mb-2">구조화된 데이터 저장</p>
+              <p className="text-xs text-slate-500">리랭커로 관련 정보 우선</p>
             </div>
             <div className="bg-white rounded-xl p-4 border border-blue-100">
               <p className="text-xs font-bold text-blue-600 uppercase mb-1">리랭커</p>
-              <p className="text-sm text-slate-600">관련성 높은 정보 우선</p>
+              <p className="text-sm text-slate-600 mb-2">관련성 높은 정보 우선</p>
+              <p className="text-xs text-slate-500">LLM 품질 향상</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Arrow */}
+        <div className="flex justify-center">
+          <div className="w-1 h-12 bg-gradient-to-b from-blue-300 to-green-300 rounded-full" />
+        </div>
+
+        {/* External Data Collection */}
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border-2 border-green-200">
+          <div className="flex items-center gap-3 mb-4">
+            <Workflow className="text-green-600" size={24} />
+            <h4 className="text-lg font-black text-slate-900">자동 데이터 수집 (AWS EventBridge + Lambda)</h4>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-white rounded-xl p-4 border border-green-100">
+              <p className="text-xs font-bold text-green-600 uppercase mb-1">EventBridge</p>
+              <p className="text-sm text-slate-600">스케줄 기반 트리거</p>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-green-100">
+              <p className="text-xs font-bold text-green-600 uppercase mb-1">Lambda 크롤링</p>
+              <p className="text-sm text-slate-600">KBO 데이터 수집</p>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-green-100">
+              <p className="text-xs font-bold text-green-600 uppercase mb-1">자동 저장</p>
+              <p className="text-sm text-slate-600">DB 업데이트</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* 생성 플로우 */}
-      <div className="mt-8 pt-8 border-t border-slate-200">
+      <div className="mt-8 pt-8 border-t-2 border-slate-200">
         <h4 className="text-lg font-black text-slate-900 mb-4 flex items-center gap-2">
           <Workflow className="text-purple-600" size={20} />
           기사 생성 플로우
         </h4>
-        <div className="bg-slate-50 rounded-xl p-6">
+        <div className="bg-gradient-to-br from-slate-50 to-indigo-50 rounded-2xl p-6 border-2 border-slate-200">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
             <div className="flex-1 text-center">
-              <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-2">
+              <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-2 shadow-md">
                 <FileText className="text-indigo-600" size={24} />
               </div>
               <p className="text-sm font-bold text-slate-900">데이터 수집</p>
-              <p className="text-xs text-slate-500 mt-1">CSV 경기 데이터 수집</p>
+              <p className="text-xs text-slate-500 mt-1">CSV 경기 데이터</p>
             </div>
             <ChevronRight className="text-slate-400 hidden md:block" size={24} />
             <div className="flex-1 text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2 shadow-md">
                 <Brain className="text-purple-600" size={24} />
               </div>
               <p className="text-sm font-bold text-slate-900">자연어 변환</p>
-              <p className="text-xs text-slate-500 mt-1">Claude로 자연어 문장 변환</p>
+              <p className="text-xs text-slate-500 mt-1">Claude API</p>
             </div>
             <ChevronRight className="text-slate-400 hidden md:block" size={24} />
             <div className="flex-1 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2 shadow-md">
                 <Database className="text-blue-600" size={24} />
               </div>
               <p className="text-sm font-bold text-slate-900">벡터화 저장</p>
-              <p className="text-xs text-slate-500 mt-1">임베딩 후 ChromaDB 저장</p>
+              <p className="text-xs text-slate-500 mt-1">ChromaDB 저장</p>
             </div>
             <ChevronRight className="text-slate-400 hidden md:block" size={24} />
             <div className="flex-1 text-center">
-              <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-2">
+              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 shadow-md">
+                <Search className="text-emerald-600" size={24} />
+              </div>
+              <p className="text-sm font-bold text-slate-900">하이브리드 검색</p>
+              <p className="text-xs text-slate-500 mt-1">7:3 비율 결합</p>
+            </div>
+            <ChevronRight className="text-slate-400 hidden md:block" size={24} />
+            <div className="flex-1 text-center">
+              <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-2 shadow-md">
                 <Zap className="text-sky-600" size={24} />
               </div>
               <p className="text-sm font-bold text-slate-900">기사 생성</p>
-              <p className="text-xs text-slate-500 mt-1">7:3 비율로 데이터 결합</p>
+              <p className="text-xs text-slate-500 mt-1">최종 출력</p>
             </div>
           </div>
         </div>

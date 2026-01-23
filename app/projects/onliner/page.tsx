@@ -93,7 +93,7 @@ export default async function OnlinerPage() {
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mb-6 md:mb-10">
               병원과 도매업체를 연결하는 의약품 거래 SaaS
               <br className="hidden sm:block" />
-              <span className="text-indigo-300">명세서 자동화 · 실시간 채팅 · 권한 관리</span>
+              <span className="text-indigo-300">종이명세서의 자동화</span>
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -109,44 +109,54 @@ export default async function OnlinerPage() {
           </div>
 
           {/* 우측: 바로가기 버튼 */}
-          <div className="lg:col-span-5 flex flex-col justify-center items-center lg:items-end gap-6">
-            <a
-              href="https://onlinerr.netlify.app/vendor/dashboard"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-3 md:gap-4 px-6 sm:px-8 md:px-12 py-6 md:py-8 bg-gradient-to-br from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-[24px] md:rounded-[32px] font-black text-base md:text-lg transition-all shadow-2xl shadow-indigo-600/30 hover:shadow-indigo-600/50 active:scale-95 max-w-md w-full"
-            >
-              <ExternalLink size={32} className="group-hover:scale-110 transition-transform" />
-              <span>실제 웹사이트 바로가기</span>
-              <span className="text-sm font-normal opacity-90">클릭하여 대시보드 확인하기</span>
-            </a>
-            <p className="text-sm text-slate-400 font-mono text-center lg:text-right">
-              https://onlinerr.netlify.app
+          <div className="lg:col-span-5 flex flex-col justify-center items-center lg:items-end gap-4">
+            <div className="w-full max-w-md space-y-3">
+              {/* Vendor 입장 */}
+              <a
+                href="https://onlinerr.netlify.app/vendor/dashboard"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between gap-4 px-6 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-2xl font-bold transition-all shadow-lg hover:shadow-xl active:scale-[0.98] w-full"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-white/20 rounded-lg">
+                    <ExternalLink size={20} />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-sm font-bold">도매업체 포털</div>
+                    <div className="text-xs opacity-80">Vendor Dashboard</div>
+                  </div>
+                </div>
+                <span className="text-white/80 group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+
+              {/* Hospital 입장 */}
+              <a
+                href="https://onlinerr.netlify.app/hospital/dashboard"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between gap-4 px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-2xl font-bold transition-all shadow-lg hover:shadow-xl active:scale-[0.98] w-full"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-white/20 rounded-lg">
+                    <ExternalLink size={20} />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-sm font-bold">병원 포털</div>
+                    <div className="text-xs opacity-80">Hospital Dashboard</div>
+                  </div>
+                </div>
+                <span className="text-white/80 group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
+            
+            <p className="text-xs text-slate-400 font-mono text-center lg:text-right">
+              onlinerr.netlify.app
             </p>
           </div>
         </div>
       </section>
 
-      {/* 3) 핵심 기능 플로우 */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-12 md:py-16 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-          <DataFlowCard
-            icon={<ShoppingCart className="text-indigo-600" />}
-            title="주문 통합 관리"
-            desc="여러 병원 주문을 한 화면에서 통합 관리"
-          />
-          <DataFlowCard
-            icon={<MessageCircle className="text-emerald-600" />}
-            title="실시간 채팅"
-            desc="WebSocket 기반 병원↔도매업체 실시간 소통"
-          />
-          <DataFlowCard
-            icon={<FileText className="text-blue-600" />}
-            title="자동 명세서"
-            desc="PDF 업로드로 명세서 자동 생성 및 발행"
-          />
-        </div>
-      </section>
 
       {/* 4) MAIN CONTENT */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-12 md:py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16">
@@ -160,7 +170,10 @@ export default async function OnlinerPage() {
             />
             <div className="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
               <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-6 md:mb-10">
-                {project.problem}
+                의약품 도매업체는 매달 <span className="font-bold text-slate-900">수천 장의 종이거래명세서</span>를 수작업으로 정리하고 누락된 명세서를 확인하는 과정에서 <span className="font-bold text-rose-600">과도한 시간이 소요</span>됩니다.
+                <br />
+                다시 도장을 받기 위한 <span className="font-semibold text-slate-900">시간 지체</span>, 전화주문을 전산에 입력하는 과정에서 발생하는 오류 등 
+                <span className="font-bold text-slate-900">휴먼 에러</span>로 인한 <span className="font-bold text-rose-600">재고 관리 손실</span>이 발생했습니다.
               </p>
 
               <div className="p-4 md:p-6 bg-indigo-50 rounded-2xl border border-indigo-100">
@@ -195,18 +208,32 @@ export default async function OnlinerPage() {
               title="Solution"
               subtitle="해결 방안 및 시스템 설계"
             />
-            <div className="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                {project.solution?.map((sol, idx) => (
-                  <div key={idx} className="flex gap-3 md:gap-4">
-                    <div className="flex-shrink-0 w-7 h-7 md:w-8 md:h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-black text-xs md:text-sm">
-                      {idx + 1}
-                    </div>
-                    <p className="text-sm md:text-base text-slate-700 leading-relaxed flex-1">
-                      {sol}
-                    </p>
-                  </div>
-                ))}
+           
+
+            {/* 핵심 기능 플로우 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+              <div className="bg-white p-8 rounded-[32px] border border-slate-200 shadow-sm hover:shadow-md flex flex-col items-center text-center transition-all">
+                <div className="mb-4 p-4 bg-slate-50 rounded-2xl">
+                  <ShoppingCart className="text-slate-600" size={32} />
+                </div>
+                <h3 className="font-black text-slate-900 mb-2">주문 통합 관리</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-medium">여러 병원 주문을 한 화면에서 통합 관리</p>
+              </div>
+
+              <div className="bg-white p-8 rounded-[32px] border border-slate-200 shadow-sm hover:shadow-md flex flex-col items-center text-center transition-all">
+                <div className="mb-4 p-4 bg-slate-50 rounded-2xl">
+                  <MessageCircle className="text-slate-600" size={32} />
+                </div>
+                <h3 className="font-black text-slate-900 mb-2">실시간 채팅</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-medium">WebSocket 기반 병원↔도매업체 실시간 소통</p>
+              </div>
+
+              <div className="bg-white p-8 rounded-[32px] border border-slate-200 shadow-sm hover:shadow-md flex flex-col items-center text-center transition-all">
+                <div className="mb-4 p-4 bg-slate-50 rounded-2xl">
+                  <FileText className="text-slate-600" size={32} />
+                </div>
+                <h3 className="font-black text-slate-900 mb-2">자동 명세서</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-medium">PDF 업로드로 명세서 자동 생성 및 발행</p>
               </div>
             </div>
           </article>
@@ -223,158 +250,107 @@ export default async function OnlinerPage() {
               <ArchitectureDiagram />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <ArchitectureCard
-                num="01"
-                icon={<Users className="text-indigo-600" size={20} />}
-                title="멀티테넌트 구조"
-                items={[
-                  "업체 코드로 데이터 분리",
-                  "서브도메인 기반 접근",
-                  "업체별 독립 데이터 관리",
-                ]}
-              />
-              <ArchitectureCard
-                num="02"
-                icon={<Lock className="text-purple-600" size={20} />}
-                title="역할 기반 권한"
-                items={[
-                  "hospital/vendor 포털 자동 분기",
-                  "MASTER/SALES/WAREHOUSE 권한별 메뉴 필터링",
-                ]}
-              />
-              <ArchitectureCard
-                num="03"
-                icon={<MessageCircle className="text-emerald-600" size={20} />}
-                title="WebSocket 채팅"
-                items={[
-                  "실시간 메시지 송수신",
-                  "명세서/일반 문의 컨텍스트별 대화방",
-                  "읽음 처리 및 타이핑 표시",
-                ]}
-              />
-              <ArchitectureCard
-                num="04"
-                icon={<Bell className="text-amber-600" size={20} />}
-                title="브라우저 알림"
-                items={[
-                  "새 명세서 도착 알림",
-                  "확인 요청 알림",
-                ]}
-              />
-            </div>
+            
           </article>
 
           {/* Core Features */}
           <article>
             <SectionHeader
               title="Core Features"
-              subtitle="핵심 기능 상세"
+              subtitle="핵심 기능"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FeatureCard
-                icon={<ShoppingCart className="text-indigo-600" />}
-                title="주문 통합 관리"
-                items={[
-                  "여러 병원 주문 통합 관리",
-                  "주문 상태별 필터링 및 검색",
-                  "품절 시 대체 약품 추천",
-                ]}
-              />
-              <FeatureCard
-                icon={<Warehouse className="text-purple-600" />}
-                title="재고 관리"
-                items={[
-                  "창고별 재고 조회 및 관리",
-                  "엑셀 업로드 일괄 반입",
-                  "임계치 이하 품목 경고",
-                ]}
-              />
-              <FeatureCard
-                icon={<Truck className="text-blue-600" />}
-                title="배송 관리"
-                items={[
-                  "명세서 드래그 앤 드롭 할당",
-                  "배송 기사 목록 관리",
-                  "배송 상태 추적",
-                ]}
-              />
-              <FeatureCard
-                icon={<FileText className="text-sky-600" />}
-                title="명세서 발행/수신"
-                items={[
-                  "Grid 입력 및 PDF 자동 파싱",
-                  "병원 수신함 필터링",
-                  "서명 및 이의신청",
-                ]}
-              />
-              <FeatureCard
-                icon={<Building2 className="text-amber-600" />}
-                title="거래처 관리"
-                items={[
-                  "거래처 목록 조회 및 엑셀 업로드",
-                  "병원별 단가 설정 및 미수금 관리",
-                  "신규 병원 임시 계정 발급",
-                ]}
-              />
-              <FeatureCard
-                icon={<BarChart3 className="text-rose-600" />}
-                title="대시보드"
-                items={[
-                  "일일 매출 현황 및 전일 대비",
-                  "배송/재고/명세서 현황",
-                  "최근 주문 내역 요약",
-                ]}
-              />
-              <FeatureCard
-                icon={<MessageCircle className="text-emerald-600" />}
-                title="실시간 채팅"
-                items={[
-                  "WebSocket 기반 실시간 메시지",
-                  "명세서/일반 문의 컨텍스트별 대화방",
-                  "읽음 처리 및 타이핑 표시",
-                ]}
-              />
-              <FeatureCard
-                icon={<Bell className="text-amber-600" />}
-                title="브라우저 알림"
-                items={[
-                  "새 명세서 도착 알림",
-                  "확인 요청 알림",
-                ]}
-              />
-              <FeatureCard
-                icon={<FileCheck className="text-teal-600" />}
-                title="병원 포털"
-                items={[
-                  "명세서 수신함 필터링",
-                  "서명 및 메타데이터 저장",
-                  "이의신청 처리",
-                ]}
-              />
-              <FeatureCard
-                icon={<CreditCard className="text-violet-600" />}
-                title="결제 관리"
-                items={[
-                  "미수금/납기 요약",
-                  "결제 상태 필터링",
-                ]}
-              />
-              <FeatureCard
-                icon={<ClipboardList className="text-orange-600" />}
-                title="거래장 관리"
-                items={[
-                  "병원별 거래 내역 조회",
-                  "엑셀 업로드 및 관리",
-                ]}
-              />
-              <FeatureCard
-                icon={<AlertCircle className="text-red-600" />}
-                title="테스트 모드"
-                items={[
-                  "DB 없이 동작하는 Mock 컨트롤러",
-                ]}
-              />
+            <div className="space-y-6">
+              {/* 1. PDF 자동 파싱 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                <div className="flex items-start gap-6">
+                  <div className="shrink-0">
+                    <div className="w-14 h-14 bg-slate-700 rounded-2xl flex items-center justify-center text-white font-black text-xl">
+                      01
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-black text-slate-900 mb-3">PDF 자동 파싱 & 명세서 관리</h3>
+                    <p className="text-base text-slate-600 leading-relaxed mb-4">
+                      <span className="font-semibold text-slate-900">Apache PDFBox</span>와 <span className="font-semibold text-slate-900">POI</span>를 활용한 자동 데이터 추출. 
+                      Grid 입력 및 PDF 업로드로 명세서를 자동 생성하고, 병원 수신함에서 서명 및 이의신청 처리가 가능합니다.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">PDF Parsing</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Excel Processing</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Digital Signature</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2. WebSocket 실시간 채팅 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                <div className="flex items-start gap-6">
+                  <div className="shrink-0">
+                    <div className="w-14 h-14 bg-slate-700 rounded-2xl flex items-center justify-center text-white font-black text-xl">
+                      02
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-black text-slate-900 mb-3">WebSocket 실시간 채팅</h3>
+                    <p className="text-base text-slate-600 leading-relaxed mb-4">
+                      <span className="font-semibold text-slate-900">WebSocket</span> 기반 병원↔도매업체 간 실시간 소통 시스템. 
+                      명세서별 또는 일반 문의 컨텍스트로 대화방을 분리하고, 읽음 처리 및 타이핑 표시 기능을 제공합니다.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">WebSocket</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Real-time Messaging</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Context Rooms</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. 멀티테넌트 & 권한 관리 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                <div className="flex items-start gap-6">
+                  <div className="shrink-0">
+                    <div className="w-14 h-14 bg-slate-700 rounded-2xl flex items-center justify-center text-white font-black text-xl">
+                      03
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-black text-slate-900 mb-3">멀티테넌트 & 역할 기반 권한</h3>
+                    <p className="text-base text-slate-600 leading-relaxed mb-4">
+                      업체 코드로 데이터를 완전히 분리하고, <span className="font-semibold text-slate-900">hospital/vendor 포털</span>을 자동 분기합니다. 
+                      MASTER/SALES/WAREHOUSE 권한별 메뉴 필터링으로 업무 효율성을 극대화합니다.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Multi-tenant</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Role-based Access</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Portal Separation</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 4. 통합 대시보드 & 알림 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                <div className="flex items-start gap-6">
+                  <div className="shrink-0">
+                    <div className="w-14 h-14 bg-slate-700 rounded-2xl flex items-center justify-center text-white font-black text-xl">
+                      04
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-black text-slate-900 mb-3">통합 대시보드 & 브라우저 알림</h3>
+                    <p className="text-base text-slate-600 leading-relaxed mb-4">
+                      일일 매출 현황, 배송/재고/명세서 상태를 <span className="font-semibold text-slate-900">실시간 대시보드</span>에서 한눈에 확인하고, 
+                      새 명세서 도착 및 확인 요청 시 <span className="font-semibold text-slate-900">브라우저 알림</span>으로 즉시 통보받습니다.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Dashboard</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Browser Notification</span>
+                      <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Real-time Status</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </article>
 
@@ -386,13 +362,7 @@ export default async function OnlinerPage() {
             />
             <div className="space-y-6">
               <TechTable tech={project.tech ?? []} />
-              <div className="p-4 md:p-6 bg-slate-100 rounded-2xl text-base md:text-[18px] lg:text-[20px] text-slate-600 font-medium flex items-start gap-3 md:gap-4">
-                <Info size={28} className="shrink-0 text-indigo-600 mt-0.5" />
-                <span>
-                  멀티테넌트 구조로 업체별 독립 데이터 관리 · WebSocket 기반 실시간 채팅 · 
-                  PDF 파싱 자동 명세서 생성 · 역할 기반 권한 분기
-                </span>
-              </div>
+
             </div>
           </article>
 
@@ -460,33 +430,6 @@ export default async function OnlinerPage() {
               ]}
             />
 
-            <div className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-[32px] p-8 text-white shadow-xl">
-              <div className="flex items-center gap-2 mb-8">
-                <Sparkles size={18} />
-                <h3 className="font-bold uppercase text-[10px] tracking-widest">
-                  Core Highlights
-                </h3>
-              </div>
-
-              <div className="space-y-4">
-                <ResultBadge
-                  label="Architecture"
-                  value="멀티테넌트 구조로 업체별 독립 데이터 관리"
-                />
-                <ResultBadge
-                  label="Security"
-                  value="역할 기반 접근 제어 (RBAC)"
-                />
-                <ResultBadge
-                  label="Real-time"
-                  value="WebSocket 기반 실시간 채팅 시스템"
-                />
-                <ResultBadge
-                  label="Automation"
-                  value="PDF 파싱 자동 명세서 생성"
-                />
-              </div>
-            </div>
           </div>
         </aside>
       </section>
@@ -643,117 +586,69 @@ function OutlineButton({
 function ArchitectureDiagram() {
   return (
     <div className="w-full">
-      <div className="text-center mb-8">
-        <h3 className="text-2xl font-black text-slate-900 mb-2">멀티테넌트 아키텍처 구조</h3>
-        <p className="text-slate-500 text-sm">업체별 독립적인 데이터 관리 및 공통 리소스 공유</p>
-      </div>
-
-      {/* 다이어그램 */}
-      <div className="space-y-6">
-        {/* Frontend Layer */}
-        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-6 border-2 border-indigo-200">
-          <div className="flex items-center gap-3 mb-4">
-            <Monitor className="text-indigo-600" size={24} />
-            <h4 className="text-lg font-black text-slate-900">Frontend (React)</h4>
+      {/* 시스템 구조 + 아키텍처 이미지 - 하나의 카드로 */}
+      <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+        <h4 className="text-lg font-black text-slate-900 mb-4">시스템 구조</h4>
+        
+        {/* 스택 표 */}
+        <div className="grid grid-cols-3 gap-4 text-center mb-6">
+          <div>
+            <p className="text-xs font-bold text-slate-400 uppercase mb-1">Frontend</p>
+            <p className="text-sm text-slate-700 font-medium">React (Netlify)</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-white rounded-xl p-4 border border-indigo-100">
-              <p className="text-xs font-bold text-indigo-600 uppercase mb-1">병원 포털</p>
-              <p className="text-sm text-slate-600">주문 관리</p>
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-indigo-100">
-              <p className="text-xs font-bold text-indigo-600 uppercase mb-1">도매업체 포털</p>
-              <p className="text-sm text-slate-600">통합 관리</p>
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-indigo-100">
-              <p className="text-xs font-bold text-indigo-600 uppercase mb-1">공통 UI</p>
-              <p className="text-sm text-slate-600">인증/설정</p>
-            </div>
+          <div>
+            <p className="text-xs font-bold text-slate-400 uppercase mb-1">Backend</p>
+            <p className="text-sm text-slate-700 font-medium">Spring Boot (Render)</p>
+          </div>
+          <div>
+            <p className="text-xs font-bold text-slate-400 uppercase mb-1">Database</p>
+            <p className="text-sm text-slate-700 font-medium">MariaDB (Docker)</p>
           </div>
         </div>
 
-        {/* Arrow */}
-        <div className="flex justify-center">
-          <div className="w-1 h-12 bg-gradient-to-b from-indigo-300 to-purple-300 rounded-full" />
+        {/* 아키텍처 이미지 */}
+        <div className="mb-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src="/assets/onliner-architecture.png" 
+            alt="Onliner System Architecture"
+            className="w-full h-auto rounded-xl border border-slate-200 shadow-sm"
+          />
         </div>
 
-        {/* Backend Layer */}
-        <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border-2 border-purple-200">
-          <div className="flex items-center gap-3 mb-4">
-            <ServerCrash className="text-purple-600" size={24} />
-            <h4 className="text-lg font-black text-slate-900">Backend (Spring Boot)</h4>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-white rounded-xl p-4 border border-purple-100">
-              <p className="text-xs font-bold text-purple-600 uppercase mb-1">Controller</p>
-              <p className="text-sm text-slate-600">REST API</p>
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-purple-100">
-              <p className="text-xs font-bold text-purple-600 uppercase mb-1">Service</p>
-              <p className="text-sm text-slate-600">비즈니스 로직</p>
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-purple-100">
-              <p className="text-xs font-bold text-purple-600 uppercase mb-1">Repository</p>
-              <p className="text-sm text-slate-600">데이터 접근</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Arrow */}
-        <div className="flex justify-center">
-          <div className="w-1 h-12 bg-gradient-to-b from-purple-300 to-blue-300 rounded-full" />
-        </div>
-
-        {/* Database Layer */}
-        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border-2 border-blue-200">
-          <div className="flex items-center gap-3 mb-4">
-            <Database className="text-blue-600" size={24} />
-            <h4 className="text-lg font-black text-slate-900">Database (MariaDB/MySQL)</h4>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-white rounded-xl p-4 border border-blue-100">
-              <p className="text-xs font-bold text-blue-600 uppercase mb-1">업체별 데이터</p>
-              <p className="text-sm text-slate-600">재고/주문/거래처</p>
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-blue-100">
-              <p className="text-xs font-bold text-blue-600 uppercase mb-1">공통 데이터</p>
-              <p className="text-sm text-slate-600">의약품 정보</p>
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-blue-100">
-              <p className="text-xs font-bold text-blue-600 uppercase mb-1">사용자 데이터</p>
-              <p className="text-sm text-slate-600">인증/권한</p>
-            </div>
-          </div>
-        </div>
+        {/* 설명 */}
+        <p className="text-sm text-slate-500 text-center">
+          병원/도매업체 포털 분리 및 WebSocket 기반 실시간 채팅 시스템
+        </p>
       </div>
 
       {/* 인증 플로우 */}
-      <div className="mt-8 pt-8 border-t border-slate-200">
+      <div className="mt-8 pt-6 border-t border-slate-200">
         <h4 className="text-lg font-black text-slate-900 mb-4 flex items-center gap-2">
-          <Lock className="text-purple-600" size={20} />
+          <Lock className="text-slate-600" size={20} />
           인증 및 권한 관리 플로우
         </h4>
         <div className="bg-slate-50 rounded-xl p-6">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
             <div className="flex-1 text-center">
-              <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <Users className="text-indigo-600" size={24} />
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <Users className="text-slate-600" size={24} />
               </div>
               <p className="text-sm font-bold text-slate-900">사용자 로그인</p>
               <p className="text-xs text-slate-500 mt-1">업체 코드 + 이메일/비밀번호</p>
             </div>
             <ChevronRight className="text-slate-400 hidden md:block" size={24} />
             <div className="flex-1 text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <Lock className="text-purple-600" size={24} />
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <Lock className="text-slate-600" size={24} />
               </div>
               <p className="text-sm font-bold text-slate-900">역할 기반 권한 부여</p>
               <p className="text-xs text-slate-500 mt-1">MASTER / SALES / WAREHOUSE</p>
             </div>
             <ChevronRight className="text-slate-400 hidden md:block" size={24} />
             <div className="flex-1 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <ShieldCheck className="text-blue-600" size={24} />
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <ShieldCheck className="text-slate-600" size={24} />
               </div>
               <p className="text-sm font-bold text-slate-900">메뉴 필터링</p>
               <p className="text-xs text-slate-500 mt-1">권한에 따른 접근 제어</p>

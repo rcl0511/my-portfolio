@@ -183,6 +183,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
           </article>
 
+          {/* System Architecture */}
+          <article>
+            <SectionHeader title="System Architecture" subtitle="시스템 아키텍처" />
+            <ArchitectureDiagram />
+          </article>
+
           <article>
             <SectionHeader title="Engineering Stack" subtitle="사용된 기술 스택" />
             <div className="space-y-6">
@@ -445,6 +451,48 @@ function TechTable({ tech }: { tech: string[] }) {
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function ArchitectureDiagram() {
+  return (
+    <div className="w-full">
+      {/* 시스템 구조 + 아키텍처 이미지 - 하나의 카드로 */}
+      <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+        <h4 className="text-lg font-black text-slate-900 mb-4">시스템 구조</h4>
+        
+        {/* 스택 표 */}
+        <div className="grid grid-cols-3 gap-4 text-center mb-6">
+          <div>
+            <p className="text-xs font-bold text-slate-400 uppercase mb-1">Frontend</p>
+            <p className="text-sm text-slate-700 font-medium">React SPA (Netlify)</p>
+          </div>
+          <div>
+            <p className="text-xs font-bold text-slate-400 uppercase mb-1">Backend</p>
+            <p className="text-sm text-slate-700 font-medium">FastAPI (AWS EC2)</p>
+          </div>
+          <div>
+            <p className="text-xs font-bold text-slate-400 uppercase mb-1">Database</p>
+            <p className="text-sm text-slate-700 font-medium">MongoDB Atlas</p>
+          </div>
+        </div>
+
+        {/* 아키텍처 이미지 */}
+        <div className="mb-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src="/assets/sosai-architecture.png" 
+            alt="SOSAI System Architecture"
+            className="w-full h-auto rounded-xl border border-slate-200 shadow-sm"
+          />
+        </div>
+
+        {/* 설명 */}
+        <p className="text-sm text-slate-500 text-center">
+          NGINX 리버스 프록시를 통한 HTTPS 통신 및 JWT 기반 인증, OpenAI와 gTTS를 활용한 AI 기반 응급 가이드 시스템
+        </p>
       </div>
     </div>
   );
