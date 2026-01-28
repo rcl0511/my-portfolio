@@ -39,13 +39,7 @@ export default function CompletePortfolio() {
         
         <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
           <div className="lg:col-span-7">
-            <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[11px] font-bold mb-8 tracking-widest border border-blue-100"
-          >
-            FRONTEND · HEALTHCARE · IOT
-          </motion.div>
+           
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -53,8 +47,8 @@ export default function CompletePortfolio() {
             transition={{ delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-[100px] font-black tracking-tighter leading-[0.85] mb-6 md:mb-10 text-slate-900"
           >
-            WEB <br />
-            <span className="text-blue-600">DEVELOPER</span> PORTFOLIO
+            <span className="text-blue-600">FRONTEND</span> <br />
+            WEB DEVELOPER
           </motion.h1>
 
           <motion.div
@@ -72,8 +66,8 @@ export default function CompletePortfolio() {
             </p>
 
             <p className="text-slate-500 text-sm sm:text-base md:text-lg leading-relaxed">
-              
-              사용자 흐름이 자연스러운 웹 서비스를 만들고 문제를 기술로 해결하는 데 관심이 많습니다.
+              보이는 화면부터, 실제로 동작하는 서비스까지.<br />
+              화면만 만드는 개발자가 아니라, 서비스가 돌아가게 합니다.
             </p>
           </motion.div>
 
@@ -106,11 +100,27 @@ export default function CompletePortfolio() {
       </section>
 
       {/* --- B. PROFILE & PROFESSIONAL --- */}
-      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-20 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-20 bg-white overflow-hidden">
+        {/* 마스코트 배경 장식 */}
+        <div className="absolute inset-0 pointer-events-none opacity-5">
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-[600px] h-[600px] md:w-[800px] md:h-[800px]">
+            <img 
+              src="/sookmyung-mascot.png" 
+              alt="숙명여자대학교 마스코트" 
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row gap-12">
             {/* 좌측: 인적사항 & 경력 */}
             <div className="lg:w-1/4 space-y-12 md:space-y-16">
+              {/* 숙명 로고 */}
+              <div className="flex justify-center lg:justify-start mb-8">
+               
+              </div>
+
               <div>
                 <h2 className="text-[10px] font-black text-blue-500 uppercase tracking-[0.3em] mb-10">
                   Identity
@@ -178,7 +188,7 @@ export default function CompletePortfolio() {
                       의약품 도매업체 전산관리
                     </h4>
                     <p className="text-[15px] text-slate-500 mt-2 leading-relaxed">
-                      거래처 자료관리 및 전산 시스템 운영, 반복 업무 자동화 아이디어 도출
+                      거래처 자료관리 및 전산 시스템 운영,<br/> 반복 업무 자동화 아이디어 도출
                     </p>
                   </div>
 
@@ -187,13 +197,13 @@ export default function CompletePortfolio() {
                       <Pill size={14} />
                     </div>
                     <p className="text-[15px] font-bold text-slate-400 font-mono">
-                      2024.03 — 09
+                      2024.03 — 2024.09
                     </p>
                     <h4 className="font-bold text-slate-1000 mt-1">
                       약국 전산 및 운영 관리
                     </h4>
                     <p className="text-[15px] text-slate-500 mt-2 leading-relaxed">
-                      약국 청구 시스템 전산 처리 및 의약품 재고 최적화 관리
+                      약국 청구 시스템 전산 처리 <br/>및 의약품 재고 관리
                     </p>
                   </div>
                 </div>
@@ -202,14 +212,11 @@ export default function CompletePortfolio() {
 
             {/* 우측: 스킬 */}
             <div className="lg:w-3/4">
-              <h2 className="text-[20px] font-black text-slate-300 uppercase tracking-[0.3em] mb-10 lg:text-right">
+              <h2 className="text-[18px] font-semibold text-slate-700 uppercase tracking-[0.2em] mb-8 lg:text-right">
                 Stack & Capabilities
               </h2>
 
-              <p className="text-sm text-slate-400 mb-10 lg:text-right">
-                Frontend를 중심으로, Backend·AI·IoT·배포까지 제품이 ‘돌아가게’
-                만드는 올라운더입니다.
-              </p>
+  
 
               <div className="space-y-6 md:space-y-8">
                 <SkillCard
@@ -230,11 +237,10 @@ export default function CompletePortfolio() {
                   variant="primary"
                 />
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-4 md:gap-6">
                   <SkillCard
                     title="Backend"
                     skills={[
-                      
                       "Java",
                       "Node.js",
                       "Python",
@@ -246,20 +252,8 @@ export default function CompletePortfolio() {
                     desc="FastAPI + systemd + Nginx 배포 경험"
                   />
 
-                  <SkillCard
-                    title="Embedded / IoT"
-                    skills={[
-                      "Arduino",
-                      "ESP32",
-                      "C",
-                      "BLE GATT",
-                      
-                    ]}
-                    desc="센서 데이터 수집부터 BLE/WiFi 통신, 제어까지 전체 플로우를 설계"
-                    
-                  />
 
-                  <SkillCard
+<SkillCard
                     title="Database & Dev"
                     skills={[
                       "MongoDB",
@@ -273,9 +267,21 @@ export default function CompletePortfolio() {
                       "Docker",
                       "ChromaDB",
                     ]}
-                   
                     desc="MongoDB 연동 + Git 기반 협업 + 배포 운영"
                   />
+
+                  <SkillCard
+                    title="Embedded / IoT"
+                    skills={[
+                      "Arduino",
+                      "ESP32",
+                      "C",
+                      "BLE GATT",
+                    ]}
+                    desc="센서 데이터 수집부터 BLE/WiFi 통신, 제어까지 전체 플로우를 설계"
+                  />
+
+                  
                 </div>
               </div>
             </div>
@@ -285,12 +291,17 @@ export default function CompletePortfolio() {
 
       {/* --- C. PROJECTS SECTION --- */}
       <section id="projects" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-sm font-bold text-blue-600 uppercase tracking-[0.4em] mb-24">
-            Selected Projects
-          </h2>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 md:mb-20">
+          <h2 className="font-black text-6xl uppercase leading-none text-slate-900">
+  PROJECT <span className="text-blue-600">.</span>
+</h2>
+<p className="text-xs font-bold tracking-[0.5em] text-slate-400 mt-2">
+  주요 프로젝트
+</p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 text-left">
             {PROJECTS_DATA.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
@@ -303,8 +314,8 @@ export default function CompletePortfolio() {
         id="contact"
         className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-20 bg-white text-center border-t border-slate-100"
       >
-        <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 md:mb-8 tracking-tighter text-slate-900 italic uppercase">
-        Turning Ideas into Reality
+        <h2 className="text-3xl sm:text-xl md:text-6l font-black mb-6 md:mb-8 tracking-tighter text-slate-900 italic uppercase">
+        아이디어를, 실제로 쓰이는 서비스로.
         </h2>
 
         <div className="flex justify-center gap-8 mb-16">
@@ -346,41 +357,41 @@ function SkillCard({
   return (
     <div
       className={[
-        "p-4 sm:p-6 md:p-7 rounded-[20px] sm:rounded-[28px] group transition-all duration-500",
+        "p-5 sm:p-6 md:p-7 rounded-2xl group transition-all duration-300",
         isPrimary
-          ? "bg-white border border-blue-200 shadow-2xl shadow-blue-100/60 hover:shadow-blue-200/60"
-          : "bg-slate-50/50 hover:bg-white border border-transparent hover:border-slate-100 hover:shadow-2xl hover:shadow-slate-200/50",
+          ? "bg-blue-50/80 border-2 border-blue-200 shadow-md shadow-blue-100/50"
+          : "bg-white border border-slate-200 shadow-sm",
       ].join(" ")}
     >
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-5 mb-4 md:mb-5">
         <div className="flex-1">
-          <h4 className="text-lg md:text-xl font-bold text-slate-900 mb-1.5 md:mb-2">{title}</h4>
+          <h4 className={`mb-1.5 md:mb-2 ${isPrimary ? "text-lg md:text-xl font-bold text-blue-900" : "text-base md:text-lg font-semibold text-slate-800"}`}>{title}</h4>
           {proof ? (
-            <p className="text-xs md:text-sm font-bold text-slate-400 leading-relaxed mt-1.5 whitespace-pre-line">
-              <span className="text-blue-600">Proof:</span> {proof}
+            <p className={`text-xs md:text-sm leading-relaxed mt-1.5 whitespace-pre-line ${isPrimary ? "text-blue-800/90" : "text-slate-500"}`}>
+              <span className={isPrimary ? "text-blue-700 font-semibold" : "text-slate-600 font-medium"}>Proof:</span> {proof}
             </p>
           ) : null}
           {desc ? (
-            <p className="text-sm md:text-[14px] text-slate-500 leading-relaxed mt-2 md:mt-2.5">{desc}</p>
+            <p className={`text-sm leading-relaxed mt-2 md:mt-2.5 ${isPrimary ? "text-blue-900/80" : "text-slate-600"}`}>{desc}</p>
           ) : null}
         </div>
 
         {isPrimary ? (
-          <span className="px-3 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs md:text-sm font-black tracking-widest border border-blue-100 shrink-0 self-start">
+          <span className="px-3 py-1.5 rounded-full bg-blue-600 text-white text-xs font-bold tracking-widest border border-blue-600 shrink-0 self-start">
             PRIMARY
           </span>
         ) : null}
       </div>
 
-      <div className="flex flex-wrap gap-2 md:gap-2.5">
+      <div className="flex flex-wrap gap-2">
         {skills.map((s: string) => (
           <span
             key={s}
             className={[
-              "px-3 py-1.5 rounded-full text-xs md:text-sm font-bold transition-colors",
+              "px-3 py-1 rounded-md text-[10px] md:text-xs font-medium transition-colors",
               isPrimary
-                ? "bg-blue-50 border border-blue-100 text-blue-700"
-                : "bg-white border border-slate-100 text-slate-400 group-hover:text-blue-600 group-hover:border-blue-100",
+                ? "bg-white border border-blue-200 text-blue-800"
+                : "bg-slate-50 border border-slate-200 text-slate-600",
             ].join(" ")}
           >
             {s}
@@ -407,6 +418,16 @@ function InteractiveHeroCards() {
     "조금의 여유가 큰 차이를 만드는 날이에요",
     "웃을 일이 하나쯤은 꼭 생길 하루입니다",
     "오늘의 만남이 좋은 시작이 되길 바랍니다",
+    "괜히 마음이 편안해지는 하루가 될 것 같아요",
+    "오늘은 말 한마디가 따뜻하게 전해지는 날이에요",
+    "좋은 기운이 자연스럽게 이어지는 하루입니다",
+    "천천히 가도 괜찮은 하루예요",
+    "부담 없이 웃을 수 있는 시간이 기다리고 있어요",
+    "소소한 즐거움이 은근히 많은 날입니다",
+    "오늘의 분위기는 생각보다 더 좋을지도 몰라요",
+    "편안한 대화가 좋은 인연을 만든다고 해요",
+    "기분 좋은 여운이 오래 남는 하루가 되길 바랍니다",
+    "오늘 하루는 스스로에게도 친절해도 좋아요",
   ];
   
 
@@ -436,10 +457,7 @@ function InteractiveHeroCards() {
         index++;
       } else {
         clearInterval(typingInterval);
-        setTimeout(() => {
-          setTypingText("");
-          index = 0;
-        }, 3000);
+        // 타이핑 완료 후 운세 텍스트 유지 (로딩 중으로 바꾸지 않음)
       }
     }, 50);
     return () => clearInterval(typingInterval);

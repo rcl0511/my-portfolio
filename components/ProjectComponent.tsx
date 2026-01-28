@@ -91,14 +91,14 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
       whileHover={{ y: -8 }}
       transition={{ type: "spring", stiffness: 250, damping: 22 }}
       className={[
-        "group relative overflow-hidden rounded-[36px] border",
+        "group relative overflow-hidden rounded-[36px] border cursor-pointer",
         "bg-white shadow-sm hover:shadow-2xl hover:shadow-blue-200/60 transition-all duration-500",
-        "border-blue-200/70",
+        "border-blue-200/70 hover:border-blue-300",
       ].join(" ")}
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-blue-200/30 blur-3xl" />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50/40 via-white to-slate-50/60" />
+        <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-blue-200/30 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-50/40 via-white to-slate-50/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
 
       {/* 프로젝트 상세 페이지로 이동하는 링크 (전체 카드) */}
@@ -113,7 +113,7 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
               {badges.map((b) => (
                 <span
                   key={b}
-                  className="inline-flex items-center px-4 py-2 rounded-full bg-blue-600 text-white text-[15px] font-black tracking-widest shadow-lg shadow-blue-300/40"
+                  className="inline-flex items-center px-4 py-2 rounded-full bg-blue-800 text-white text-[15px] font-medium tracking-widest shadow-md shadow-blue-900/20"
                 >
                   {b}
                 </span>
@@ -135,6 +135,11 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
             <p className="mt-3 text-[11px] text-slate-400 font-mono uppercase tracking-widest">
               {project.period}
             </p>
+          </div>
+          
+          {/* 우측 상단 화살표 아이콘 */}
+          <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full border-2 border-slate-200 group-hover:border-blue-500 group-hover:bg-blue-50 transition-all duration-300 shrink-0">
+            <ArrowRight size={20} className="text-slate-400 group-hover:text-blue-600 transition-colors" />
           </div>
         </div>
 
@@ -262,7 +267,7 @@ function DefaultProjectCard({ project }: { project: Project }) {
     <motion.article
       whileHover={{ y: -10 }}
       transition={{ type: "spring", stiffness: 250, damping: 22 }}
-      className="group cursor-pointer bg-white border border-slate-100 rounded-[32px] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500"
+      className="group cursor-pointer bg-white border border-slate-100 rounded-[32px] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-blue-200/40 hover:border-blue-200 hover:scale-[1.02] transition-all duration-500 relative"
     >
       <div className="aspect-video bg-slate-50 relative flex items-center justify-center overflow-hidden">
         <span className="text-slate-200 font-black text-4xl uppercase tracking-tighter opacity-20 group-hover:scale-110 transition-transform duration-700">
@@ -286,7 +291,7 @@ function DefaultProjectCard({ project }: { project: Project }) {
             </p>
           </div>
 
-          <div className="w-12 h-12 rounded-full border border-slate-100 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-all">
+          <div className="w-12 h-12 rounded-full border border-slate-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white transition-all">
             <ArrowRight size={20} />
           </div>
         </div>
