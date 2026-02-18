@@ -52,7 +52,7 @@ export default function ProjectDetailPage({ project }: { project: any }) {
               </div>
             </div>
 
-            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed whitespace-pre-line">
               {project.summary}
             </p>
           </motion.div>

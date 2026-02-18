@@ -36,7 +36,12 @@ export type Project = {
  */
 export function ProjectCard({ project }: { project: Project }) {
   const href = `/projects/${project.id}`;
-  const isFeatured = project.id === "sosai" || project.id === "smart-barricade" || project.id === "onliner" || project.id === "baseball-news";
+  const isFeatured =
+    project.id === "sosai" ||
+    project.id === "smart-barricade" ||
+    project.id === "onliner" ||
+    project.id === "baseball-news" ||
+    project.id === "baroit";
 
   return (
     <>
@@ -61,22 +66,33 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
   const isBarricade = project.id === "smart-barricade";
   const isOnliner = project.id === "onliner";
   const isFastball = project.id === "baseball-news";
+  const isBaroit = project.id === "baroit";
 
   // Smart Barricade 폰 프리뷰(연결 화면 이미지)
   // (너가 올린 "연결됐을때 이미지" 링크)
   const barricadePreviewImg =
-  "https://github.com/user-attachments/assets/f2d1c70a-7888-4606-8fa3-9d1237cb4b51";
+    "https://github.com/user-attachments/assets/f2d1c70a-7888-4606-8fa3-9d1237cb4b51";
+
+  const featuredPadding = isSOSAI || isBarricade ? "p-6 sm:p-7 md:p-8 lg:p-9" : "p-6 sm:p-8 md:p-10 lg:p-12";
+  const featuredTitleSize =
+    isSOSAI || isBarricade || isBaroit ? "text-3xl md:text-4xl" : "text-4xl md:text-5xl";
 
   // ✅ Featured 뱃지 구성
   const badges = isSOSAI
     ? [
-        "🏆 HIRA 보건의료 창업아이디어대회 입상",
+        
         project.isPatent ? "국내 특허 출원 진행 중" : null,
+        "🏆 HIRA 보건의료 창업아이디어대회 입상",
       ].filter(Boolean) as string[]
     : isBarricade
     ? [
         "🏆 2025 숙명여대 캡스톤 디자인 대상",
         "🏆 2025 기계인더피날레(과 대회) 1등",
+      ]
+    : isBaroit
+    ? [
+        "제4회 2026 블레이버스 MVP 개발 해커톤",
+        "Frontend 참여",
       ]
     : isOnliner
     ? [
@@ -104,16 +120,38 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
       {/* 프로젝트 상세 페이지로 이동하는 링크 (전체 카드) */}
       <Link href={href} className="absolute inset-0 z-10" aria-label={`${project.title} 프로젝트 상세보기`} />
 
-      <div className="relative p-6 sm:p-8 md:p-10 lg:p-12">
+      {/* Smart Barricade: 오른쪽에 살짝 보이는 폰 목업 */}
+      {isBarricade ? (
+        <div className="absolute right-[-6px] bottom-[-6px] z-0 pointer-events-none opacity-95 group-hover:opacity-100 transition-opacity">
+          <div className="rotate-6">
+            <PhonePreviewImage src={barricadePreviewImg} variant="peek" />
+          </div>
+        </div>
+      ) : null}
+
+      {/* SOSAI: 오른쪽에 살짝 보이는 폰 목업 (앱 화면 느낌) */}
+      {isSOSAI ? (
+        <div className="absolute right-[-24px] bottom-[-18px] z-0 pointer-events-none opacity-95 group-hover:opacity-100 transition-opacity">
+          <div className="-rotate-3">
+            <PhonePreviewIframe url="https://sosaii.netlify.app/voice" variant="peek" />
+          </div>
+        </div>
+      ) : null}
+
+      <div
+        className={`relative ${featuredPadding} ${
+          isSOSAI || isBarricade ? "pr-24 md:pr-32 lg:pr-40" : ""
+        }`}
+      >
         {/* 헤더 */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
           <div className="min-w-0">
             
-            <div className="flex flex-wrap items-center gap-3 mb-6">
+            <div className="flex flex-wrap items-center gap-3 mb-6 max-w-[520px]">
               {badges.map((b) => (
                 <span
                   key={b}
-                  className="inline-flex items-center px-4 py-2 rounded-full bg-blue-800 text-white text-[15px] font-medium tracking-widest shadow-md shadow-blue-900/20"
+                  className="inline-flex items-center px-4 py-2 rounded-full bg-blue-800 text-white text-[10px] font-medium tracking-widest shadow-md shadow-blue-900/20"
                 >
                   {b}
                 </span>
@@ -124,11 +162,22 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
               {project.type}
             </p>
 
-            <h3 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900">
-              {project.title}
-            </h3>
+            <div className="flex items-center gap-3">
+              {isBarricade ? (
+                <div className="shrink-0 w-10 h-10 rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+                  <img
+                    src="/smart-barricade-icon.png"
+                    alt="Smart Barricade 앱 아이콘"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : null}
+              <h3 className={`${featuredTitleSize} font-black tracking-tighter text-slate-900`}>
+                {project.title}
+              </h3>
+            </div>
 
-            <p className="mt-3 md:mt-4 text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
+            <p className="mt-3 md:mt-4 text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl whitespace-pre-line">
               {project.summary}
             </p>
 
@@ -144,17 +193,9 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
         </div>
 
         {/* Preview */}
-        {isSOSAI && project.links?.demo ? (
-          <div className="relative z-20" onClick={(e) => e.stopPropagation()}>
-            <PhonePreviewIframe url={project.links.demo} />
-          </div>
-        ) : null}
+        {/* SOSAI는 카드 우측 피크 목업으로 대체 */}
 
-        {isBarricade ? (
-          <div className="relative z-20" onClick={(e) => e.stopPropagation()}>
-            <PhonePreviewImage src={barricadePreviewImg} />
-          </div>
-        ) : null}
+        {/* Smart Barricade는 카드 우측 피크 목업으로 대체 */}
 
         {isOnliner && project.links?.demo ? (
           <div className="relative z-20" onClick={(e) => e.stopPropagation()}>
@@ -167,28 +208,72 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
             <DesktopPreviewLink url={project.links.demo} />
           </div>
         ) : null}
+
+        {isBaroit && project.links?.demo ? (
+          <div className="relative z-20" onClick={(e) => e.stopPropagation()}>
+            <DesktopPreviewLink url={project.links.demo} />
+          </div>
+        ) : null}
       </div>
     </motion.article>
   );
 }
 
-function PhonePreviewIframe({ url }: { url: string }) {
+function PhonePreviewIframe({
+  url,
+  variant = "default",
+}: {
+  url: string;
+  variant?: "default" | "peek";
+}) {
+  const frameClass =
+    variant === "peek"
+      ? "relative w-[230px] md:w-[260px] aspect-[9/19.5] rounded-[34px] bg-slate-900 shadow-[0_18px_50px_rgba(0,0,0,0.28)] p-[7px]"
+      : "relative w-[220px] md:w-[270px] aspect-[9/19.5] rounded-[38px] bg-slate-900 shadow-[0_24px_70px_rgba(0,0,0,0.32)] p-[8px]";
+
+  const screenRadius = variant === "peek" ? "rounded-[26px]" : "rounded-[30px]";
+  const notch = variant === "peek" ? "w-28 h-5" : "w-32 h-6";
+
+  if (variant === "peek") {
+    return (
+      <div className="flex justify-center">
+        <div className={frameClass}>
+          <div className={`relative w-full h-full ${screenRadius} bg-black overflow-hidden`}>
+            <div
+              className={`absolute top-0 left-1/2 -translate-x-1/2 ${notch} bg-black rounded-b-3xl z-20`}
+            />
+            <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-slate-700 z-30" />
+            <iframe
+              src={url}
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              loading="lazy"
+              referrerPolicy="no-referrer"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              title="phone-preview-peek"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="mt-10 flex flex-col items-center gap-4">
-      {/* 안내 문구 */}
       <div className="bg-sky-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg">
         실제 웹사이트입니다 클릭해보세요
       </div>
-      
+
       <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
         onClick={(e) => e.stopPropagation()}
-        className="relative w-[260px] md:w-[320px] aspect-[9/19.5] rounded-[44px] bg-slate-900 shadow-[0_30px_90px_rgba(0,0,0,0.35)] p-[10px] block"
+        className={frameClass + " block"}
       >
-        <div className="relative w-full h-full rounded-[36px] bg-black overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-7 bg-black rounded-b-3xl z-20" />
+        <div className={`relative w-full h-full ${screenRadius} bg-black overflow-hidden`}>
+          <div
+            className={`absolute top-0 left-1/2 -translate-x-1/2 ${notch} bg-black rounded-b-3xl z-20`}
+          />
           <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-slate-700 z-30" />
           <iframe
             src={url}
@@ -204,17 +289,28 @@ function PhonePreviewIframe({ url }: { url: string }) {
   );
 }
 
-function PhonePreviewImage({ src }: { src: string }) {
-  return (
-    <div className="mt-10 flex justify-center">
-      <div className="relative w-[260px] md:w-[320px] aspect-[9/19.5]
-                      rounded-[44px] bg-slate-900
-                      shadow-[0_30px_90px_rgba(0,0,0,0.35)] p-[10px]">
+function PhonePreviewImage({
+  src,
+  variant = "default",
+}: {
+  src: string;
+  variant?: "default" | "peek";
+}) {
+  const frameClass =
+    variant === "peek"
+      ? "relative w-[190px] md:w-[220px] aspect-[9/19.5] rounded-[34px] bg-slate-900 shadow-[0_18px_50px_rgba(0,0,0,0.28)] p-[7px]"
+      : "relative w-[220px] md:w-[270px] aspect-[9/19.5] rounded-[38px] bg-slate-900 shadow-[0_24px_70px_rgba(0,0,0,0.32)] p-[8px]";
+  const screenRadius = variant === "peek" ? "rounded-[26px]" : "rounded-[30px]";
+  const notch = variant === "peek" ? "w-28 h-5" : "w-32 h-6";
 
-        <div className="relative w-full h-full rounded-[36px] bg-black overflow-hidden">
+  return (
+    <div className={variant === "peek" ? "flex justify-center" : "mt-10 flex justify-center"}>
+      <div className={frameClass}>
+        <div className={`relative w-full h-full ${screenRadius} bg-black overflow-hidden`}>
           {/* notch */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2
-                          w-36 h-7 bg-black rounded-b-3xl z-20" />
+          <div
+            className={`absolute top-0 left-1/2 -translate-x-1/2 ${notch} bg-black rounded-b-3xl z-20`}
+          />
 
           {/* image */}
           <img
@@ -296,7 +392,7 @@ function DefaultProjectCard({ project }: { project: Project }) {
           </div>
         </div>
 
-        <p className="text-slate-500 text-sm leading-relaxed mb-8 line-clamp-2">
+        <p className="text-slate-500 text-sm leading-relaxed mb-8 line-clamp-2 whitespace-pre-line">
           {project.summary}
         </p>
 

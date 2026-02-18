@@ -34,9 +34,9 @@ export const PROJECTS_DATA: Project[] = [
   {
     id: "sosai",
     title: "SOSAI",
-    type: "Team Project",
+    type: "Solo Project",
     period: "2025.03 - 2025.06",
-    contribution: "85%",
+    contribution: "100%",
     platform: "Web / React SPA · FastAPI (AWS EC2)",
     isPatent: true,
     tech: [
@@ -52,7 +52,7 @@ export const PROJECTS_DATA: Project[] = [
       "Nginx",
     ],
     summary:
-      "응급 상황에서 화면 없이도 음성으로 단계별 행동 지침을 제공하는 AI 기반 응급 대응 웹 서비스.",
+      "응급 상황에서 음성으로 \n단계별 행동 지침을 제공하는 \nAI 기반 응급 대응 웹 서비스.",
     problem:
       "응급 상황에서 비전문가는 증상을 정확히 판단하기 어렵고, 당황으로 인해 잘못된 처치나 골든타임 손실이 발생합니다. 기존 텍스트 위주의 매뉴얼은 긴박한 현장에서 활용도가 낮다는 문제점이 있습니다.",
     solution: [
@@ -62,7 +62,7 @@ export const PROJECTS_DATA: Project[] = [
 
     ],
     role:
-      "기여율 85%",
+      "기여율 100%",
 
     links: {
       github: "https://github.com/rcl0511/OPENSOURCECOLABO",
@@ -80,7 +80,7 @@ export const PROJECTS_DATA: Project[] = [
     isPatent: false,
     tech: ["ESP32", "BLE GATT", "Kotlin", "Load Cell", "Arduino"],
     summary:
-      "군중 밀집 상황을 하중 데이터로 정량화해 사고를 사전에 예방하는 IoT 기반 스마트 안전 시스템.",
+      "군중 밀집 상황에서 \n사고를 사전에예방하는 \nIoT 기반 스마트 안전 시스템.",
     problem:
       "군중 밀집으로 인한 사고가 반복적으로 발생하지만, 기존 바리케이드는 정적 구조물로 군중 압력에 능동적으로 대응하지 못합니다. 회전·전도 안정성이 낮고, 시각적 안내 수단이 부족하며, 비상 상황에서 구조 인력의 신속한 진입이 어렵다는 한계를 가집니다.",
     solution: [
@@ -132,6 +132,58 @@ export const PROJECTS_DATA: Project[] = [
       github: "https://github.com/rcl0511/onliner",
       demo: "https://onlinerr.netlify.app/vendor/dashboard",
       video: "#",
+    },
+  },
+
+  {
+    id: "baroit",
+    title: "설스터디 (Blaybus)",
+    type: "Team Project",
+    period: "2026.02.01 - 2026.02.10",
+    contribution: "Frontend",
+    platform: "Web / React SPA",
+    isPatent: false,
+    tech: [
+      "React 19",
+      "TypeScript",
+      "Vite 7",
+      "React Router v7",
+      "TanStack Query",
+      "Zustand",
+      "Tailwind CSS",
+      "React Hook Form",
+      "Zod",
+      "TipTap",
+      "Radix UI",
+      "Axios",
+      "html2pdf.js",
+      "docx",
+      "file-saver",
+      "Lucide React",
+    ],
+    summary:
+      "멘토-멘티 간 학습 과정을 관리·점검·피드백하는 \n웹 기반 학습 코칭 도구. 과제 등록부터 \n학습 분석·리포트까지 하나의 플랫폼으로 연결.",
+    problem:
+      "멘토는 멘티의 학습 현황과 과제·피드백·일정을 한눈에 관리하고 싶고, 멘티는 과제·피드백·학습 일정·성과를 한곳에서 점검하고 싶습니다. 실제 코칭 현장에서 바로 사용할 수 있는 MVP가 필요했습니다.",
+    solution: [
+      "역할 분리: /mentor · /mentee 라우트와 레이아웃을 완전 분리해 역할 기반 UX/권한 명확화",
+      "Mock 우선 개발: Mock API 기본 + 환경 변수로 실 API 전환 지원",
+      "Auth 분리: VITE_USE_MOCK_AUTH로 로그인만 실 API 연동 가능",
+      "서버/클라이언트 상태 분리: React Query(서버) + Zustand(UI/세션)",
+      "API 레이어 일원화: axiosInstance + 인터셉터로 토큰/401/에러 처리",
+    ],
+    role:
+      "프론트엔드 개발 참여 (라우팅·권한 구조, 상태/데이터 분리, 리포트 내보내기, UI/UX 구현)",
+    features: [
+      "멘토/멘티 역할별 완결 UX (멘토 사이드바, 멘티 탭바)",
+      "과제·피드백 라이프사이클(등록→제출→피드백→알림) 커버",
+      "학습 분석·리포트 화면 + PDF/DOCX 다운로드",
+      "Mock ↔ 실 API 유연 전환 (Auth만 실 API 등 조합 가능)",
+      "JWT 인증·401 refresh·전역 에러 배너로 일관된 인증 UX",
+      "타임테이블·캘린더·할일·뱃지·테마 등 멘티 경험 강화",
+    ],
+    links: {
+      demo: "https://baroit.netlify.app/login",
     },
   },
 
