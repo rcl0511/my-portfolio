@@ -99,7 +99,7 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
         "멀티테넌트 SaaS"        
       ]
     : [
-        "졸업프로젝트",
+        "졸업프로젝트", "졸업논문주제"
       ];
 
   return (
@@ -330,9 +330,8 @@ function PhonePreviewImage({
 }
 
 function DesktopPreviewLink({ url }: { url: string }) {
-  const displayUrl = url.replace("https://", "").replace("http://", "");
   return (
-    <div className="mt-10 flex flex-col items-center gap-4">
+    <div className="mt-10 flex flex-col items-center">
       <a
         href={url}
         target="_blank"
@@ -347,9 +346,6 @@ function DesktopPreviewLink({ url }: { url: string }) {
         <ExternalLink size={18} />
         실제 웹사이트 바로가기
       </a>
-      <p className="text-xs text-slate-500 font-medium">
-        {displayUrl}
-      </p>
     </div>
   );
 }

@@ -106,13 +106,13 @@ export const PROJECTS_DATA: Project[] = [
     id: "onliner",
     title: "Onliner",
     type: "Solo Project",
-    period: "2024",
+    period: "2024.03 - 2024.09",
     contribution: "100%",
     platform: "WEB",
     isPatent: false,
     tech: ["React", "React Router DOM", "Axios", "Google Maps API", "Spring Boot", "Java", "Spring Data JPA", "MariaDB/MySQL", "Apache PDFBox", "Apache POI", "WebSocket", "Netlify", "Render", "Docker"],
     summary:
-      "병원 포털과 도매업체 포털을 분리해 운영하는 의약품 거래/명세서 관리 SaaS. 역할 기반 권한 분기, PDF 파싱, 실시간 채팅(WebSocket), 배송 추적까지 포함한 통합 관리 시스템.",
+      "병원 포털과 도매업체 포털을 분리해 운영하는 의약품 거래/명세서 관리 통합 관리 시스템.",
     problem:
       "의약품 도매업체는 매달 수천 장의 거래명세서를 수작업으로 정리하고 누락된 명세서를 확인하는 과정에서 과도한 시간이 소요되고, 다시 도장을 받기 위한 시간 지체, 전화주문을 전산에 입력하는 과정에서 발생하는 오류 등 휴먼 에러로 인한 재고 관리 손실이 발생했습니다.",
     solution: [
@@ -162,7 +162,7 @@ export const PROJECTS_DATA: Project[] = [
       "Lucide React",
     ],
     summary:
-      "멘토-멘티 간 학습 과정을 관리·점검·피드백하는 \n웹 기반 학습 코칭 도구. 과제 등록부터 \n학습 분석·리포트까지 하나의 플랫폼으로 연결.",
+      "멘토-멘티 간 학습 과정을 관리·점검·피드백하는 웹 기반 학습 코칭 도구. ",
     problem:
       "멘토는 멘티의 학습 현황과 과제·피드백·일정을 한눈에 관리하고 싶고, 멘티는 과제·피드백·학습 일정·성과를 한곳에서 점검하고 싶습니다. 실제 코칭 현장에서 바로 사용할 수 있는 MVP가 필요했습니다.",
     solution: [
@@ -191,9 +191,9 @@ export const PROJECTS_DATA: Project[] = [
     id: "baseball-news",
     title: "Fastball",
     type: "Team Project",
-    period: "2025",
+    period: "2025.03 - 2025.12",
     contribution: "33%",
-    platform: "Web / React SPA · FastAPI (Netlify + Railway + AWS)",
+    platform: "Web / FastAPI",
     isPatent: false,
     tech: [
       "React",
@@ -213,7 +213,7 @@ export const PROJECTS_DATA: Project[] = [
       "Railway",
     ],
     summary:
-      "LLM + RAG 기반 야구 기사 자동 생성 플랫폼. 반복 업무 시간을 30분에서 수분으로 단축하여 기자가 본질적 업무에 집중할 수 있도록 지원합니다.",
+      "LLM + RAG 기반 야구 기사 자동 생성 플랫폼.",
     problem:
       "기자들은 하루 평균 14건 이상의 기사를 작성하며, 반복적인 데이터 정리와 초안 작성에 최소 30분 이상 소요됩니다. 기존 템플릿 기반 도구는 획일적이고 딱딱한 기사만 생성하는 한계가 있었습니다.",
     solution: [

@@ -32,10 +32,12 @@ export default function CompletePortfolio() {
   return (
     <main className="min-h-screen bg-white text-slate-900 selection:bg-blue-100 font-sans leading-relaxed">
       {/* --- A. HERO SECTION --- */}
-      <section className="relative min-h-[80vh] md:h-[90vh] flex flex-col justify-center px-4 sm:px-6 md:px-20 py-12 md:py-0 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+      <section className="relative min-h-[80vh] md:min-h-[90vh] flex flex-col justify-center px-4 sm:px-6 md:px-20 py-12 md:py-20 bg-slate-50 overflow-hidden">
         {/* 배경 장식 요소 */}
         <div className="absolute top-1/4 right-0 md:right-10 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-blue-200 rounded-full blur-[120px] opacity-30 -z-0" />
         <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-indigo-200 rounded-full blur-[100px] opacity-20 -z-0" />
+        {/* 하단 페이드 */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-white pointer-events-none z-10" />
 
         <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
           <div className="lg:col-span-7">
@@ -45,10 +47,10 @@ export default function CompletePortfolio() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[100px] font-black tracking-tighter leading-[0.85] mb-6 md:mb-10 text-slate-900"
+              className="text-3xl sm:text-3xl md:text-3xl lg:text-[80px] font-black tracking-tighter leading-[0.85] mb-6 md:mb-10 text-slate-900"
             >
               <span className="text-blue-600">FRONTEND</span> <br />
-              WEB DEVELOPER
+              DEVELOPER
             </motion.h1>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -58,31 +60,22 @@ export default function CompletePortfolio() {
             >
               <div className="space-y-2">
                 {/* 메인 멘트: 굵기 대비를 통해 가독성 향상 */}
-                <p className="text-xl sm:text-2xl md:text-3xl text-slate-800 font-bold leading-tight">
+                <p className="text-xl sm:text-2xl md:text-2xl text-slate-800 font-bold leading-tight">
                   사용자의 눈높이에서 <br className="sm:hidden" />
                   <span className="relative inline-block">
-                    비즈니스 가치
+                    비즈니스 가치를 설계하는 
                     {/* 핵심 키워드 아래에만 깔끔한 파란색 포인트 바 */}
                     <span className="absolute bottom-1 left-0 w-full h-[6px] bg-blue-400/30 -z-10"></span>
                   </span>
-                  를 설계합니다.
+                  <br/>개발자 류채린입니다.
                 </p>
 
                 {/* 보조 설명: 메인 멘트보다 채도를 낮추고 크기를 조절해 시선 분산 방지 */}
-                <p className="text-base sm:text-lg md:text-xl text-slate-600 font-medium tracking-tight">
-                  실제 문제 해결부터 {" "}
-                  <span className="text-slate-700 decoration-blue-400/60 underline underline-offset-5 decoration-2">
-                    서비스의 지속 가능한 확장
-                  </span>
-                  까지
+                <p className="text-base sm:text-lg md:text-l text-slate-400 font-medium tracking-tight">
+                  실제 문제 해결부터 서비스의 지속 가능한 확장까지
                 </p>
               </div>
 
-              {/* 서브 문구: 경계선을 활용해 안정감 부여 */}
-              <p className="text-slate-500 text-sm sm:text-base md:text-lg border-l-2 border-blue-400/50 pl-4 leading-relaxed">
-                유연한 설계와 철저한 검증으로 <br className="block sm:hidden" />
-                서비스의 내일을 준비합니다.
-              </p>
             </motion.div>
 
             <div className="flex flex-wrap gap-4 mt-12">
@@ -125,7 +118,7 @@ export default function CompletePortfolio() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900">
               PROFILE
             </h2>
-            
+
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10">
@@ -138,15 +131,15 @@ export default function CompletePortfolio() {
               <div className="space-y-8">
                 <div>
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">
-                    Name / Education
+                    University / Major
                   </p>
                   <p className="text-xl font-bold text-slate-900">
-                    류채린{" "}
-                    <span className="text-slate-400 font-light mx-2">/</span>{" "}
-                    <span className="text-lg">숙명여대 IT공학</span>
+                    <span className="text-lg">숙명여대</span>
+                    <span className="text-slate-400 font-light mx-2">/</span>
+                    <span className="text-lg">IT공학과</span>
                   </p>
                   <p className="text-sm text-slate-500 mt-1">
-                    2026. 02 Graduated
+                    2021.03 - 2026.02
                   </p>
                 </div>
 
@@ -183,7 +176,7 @@ export default function CompletePortfolio() {
             {/* 2) Activities / Awards / Training */}
             <div className="rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
               <h3 className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] mb-6">
-                Activities & Awards
+                Awards
               </h3>
 
               <ol className="space-y-3 text-sm text-slate-700 leading-relaxed">
@@ -207,7 +200,7 @@ export default function CompletePortfolio() {
 
               <div className="mt-8 pt-6 border-t border-slate-200">
                 <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.25em] mb-4">
-                  Training
+                  Education
                 </h4>
                 <ol className="space-y-3 text-sm text-slate-700 leading-relaxed">
                   <li className="flex gap-3">
@@ -221,7 +214,7 @@ export default function CompletePortfolio() {
             {/* 3) Work */}
             <div className="rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
               <h3 className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] mb-6">
-                Work
+                Work Experience
               </h3>
 
               <div className="relative space-y-8 before:absolute before:left-[17px] before:top-2 before:bottom-2 before:w-[1px] before:bg-slate-200">
@@ -230,7 +223,7 @@ export default function CompletePortfolio() {
                     <Monitor size={14} />
                   </div>
                   <p className="text-[15px] font-bold text-blue-700 font-mono">
-                    2022 — 2025
+                    2022.02 — 2026.03
                   </p>
                   <h4 className="font-bold text-slate-900 mt-1">
                     의약품 도매업체 전산관리
@@ -273,71 +266,54 @@ export default function CompletePortfolio() {
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
             <div>
               <h2 className="text-xl sm:text-xl md:text-3xl font-black tracking-tight text-slate-900">
-                기술스택 & 역량
+                TECH STACK
               </h2>
-              <p className="mt-3 text-sm text-slate-600 leading-relaxed max-w-2xl">
-                Frontend 전문. Backend·배포는 필요한 만큼만 다루어 제품이 ‘돌아가게’
-                만듭니다.
+
+<br/>
+              {/* 서브 문구: 경계선을 활용해 안정감 부여 */}
+              <p className="text-slate-500 text-sm sm:text-base md:text-lg border-l-2 border-blue-400/50 pl-4 leading-relaxed">
+                유연한 설계와 철저한 검증으로 <br className="block sm:hidden" />
+                서비스의 내일을 준비합니다.
               </p>
+              
             </div>
+            
           </div>
+
+          
 
           <div className="space-y-6 md:space-y-8">
             <SkillCard
               title="Frontend"
               skills={[
-                "React",
                 "TypeScript",
+                "JavaScript",
+                "React",
                 "Next.js",
                 "Tailwind CSS",
-                "JavaScript",
-                "HTML5",
-                "Kotlin",
-                "Axios",
-                "React Router",
+                ,
               ]}
               desc="컴포넌트 중심 설계와 상태 관리 기반으로 사용자 흐름이 매끄러운 UI를 구현합니다."
-              proof="실서비스 배포(Netlify/Vercel) + 모바일 UX 중심 화면 설계"
+              proof="실서비스 배포(Netlify/Vercel) + 반응형 UX 중심 화면 설계"
               variant="primary"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <SkillCard
                 title="Backend"
-                skills={[
-                  "Java",
-                  "Node.js",
-                  "Python",
-                  "Uvicorn",
-                  "Spring Boot",
-                  "FastAPI",
-                  "OpenAI API",
-                ]}
-                desc="FastAPI + systemd + Nginx 배포 경험"
+                skills={["Python", "FastAPI"]}
+                desc="REST API 설계 및 서버 비즈니스 로직 구현, 데이터 처리 파이프라인을 구성합니다."
+
               />
 
               <SkillCard
-                title="Database & Dev"
-                skills={[
-                  "MongoDB",
-                  "SQLite",
-                  "Git",
-                  "Vercel",
-                  "Nginx",
-                  "Figma",
-                  "Netlify",
-                  "AWS EC2",
-                  "Docker",
-                  "ChromaDB",
-                ]}
-                desc="MongoDB 연동 + Git 기반 협업 + 배포 운영"
+                title="Infrastructure"
+                skills={["MongoDB", "Vercel", "Figma", "Netlify", "AWS"]}
+                desc="클라우드 배포 환경 구성 및 협업 도구 운용, 서비스 안정적 릴리즈를 지원합니다."
+
               />
 
-              <SkillCard
-                title="Embedded / IoT"
-                skills={["Arduino", "ESP32", "C", "BLE GATT"]}
-                desc="센서 데이터 수집부터 BLE/WiFi 통신, 제어까지 전체 플로우를 설계"
-              />
+
             </div>
           </div>
         </div>
@@ -369,10 +345,10 @@ export default function CompletePortfolio() {
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <h3 className="text-sm font-black tracking-tight text-slate-900">
-                      Web / Service
+                      WEB PROJECTS
                     </h3>
                     <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-slate-400">
-                      WEB PROJECTS
+                      
                     </p>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 text-left">
@@ -386,11 +362,9 @@ export default function CompletePortfolio() {
                   <div>
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="text-sm font-black tracking-tight text-slate-900">
-                        App / IoT
+                        MOBILE PROJECT
                       </h3>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-slate-400">
-                        ANDROID · IOT
-                      </p>
+
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 text-left">
                       {appProjects.map((project) => (
@@ -440,41 +414,79 @@ export default function CompletePortfolio() {
   );
 }
 
-// 
+//
 function SkillCard({
   title,
   skills,
   desc,
   proof,
+  icon,
   variant = "default",
 }: any) {
   const isPrimary = variant === "primary";
+  const isBackend = variant === "backend";
+  const isInfra = variant === "infra";
+
+  const wrapperClass = isPrimary
+    ? "bg-blue-50/80 border-2 border-blue-200 shadow-md shadow-blue-100/50"
+    : "bg-white border border-slate-200 shadow-sm";
+
+  const titleClass = isPrimary
+    ? "text-lg md:text-xl font-bold text-blue-900"
+    : "text-base md:text-lg font-semibold text-slate-800";
+
+  const descClass = isPrimary ? "text-blue-900/80" : "text-slate-600";
+
+  const tagClass = isPrimary
+    ? "bg-white border border-blue-200 text-blue-800"
+    : "bg-slate-50 border border-slate-200 text-slate-600";
+
+  const iconBgClass = isBackend
+    ? "bg-slate-100 text-slate-500"
+    : isInfra
+    ? "bg-slate-100 text-slate-500"
+    : "";
+
+  const labelClass = isBackend
+    ? "bg-slate-100 text-slate-500 border-slate-200"
+    : isInfra
+    ? "bg-slate-100 text-slate-500 border-slate-200"
+    : "";
+
+  const labelText = isBackend ? "SERVER" : isInfra ? "INFRA" : "";
 
   return (
     <div
       className={[
         "p-5 sm:p-6 md:p-7 rounded-2xl group transition-all duration-300",
-        isPrimary
-          ? "bg-blue-50/80 border-2 border-blue-200 shadow-md shadow-blue-100/50"
-          : "bg-white border border-slate-200 shadow-sm",
+        wrapperClass,
       ].join(" ")}
     >
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-5 mb-4 md:mb-5">
         <div className="flex-1">
-          <h4 className={`mb-1.5 md:mb-2 ${isPrimary ? "text-lg md:text-xl font-bold text-blue-900" : "text-base md:text-lg font-semibold text-slate-800"}`}>{title}</h4>
+          <div className="flex items-center gap-3 mb-2">
+            {icon && (isBackend || isInfra) ? (
+              <span className={`p-1.5 rounded-lg ${iconBgClass}`}>{icon}</span>
+            ) : null}
+            <h4 className={titleClass}>{title}</h4>
+          </div>
           {proof ? (
             <p className={`text-xs md:text-sm leading-relaxed mt-1.5 whitespace-pre-line ${isPrimary ? "text-blue-800/90" : "text-slate-500"}`}>
               <span className={isPrimary ? "text-blue-700 font-semibold" : "text-slate-600 font-medium"}>Proof:</span> {proof}
             </p>
           ) : null}
           {desc ? (
-            <p className={`text-sm leading-relaxed mt-2 md:mt-2.5 ${isPrimary ? "text-blue-900/80" : "text-slate-600"}`}>{desc}</p>
+            <p className={`text-xs md:text-sm leading-relaxed mt-2 md:mt-2.5 ${descClass}`}>{desc}</p>
           ) : null}
         </div>
 
         {isPrimary ? (
           <span className="px-3 py-1.5 rounded-full bg-blue-600 text-white text-xs font-bold tracking-widest border border-blue-600 shrink-0 self-start">
             PRIMARY
+          </span>
+        ) : (isBackend || isInfra) ? (
+          <span className={`px-3 py-1.5 rounded-full text-[10px] font-bold tracking-widest border shrink-0 self-start ${labelClass}`}>
+            {labelText}
           </span>
         ) : null}
       </div>
@@ -485,9 +497,7 @@ function SkillCard({
             key={s}
             className={[
               "px-3 py-1 rounded-md text-[10px] md:text-xs font-medium transition-colors",
-              isPrimary
-                ? "bg-white border border-blue-200 text-blue-800"
-                : "bg-slate-50 border border-slate-200 text-slate-600",
+              tagClass,
             ].join(" ")}
           >
             {s}

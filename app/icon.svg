@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- 왼쪽 체리 -->
+  <circle cx="28" cy="72" r="18" fill="#e03050"/>
+  <circle cx="28" cy="72" r="18" fill="url(#gloss1)"/>
+
+  <!-- 오른쪽 체리 -->
+  <circle cx="62" cy="78" r="16" fill="#c0203a"/>
+  <circle cx="62" cy="78" r="16" fill="url(#gloss2)"/>
+
+  <!-- 왼쪽 줄기 -->
+  <path d="M28 54 Q32 30 50 18" stroke="#3a7a2a" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- 오른쪽 줄기 -->
+  <path d="M62 62 Q58 40 50 18" stroke="#3a7a2a" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- 잎 -->
+  <ellipse cx="42" cy="26" rx="13" ry="7" fill="#4caf50" transform="rotate(-30 42 26)"/>
+  <line x1="42" y1="26" x2="48" y2="20" stroke="#3a7a2a" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- 광택 -->
+  <defs>
+    <radialGradient id="gloss1" cx="38%" cy="30%" r="45%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gloss2" cx="38%" cy="30%" r="45%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
