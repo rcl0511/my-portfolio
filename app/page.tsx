@@ -13,7 +13,7 @@ import { ProjectCard } from "@/components/ProjectComponent";
 
 import {
   ArrowRight,
-  Download,
+  ExternalLink,
   Mail,
   Github,
   Layout,
@@ -71,7 +71,7 @@ export default function CompletePortfolio() {
                 {/* 보조 설명: 메인 멘트보다 채도를 낮추고 크기를 조절해 시선 분산 방지 */}
                 <p className="text-base sm:text-lg md:text-xl text-slate-600 font-medium tracking-tight">
                   실제 문제 해결부터 {" "}
-                  <span className="text-slate-900 decoration-blue-400/60 underline underline-offset-4 decoration-2">
+                  <span className="text-slate-700 decoration-blue-400/60 underline underline-offset-5 decoration-2">
                     서비스의 지속 가능한 확장
                   </span>
                   까지
@@ -98,10 +98,12 @@ export default function CompletePortfolio() {
               </a>
 
               <a
-                href="/resume.pdf"
+                href="https://www.notion.so/Web-Frontend-Developer-72ed5982a35482c7a26e019f525d7483"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 px-8 py-4 border border-slate-200 hover:bg-slate-50 text-slate-900 font-bold transition-all text-xs tracking-widest rounded-full"
               >
-                RESUME (PDF) <Download size={16} />
+                RESUME <ExternalLink size={16} />
               </a>
             </div>
           </div>
