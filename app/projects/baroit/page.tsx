@@ -353,11 +353,11 @@ function ResultBadge({ label, value }: { label: string; value: string }) {
 
 function Badge({ text, color }: { text: string; color: "sky" | "blue" }) {
   const styles = {
-    sky: "bg-sky-500/10 border-sky-400/20 text-sky-400",
-    blue: "bg-blue-500/10 border-blue-400/20 text-blue-400",
+    sky: "bg-sky-500/20 border-sky-400/50 text-sky-300",
+    blue: "bg-blue-500/20 border-blue-400/50 text-blue-300",
   };
   return (
-    <span className={`px-3 py-1 rounded-full border text-[10px] font-black uppercase tracking-widest ${styles[color]}`}>
+    <span className={`px-4 py-1.5 rounded-full border text-sm font-bold uppercase tracking-widest ${styles[color]}`}>
       {text}
     </span>
   );

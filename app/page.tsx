@@ -231,7 +231,8 @@ export default function CompletePortfolio() {
                   <p className="text-[15px] text-slate-600 mt-2 leading-relaxed">
                     거래처 자료관리 및 전산 시스템 운영,
                     <br />
-                    반복 업무 자동화 아이디어 도출
+                    워크플로우 최적화 및 업무 자동화 <br /> 운영 표준 가이드라인 수립 및 지식 자산화<br />
+                    문서 표준화 및 템플릿 설계<br /> 행정 프로세스 효율화 및 운영 서포트
                   </p>
                 </div>
 
@@ -248,7 +249,7 @@ export default function CompletePortfolio() {
                   <p className="text-[15px] text-slate-600 mt-2 leading-relaxed">
                     약국 청구 시스템 전산 처리
                     <br />
-                    및 의약품 재고 관리
+                    & 의약품 재고 관리
                   </p>
                 </div>
               </div>

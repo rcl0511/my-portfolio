@@ -44,8 +44,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </div>
       </nav>
 
-      {/* 2. HERO SECTION - 그리드 비율 조절 (5:7) 및 노트북 확대 */}
-      <section className="relative overflow-visible bg-slate-950 pt-12 md:pt-24 pb-12 md:pb-24 px-4 md:px-20">
+      {/* 2. HERO SECTION */}
+      <section className="relative bg-slate-950 min-h-[calc(100vh-57px)] flex flex-col justify-center overflow-hidden px-4 md:px-20">
         <div className="absolute inset-0 opacity-20 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-sky-600 rounded-full blur-[140px]" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-600 rounded-full blur-[120px]" />
@@ -53,17 +53,18 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         <HeroNavigation currentProjectId="sosai" />
 
-        <div className="relative max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="relative w-full max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12">
           <div className="lg:col-span-5">
             <div className="flex gap-2 mb-6">
-              <Badge text="Medical Data Driven AI" color="sky" />
-              <Badge text="Production Ready" color="blue" />
+              <Badge text="2025.03 - 2025.06" color="sky" />
+              <Badge text="Solo Project" color="blue" />
             </div>
             <h1 className="text-4xl md:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
               {project.title}
             </h1>
             <p className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl mb-10">
-              AI 기반 응급 상황 대응 및 지능형 음성 가이드 시스템
+              응급 상황에서 음성으로 단계별 행동 지침을 제공하는<br />
+              AI 기반 응급 대응 웹 서비스.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -86,118 +87,191 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* 3. 핵심 데이터 흐름 */}
-      <section className="max-w-7xl mx-auto px-4 md:px-20 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <DataFlowCard 
-            icon={<Database className="text-sky-500" />}
-            title="User Profile DB"
-            desc="질환/복용약/과거력 기반 실시간 위험도 해석"
-          />
-          <DataFlowCard 
-            icon={<BrainCircuit className="text-purple-500" />}
-            title="Guide Engine"
-            desc="표준 매뉴얼 + 개인화 맞춤 문구 생성"
-          />
-          <DataFlowCard 
-            icon={<MicVocal className="text-blue-500" />}
-            title="TTS Broadcast"
-            desc="주변인 행동 유도를 위한 단계별 음성 안내"
-          />
-        </div>
-      </section>
+
 
       {/* 4. MAIN CONTENT */}
-      <section className="max-w-7xl mx-auto px-4 md:px-20 py-16 grid grid-cols-1 lg:grid-cols-12 gap-16">
-        <div className="lg:col-span-8 space-y-24">
+      <section className="max-w-5xl mx-auto px-4 md:px-12 py-16">
+        <div className="space-y-24">
           
           <article>
             <SectionHeader title="Context" subtitle="기획 의도" />
-            <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md">
-              <div className="mb-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-50 text-rose-700 text-xs font-bold border border-rose-100">
-                문제점
-              </div>
-              <p className="text-base md:text-lg text-slate-700 leading-relaxed whitespace-pre-line">
-                응급 상황에서 비전문가는 증상을 정확히 판단하기 어렵고, 당황으로 인해 잘못된 처치나 골든타임 손실이 발생합니다. 기존 텍스트 위주의 매뉴얼은 긴박한 현장에서 활용도가 낮다는 문제점이 있습니다.
+            <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm transition-all hover:shadow-md space-y-8">
+              {/* 기획 의도 헤드라인 */}
+              <p className="text-xl md:text-2xl font-black text-slate-900 leading-snug">
+                "환자가 말을 할 수 없을 때,
+                <span className="text-sky-600"> 서비스가 대신 말합니다"</span>
               </p>
-            </div>
-          </article>
 
-          {/* AI 설계 원칙 - 수직 바 헤더로 변경 */}
-          <article>
-            <SectionHeader title="Design Principles" subtitle="AI 설계 원칙" />
-            <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm">
-              <div className="p-6 bg-amber-50/60 rounded-2xl border border-amber-100">
-                <div className="flex items-center gap-2 text-amber-700 mb-4 font-bold text-sm">
-                  <ShieldAlert size={18} /> AI 응급 대응 원칙
+              <div className="border-t border-slate-100" />
+
+              {/* 문제점 */}
+              <div>
+                <div className="mb-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-50 text-rose-600 text-xs font-bold border border-rose-100">
+                  Problem
                 </div>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-sm text-amber-900/75 font-medium">
-                  <li className="flex gap-2"><span>•</span> 생명 위협 징후 감지 시 119 신고 최우선 안내</li>
-                  <li className="flex gap-2"><span>•</span> 짧고 명확한 단계별 행동 지침</li>
-                  <li className="flex gap-2"><span>•</span> 전문 용어 배제, 쉬운 행동 가이드</li>
-                  <li className="flex gap-2"><span>•</span> 의식 유무 등 상황 확인 질문 병행</li>
-                </ul>
+                <p className="text-base text-slate-600 leading-relaxed">
+                  낙마, 기절, 급성 심정지 등으로 사람이 쓰러지면 <span className="text-slate-900 font-semibold">환자는 본인의 상태를 설명할 수 없습니다.</span><br/> 주변 사람들이 발견하더라도 환자의 지병이나 정확한 처치법을 몰라 당황하며 골든타임을 허비하는 경우가 많습니다.
+                </p>
+              </div>
+
+              <div className="border-t border-slate-100" />
+
+              {/* 해결 방향 */}
+              <div>
+                <div className="mb-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-50 text-sky-600 text-xs font-bold border border-sky-100">
+                  Solution
+                </div>
+                <div className="space-y-5">
+                  <div className="flex gap-4 items-start">
+                    <span className="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 text-gray-600 text-xs font-black flex items-center justify-center">1</span>
+                    <div>
+                      <p className="text-slate-900 font-bold mb-1">위기 감지 및 주변 전파</p>
+                      <p className="text-slate-500 text-sm leading-relaxed">웨어러블 기기를 통해 추락이나 기절 등 <span className="text-slate-700 font-medium">생체 데이터의 급격한 변화를 감지</span>하면 즉시 사이렌을 울려 주변에 위급 상황을 알립니다.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4 items-start">
+                    <span className="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 text-gray-600 text-xs font-black flex items-center justify-center">2</span>
+                    <div>
+                      <p className="text-slate-900 font-bold mb-1">구조자를 위한 '보이스 리더'</p>
+                      <p className="text-slate-500 text-sm leading-relaxed mb-3">주변 사람이 다가오면, 화면을 읽을 필요 없이 <span className="text-slate-700 font-medium">음성(TTS)으로 현재 환자에게 필요한 처치를 계속 방송</span>합니다.</p>
+                      <div className="flex items-end gap-2">
+                        <div className="flex-shrink-0 w-7 h-7 rounded-full bg-sky-100 flex items-center justify-center">
+                          <MicVocal size={14} className="text-sky-600" />
+                        </div>
+                        <div className="relative bg-sky-50 border border-sky-100 rounded-2xl rounded-bl-none px-4 py-3 w-full">
+                          <p className="text-xs text-slate-700 leading-relaxed">
+                            이 환자는 당뇨 병력이 있습니다. 현재 의식이 없으므로 절대 입에 설탕물이나 음식을 넣지 마세요.<br />
+                            호흡을 확인하신 후, 숨을 쉬지 않는다면 즉시 가슴 압박을 시작해 주세요.
+                          </p>
+                          <p className="text-[10px] text-slate-400 mt-1 text-right">SOSAI · TTS</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex gap-4 items-start">
+                    <span className="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 text-gray-600 text-xs font-black flex items-center justify-center">3</span>
+                    <div>
+                      <p className="text-slate-900 font-bold mb-1">구급대원을 위한 데이터 브릿지</p>
+                      <p className="text-slate-500 text-sm leading-relaxed">환자의 평소 지병·복용 약물·혈액형 정보를 구급대원에게 즉시 전달할 수 있는 상태로 대기하여, <span className="text-slate-700 font-medium">현장 도착 후 처치 시간을 획기적으로 단축</span>합니다.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
 
           <article>
-            <SectionHeader title="System Approach" subtitle="왜 이렇게 설계했는가" />
+            <SectionHeader title="System Approach" subtitle="WHY & HOW" />
+            <div className="space-y-3">
+
+              {/* 01 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-7 h-7 rounded-full bg-sky-100 text-sky-600 text-xs font-black flex items-center justify-center shrink-0">1</span>
+                  <h4 className="font-black text-slate-900 text-base">의료 맥락 인지 파이프라인</h4>
+                </div>
+                <div className="space-y-5 text-sm leading-relaxed">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-widest text-sky-500 mb-1.5">고려한 점</p>
+                    <p className="text-slate-600">응급 상황에서 환자는 직접 상태를 설명할 수 없습니다. 범용 매뉴얼은 특정 환자(당뇨, 혈액 응고 장애 등)에게 오히려 치명적인 처치를 유발할 위험이 있다는 점을 고려했습니다.</p>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-widest text-sky-500 mb-1.5">설계 방향</p>
+                    <p className="text-slate-600">사전 등록된 개인 의료 정보(혈액형·지병·복용약)를 AI 호출 첫 단계 컨텍스트로 주입하여, <span className="font-semibold text-slate-800">환자에게 금지된 처치를 배제한 맞춤형 안내</span>를 생성하도록 설계했습니다. 구급대원에게는 병력 데이터를 즉시 전달해 현장 처치 속도를 높이는 것도 함께 고려했습니다.</p>
+                  </div>
+                  <div className="pt-2 border-t border-slate-100">
+                    <p className="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">구현</p>
+                    <p className="text-slate-500">MongoDB 조회 → OpenAI 시스템 프롬프트 주입 → 안전 가이드 우선 생성</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 02 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-7 h-7 rounded-full bg-sky-100 text-sky-600 text-xs font-black flex items-center justify-center shrink-0">2</span>
+                  <h4 className="font-black text-slate-900 text-base">고신뢰성 LLM 오케스트레이션</h4>
+                </div>
+                <div className="space-y-5 text-sm leading-relaxed">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-widest text-sky-500 mb-1.5">고려한 점</p>
+                    <p className="text-slate-600">의료 도메인에서 LLM 할루시네이션은 잘못된 처치로 직결됩니다. 또한 전문 용어로 생성된 답변은 패닉 상태의 비전문가가 현장에서 즉각 실행하기 어렵다는 점을 고려했습니다.</p>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-widest text-sky-500 mb-1.5">설계 방향</p>
+                    <p className="text-slate-600">표준 응급 처치 매뉴얼을 시스템 프롬프트의 기준으로 삼아 생성 범위를 엄격히 제한했습니다. 출력을 <span className="font-semibold text-slate-800">구조화된 JSON으로 강제 파싱</span>함으로써 응답 일관성을 확보하고, 의학 용어를 현장에서 즉시 실행 가능한 구어체로 변환하도록 설계했습니다.</p>
+                  </div>
+                  <div className="pt-2 border-t border-slate-100">
+                    <p className="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">구현</p>
+                    <p className="text-slate-500">시스템 프롬프트 → JSON 파싱 → 위험도·행동지침 분리 렌더링</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 03 */}
+              <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-7 h-7 rounded-full bg-sky-100 text-sky-600 text-xs font-black flex items-center justify-center shrink-0">3</span>
+                  <h4 className="font-black text-slate-900 text-base">저지연 음성 중심 인터페이스</h4>
+                </div>
+                <div className="space-y-5 text-sm leading-relaxed">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-widest text-sky-500 mb-1.5">고려한 점</p>
+                    <p className="text-slate-600">응급 현장에서 구조자의 시선은 환자에게 고정되어야 합니다. 화면을 보는 행위 자체가 골든타임을 낭비하며, 단일 TTS 엔진은 네트워크 상황에 따라 지연이 발생할 수 있다는 점을 고려했습니다.</p>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-widest text-sky-500 mb-1.5">설계 방향</p>
+                    <p className="text-slate-600">시각 의존도를 완전히 제거한 <span className="font-semibold text-slate-800">Voice-First UX</span>를 핵심 설계 원칙으로 삼았습니다. 브라우저 내장 Web Speech API와 백엔드 gTTS를 하이브리드로 운용해 지연을 최소화하고, 심리적 안정 멘트를 병행 송출해 구조자가 처치를 끝까지 완수하도록 설계했습니다.</p>
+                  </div>
+                  <div className="pt-2 border-t border-slate-100">
+                    <p className="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">구현</p>
+                    <p className="text-slate-500">Web Speech API + gTTS 하이브리드 · 텍스트 생성 즉시 스트리밍 변환</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          {/* Achievement */}
+          <article>
+            <SectionHeader title="Achievement" subtitle="성과 및 수상" />
             <div className="space-y-4">
-              <ApproachItem 
-                num="01" 
-                title="데이터 기반 응급 판단 보조"
-                content={
-                  <ul className="space-y-2">
-                    <li className="flex gap-2"><span className="text-sky-600 font-black">•</span><span>MongoDB 사용자 데이터(연령·성별·질환) 즉시 분석</span></li>
-                    <li className="flex gap-2"><span className="text-sky-600 font-black">•</span><span>환자 맞춤형 응급 처치 문구 생성</span></li>
-                  </ul>
-                }
-              />
-              <ApproachItem 
-                num="02" 
-                title="OpenAI 기반 지능형 문구 보강"
-                content={
-                  <ul className="space-y-2">
-                    <li className="flex gap-2"><span className="text-sky-600 font-black">•</span><span>표준 응급 처치 매뉴얼 데이터 학습</span></li>
-                    <li className="flex gap-2"><span className="text-sky-600 font-black">•</span><span>LLM 기반 상황 맞춤형 음성 안내 가공</span></li>
-                  </ul>
-                }
-              />
-              <ApproachItem 
-                num="03" 
-                title="Voice-First UX 설계"
-                content={
-                  <ul className="space-y-2">
-                    <li className="flex gap-2"><span className="text-sky-600 font-black">•</span><span>긴박한 상황 고려: 시각 의존도 최소화</span></li>
-                    <li className="flex gap-2"><span className="text-sky-600 font-black">•</span><span>gTTS 활용 단계별 실시간 음성 가이드 제공</span></li>
-                  </ul>
-                }
-              />
-              <ApproachItem 
-                num="04" 
-                title="실서비스 수준의 인프라 구성"
-                content={
-                  <ul className="space-y-2">
-                    <li className="flex gap-2"><span className="text-sky-600 font-black">•</span><span>AWS EC2 &amp; Nginx 기반 안정적 배포 환경</span></li>
-                    <li className="flex gap-2"><span className="text-sky-600 font-black">•</span><span>환경 변수 보안, CORS 정책, systemd 장애 대응 로직 적용</span></li>
-                  </ul>
-                }
-              />
-            </div>
-          </article>
-
-          {/* Core Highlights - 슬림 가로형 카드 */}
-          <article>
-            <div className="bg-gradient-to-br from-sky-600 to-indigo-700 rounded-[28px] p-7 text-white shadow-xl">
-              <div className="flex items-center gap-3 mb-6">
-                <Sparkles size={18} />
-                <h3 className="text-xl font-black tracking-tight">Core Highlights · 성과</h3>
+              {/* Award */}
+              <div className="relative overflow-hidden bg-gradient-to-br from-sky-500 to-indigo-600 rounded-[32px] p-8 shadow-xl">
+                <span className="absolute top-4 right-8 w-2 h-2 rounded-full bg-white/60 animate-ping" />
+                <span className="absolute top-10 right-16 w-1.5 h-1.5 rounded-full bg-white/40 animate-ping [animation-delay:0.4s]" />
+                <span className="absolute bottom-6 right-12 w-1 h-1 rounded-full bg-white/50 animate-ping [animation-delay:0.8s]" />
+                <span className="absolute top-6 left-1/2 w-1 h-1 rounded-full bg-white/30 animate-ping [animation-delay:1.2s]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 animate-pulse pointer-events-none" />
+                <div className="relative flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
+                    <Sparkles size={18} className="text-white animate-pulse" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-widest text-sky-200 mb-1">Award</p>
+                    <p className="font-black text-white text-base mb-2">HIRA 보건의료 창업아이디어대회 입상</p>
+                    <p className="text-sm text-sky-100 leading-relaxed">심사위원들은 <span className="text-white font-medium">환자 개인 의료 데이터를 실시간 AI 컨텍스트에 결합</span>하는 방식의 독창성에 주목했습니다. <br/>단순 정보 제공을 넘어, 비전문가가 골든타임 내에 정확한 처치를 수행할 수 있도록 설계된 음성 지원 인터페이스를 높이 평가받았습니다.</p>
+                  </div>
+                </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <ResultBadge label="Award" value="보건의료 창업아이디어대회 입상" />
-                <ResultBadge label="Infrastructure" value="AWS 실서비스 배포 완료" />
-                <ResultBadge label="Safety" value="응급 AI 특허 출원 중" />
+              {/* Patent */}
+              <div className="relative overflow-hidden bg-gradient-to-br from-indigo-500 to-sky-600 rounded-[32px] p-8 shadow-xl">
+                <span className="absolute top-5 right-10 w-2 h-2 rounded-full bg-white/60 animate-ping [animation-delay:0.3s]" />
+                <span className="absolute top-12 right-20 w-1.5 h-1.5 rounded-full bg-white/40 animate-ping [animation-delay:0.7s]" />
+                <span className="absolute bottom-5 right-8 w-1 h-1 rounded-full bg-white/50 animate-ping [animation-delay:1.1s]" />
+                <span className="absolute top-8 left-1/3 w-1 h-1 rounded-full bg-white/30 animate-ping [animation-delay:0.5s]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 animate-pulse pointer-events-none" />
+                <div className="relative flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
+                    <ShieldCheck size={18} className="text-white" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-widest text-indigo-200 mb-1">Patent</p>
+                    <p className="font-black text-white text-base mb-2">응급 AI 특허 출원 중 <span className="text-sm font-medium text-indigo-200">(2025.09.02)</span></p>
+                    <p className="text-sm text-sky-100 leading-relaxed">출원번호 : <span className="text-white font-medium">10-2025-0123730</span></p>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
@@ -211,48 +285,23 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <SectionHeader title="Engineering Stack" subtitle="사용된 기술 스택" />
             <div className="space-y-6">
               <TechTable tech={project.tech ?? []} />
-              <div className="p-6 bg-slate-100 rounded-2xl text-sm text-slate-600 font-medium flex items-start gap-4">
-                <Info size={24} className="shrink-0 text-sky-500 mt-0.5" />
-                <span>Nginx 리버스 프록시와 SSL 설정을 통해 보안 통신을 구현하고, AWS EC2 내에서 안정적인 API 환경을 구축</span>
-              </div>
+
             </div>
           </article>
 
-          {/* 통합 요약 카드 - 병렬 그리드 및 헤더 통일 */}
-          <article>
-            <SectionHeader title="Integrated Summary" subtitle="발전 가능성 · 한계" />
-            <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Future Work</p>
-                <ul className="space-y-3 text-base text-slate-700 font-medium">
-                  <li className="flex gap-3"><span className="text-sky-600 font-black">•</span><span>시나리오 확장(심정지/골절/화상)</span></li>
-                  <li className="flex gap-3"><span className="text-sky-600 font-black">•</span><span>개인화 로직 고도화(약물/알레르기)</span></li>
-                  <li className="flex gap-3"><span className="text-sky-600 font-black">•</span><span>오프라인/저전력 대응(캐싱)</span></li>
-                  <li className="flex gap-3"><span className="text-sky-600 font-black">•</span><span>실생활 적용: 아기 응급 대응 도우미</span></li>
-                </ul>
-              </div>
-              <div className="space-y-4">
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Limitations</p>
-                <p className="text-base text-slate-700 font-medium leading-relaxed bg-rose-50/50 p-4 rounded-xl border border-rose-100">
-                  AWS 비용 문제로 인해 현재 서버 운영은 일시 중단됨.
-                </p>
-              </div>
-            </div>
-          </article>
+          
 
           <article>
             <SectionHeader title="My Contributions" subtitle="수행 역할 및 구현 포인트" />
-            <div className="bg-slate-900 rounded-[32px] p-10 text-white shadow-xl relative overflow-hidden">
+            <div className="bg-slate-900 rounded-[32px] p-8 text-white shadow-xl relative overflow-hidden">
               <div className="relative z-10">
-                <h3 className="text-sky-400 font-black text-xs uppercase tracking-[0.3em] mb-6">Development Role</h3>
-                <p className="text-lg font-medium leading-relaxed text-slate-200 mb-8 whitespace-pre-line">
-                  {project.role}
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-200/90 font-medium">
-                  <CheckLine icon={<Database size={16} />} text="DB 연동 및 사용자 데이터 기반 위험도 분석" />
-                  <CheckLine icon={<BrainCircuit size={16} />} text="OpenAI LLM 기반 맞춤형 가이드 생성" />
-                  <CheckLine icon={<MicVocal size={16} />} text="gTTS를 활용한 Voice-First UX 설계" />
-                  <CheckLine icon={<ServerCrash size={16} />} text="AWS EC2 + Nginx + systemd 인프라 구축" />
+                <h3 className="text-sky-400 font-black text-xs uppercase tracking-[0.3em] mb-5">Solo Project · 기여율 100%</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <CheckLine icon={<Database size={16} />} text="DB 의료 데이터 설계 및 연동" />
+                  <CheckLine icon={<BrainCircuit size={16} />} text="LLM 시스템 프롬프트 설계 및 JSON 파싱" />
+                  <CheckLine icon={<MicVocal size={16} />} text="gTTS + Web Speech API 하이브리드 TTS 구현" />
+                  <CheckLine icon={<ShieldCheck size={16} />} text="특허 출원 명세서 작성 참여" />
+                  <CheckLine icon={<Sparkles size={16} />} text="보건의료 창업아이디어대회 기획 및 발표" />
                 </div>
               </div>
               <Workflow className="absolute -bottom-10 -right-10 text-white/5 w-64 h-64 rotate-12" />
@@ -260,18 +309,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </article>
         </div>
 
-        <aside className="lg:col-span-4">
-          <div className="lg:sticky lg:top-24 space-y-6">
-            <SummaryCard 
-              title="Project Snapshot"
-              items={[
-                { label: "Timeline", value: "2025.03 - 2025.06", icon: <Calendar size={16}/> },
-                { label: "Platform", value: "Web / React SPA · FastAPI", icon: <Layers size={16}/> },
-                { label: "Contribution", value: "100% (Solo Project)", icon: <Percent size={16}/> }
-              ]}
-            />
-          </div>
-        </aside>
+
       </section>
     </main>
   );
@@ -336,19 +374,19 @@ function DesktopMockup({ url }: { url: string }) {
 function ResultBadge({ label, value }: { label: string; value: string }) {
   return (
     <div className="bg-white/10 rounded-2xl p-5 border border-white/10 backdrop-blur-md">
-      <p className="text-[10px] font-bold text-sky-200 uppercase mb-2 tracking-widest">{label}</p>
-      <p className="text-[11px] md:text-xs font-medium tracking-tighter leading-none">{value}</p>
+      <p className="text-xs font-bold text-sky-200 uppercase mb-2 tracking-widest">{label}</p>
+      <p className="text-sm md:text-base font-bold leading-snug whitespace-pre-line">{value}</p>
     </div>
   );
 }
 
 function Badge({ text, color }: { text: string; color: "sky" | "blue" }) {
   const styles = {
-    sky: "bg-sky-500/10 border-sky-400/20 text-sky-400",
-    blue: "bg-blue-500/10 border-blue-400/20 text-blue-400",
+    sky: "bg-sky-500/20 border-sky-400/50 text-sky-300",
+    blue: "bg-blue-500/20 border-blue-400/50 text-blue-300",
   };
   return (
-    <span className={`px-3 py-1 rounded-full border text-[10px] font-black uppercase tracking-widest ${styles[color]}`}>
+    <span className={`px-4 py-1.5 rounded-full border text-sm font-bold uppercase tracking-widest ${styles[color]}`}>
       {text}
     </span>
   );
@@ -424,8 +462,8 @@ function TechTable({ tech }: { tech: string[] }) {
   const mapping = [
     { group: "Frontend", keywords: ["react", "next", "tailwind", "netlify"] },
     { group: "Backend", keywords: ["fastapi", "python"] },
-    { group: "Infra", keywords: ["aws", "ec2", "nginx", "systemd"] },
-    { group: "AI & Data", keywords: ["openai", "mongodb", "gtts"] },
+    { group: "Infra", keywords: ["aws", "ec2", "nginx", "systemd", "mongodb"] },
+    { group: "3rd Party APIs", keywords: ["openai", "gtts"] },
   ];
   const buckets = mapping.map(m => ({
     group: m.group,
@@ -454,7 +492,7 @@ function ArchitectureDiagram() {
     <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 text-center">
       <h4 className="text-sm font-black text-slate-900 mb-6 uppercase tracking-widest">System Structure</h4>
       <img src="/assets/sosai-architecture.png" alt="Architecture" className="w-full h-auto rounded-xl border border-slate-200 shadow-sm mb-6" />
-      <p className="text-xs text-slate-500 font-medium">NGINX 리버스 프록시 및 OpenAI·gTTS 기반 AI 가이드 시스템 아키텍처</p>
+      
     </div>
   );
 }

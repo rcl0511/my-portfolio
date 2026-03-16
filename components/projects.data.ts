@@ -43,13 +43,10 @@ export const PROJECTS_DATA: Project[] = [
       "React",
       "Netlify",
       "FastAPI",
-      "Uvicorn",
       "AWS EC2",
       "MongoDB Atlas",
       "OpenAI API",
       "gTTS",
-      "systemd",
-      "Nginx",
     ],
     summary:
       "응급 상황에서 음성으로 \n단계별 행동 지침을 제공하는 \nAI 기반 응급 대응 웹 서비스.",
