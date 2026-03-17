@@ -53,8 +53,8 @@ export default async function OnlinerPage() {
         </div>
       </nav>
 
-      {/* 2) HERO - 그리드 비율을 4:8로 조정하여 목업 공간 극대화 */}
-      <section className="relative overflow-visible bg-slate-950 pt-12 sm:pt-16 md:pt-24 pb-12 sm:pb-16 md:pb-24 px-4 sm:px-6 md:px-20">
+      {/* 2) HERO - 한 화면 꽉 채우기 */}
+      <section className="relative overflow-hidden bg-slate-950 h-[100dvh] flex flex-col justify-center px-4 sm:px-6 md:px-20">
         <div className="absolute inset-0 opacity-20 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/3 w-[520px] h-[520px] bg-indigo-600 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-1/4 w-[420px] h-[420px] bg-purple-600 rounded-full blur-[130px]" />
@@ -62,18 +62,18 @@ export default async function OnlinerPage() {
 
         <HeroNavigation currentProjectId="onliner" />
 
-        <div className="relative max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="relative max-w-[1600px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
           <div className="lg:col-span-4">
-            <div className="flex gap-2 mb-6">
+            <div className="flex gap-2 mb-4">
               <MiniBadge text="멀티테넌트 SaaS" color="indigo" />
               <MiniBadge text="실서비스 배포" color="blue" />
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-4 md:mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-black text-white tracking-tight mb-3 md:mb-4 leading-tight">
               Onliner
             </h1>
 
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mb-6 md:mb-10">
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mb-5 md:mb-7">
               병원과 도매업체를 연결하는 의약품 거래 SaaS
               <br className="hidden sm:block" />
               <span className="text-indigo-300">종이명세서의 자동화</span>
@@ -91,15 +91,15 @@ export default async function OnlinerPage() {
             </div>
           </div>
 
-          {/* 우측: 노트북 화면 목업 크기 극대화 */}
-          <div className="lg:col-span-8 flex flex-col gap-12">
-            <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-8 items-start">
-              <div className="flex flex-col gap-4">
+          {/* 우측: 노트북 화면 목업 */}
+          <div className="lg:col-span-8">
+            <div className="w-full grid grid-cols-2 gap-4 lg:gap-6 items-start">
+              <div className="flex flex-col gap-2">
                 <p className="text-xs text-indigo-200 font-bold uppercase tracking-[0.3em] pl-4">
                   Vendor Dashboard
                 </p>
                 <DesktopMockup url="https://onlinerr.netlify.app/vendor/dashboard" />
-                <div className="mt-2 pl-4">
+                <div className="mt-1 pl-4">
                   <OutlineButton
                     href="https://onlinerr.netlify.app/vendor/dashboard"
                     icon={<ExternalLink size={16} />}
@@ -108,12 +108,12 @@ export default async function OnlinerPage() {
                   </OutlineButton>
                 </div>
               </div>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
                 <p className="text-xs text-emerald-200 font-bold uppercase tracking-[0.3em] pl-4">
                   Hospital Dashboard
                 </p>
                 <DesktopMockup url="https://onlinerr.netlify.app/hospital/dashboard" />
-                <div className="mt-2 pl-4">
+                <div className="mt-1 pl-4">
                   <OutlineButton
                     href="https://onlinerr.netlify.app/hospital/dashboard"
                     icon={<ExternalLink size={16} />}
@@ -122,6 +122,12 @@ export default async function OnlinerPage() {
                   </OutlineButton>
                 </div>
               </div>
+            </div>
+            <div className="mt-4 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500/10 border border-amber-400/20 w-fit">
+              <Info size={14} className="text-amber-400 shrink-0" />
+              <p className="text-s text-amber-300 font-medium">
+                무료 서버 사용으로 인해 최초 접속 시 <span className="font-bold text-white-200">약 1분</span> 로딩이 발생할 수 있습니다.
+              </p>
             </div>
           </div>
         </div>
@@ -191,18 +197,7 @@ export default async function OnlinerPage() {
             </div>
           </article>
 
-          <article>
-            <SectionHeader
-              title="Core Features"
-              subtitle="핵심 기능 Core Features"
-            />
-            <div className="grid grid-cols-1 gap-5">
-              <FeatureItem num="01" title="PDF 자동 파싱 & 명세서 관리" desc="PDF 파싱 · 데이터 추출 · 명세서 자동 생성 · 서명/이의신청" tags={["PDF Parsing", "Excel Processing", "Digital Signature"]} />
-              <FeatureItem num="02" title="WebSocket 실시간 채팅" desc="실시간 채팅 · 대화방 분리 · 읽음 처리 · 타이핑 표시" tags={["WebSocket", "Real-time Messaging", "Context Rooms"]} />
-              <FeatureItem num="03" title="멀티테넌트 & 역할 기반 권한" desc="멀티테넌트 분리 · 포털 자동 분기 · 역할 기반 접근" tags={["Multi-tenant", "Role-based Access", "Portal Separation"]} />
-              <FeatureItem num="04" title="통합 대시보드 & 브라우저 알림" desc="통합 대시보드 · 상태 모니터링 · 브라우저 알림" tags={["Dashboard", "Browser Notification", "Real-time Status"]} />
-            </div>
-          </article>
+
 
           <article>
             <SectionHeader
