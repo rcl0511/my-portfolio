@@ -478,7 +478,7 @@ function TechTable({ tech }: { tech: string[] }) {
   const mapping = [
     { group: "Frontend", keywords: ["react", "router", "axios", "netlify", "maps"] },
     { group: "Backend", keywords: ["spring", "boot", "java", "jpa"] },
-    { group: "Database", keywords: ["mariadb", "mysql"] },
+    { group: "Database", keywords: ["mariadb"] },
     { group: "Integration", keywords: ["pdfbox", "poi", "pdf", "parsing", "websocket"] },
     { group: "DevOps", keywords: ["docker", "netlify", "render"] },
   ];
