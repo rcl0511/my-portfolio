@@ -107,7 +107,7 @@ export const PROJECTS_DATA: Project[] = [
     contribution: "100%",
     platform: "WEB",
     isPatent: false,
-    tech: ["React", "React Router DOM", "Axios", "Google Maps API", "Spring Boot", "Java", "Spring Data JPA", "MariaDB/MySQL", "Apache PDFBox", "Apache POI", "WebSocket", "Netlify", "Render", "Docker"],
+    tech: ["React", "React Router DOM", "Axios", "Google Maps API", "Spring Boot", "Java", "Spring Data JPA", "MariaDB", "Apache PDFBox", "Apache POI", "WebSocket", "Netlify", "Render", "Docker"],
     summary:
       "병원 포털과 도매업체 포털을 분리해 운영하는 의약품 거래/명세서 관리 통합 관리 시스템.",
     problem:
