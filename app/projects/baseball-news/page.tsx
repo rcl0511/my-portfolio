@@ -6,7 +6,7 @@ import {
   ArrowLeft, Github, ExternalLink, Calendar, Layers,
   Percent, Sparkles, Database, Brain, Search, Zap,
   Monitor, ServerCrash, ChevronLeft, ChevronRight,
-  FileText, Workflow, Info, BrainCircuit, CheckCircle2
+  FileText, Workflow, Info, CheckCircle2
 } from "lucide-react";
 
 import { PROJECTS_DATA } from "@/components/projects.data";
@@ -195,7 +195,6 @@ export default async function FastballPage({ params }: PageProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-200/90 font-medium">
                   <CheckLine icon={<Monitor size={16} />} text="React 기반 프론트엔드 인터페이스 구축" />
                   <CheckLine icon={<Zap size={16} />} text="실시간 미리보기 및 UX 최적화" />
-                  <CheckLine icon={<BrainCircuit size={16} />} text="FastAPI 백엔드 설계 및 LLM 통신 구현" />
                   <CheckLine icon={<Workflow size={16} />} text="전체 기사 생성 워크플로우 설계" />
                 </div>
               </div>
