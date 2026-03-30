@@ -81,7 +81,7 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
   const badges = isSOSAI
     ? [
         
-        project.isPatent ? "국내 특허 출원 진행 중" : null,
+        project.isPatent ? "국내 특허 출원" : null,
         "🏆 HIRA 보건의료 창업아이디어대회 입상",
       ].filter(Boolean) as string[]
     : isBarricade
@@ -151,7 +151,7 @@ function FeaturedProjectCard({ project, href }: { project: Project; href: string
               {badges.map((b) => (
                 <span
                   key={b}
-                  className="inline-flex items-center px-4 py-2 rounded-full bg-blue-800 text-white text-[10px] font-medium tracking-widest shadow-md shadow-blue-900/20"
+                  className="inline-flex items-center px-4 py-2 rounded-full bg-blue-800 text-white text-xs font-medium tracking-widest shadow-md shadow-blue-900/20"
                 >
                   {b}
                 </span>

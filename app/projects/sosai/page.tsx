@@ -262,14 +262,24 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 <span className="absolute bottom-5 right-8 w-1 h-1 rounded-full bg-white/50 animate-ping [animation-delay:1.1s]" />
                 <span className="absolute top-8 left-1/3 w-1 h-1 rounded-full bg-white/30 animate-ping [animation-delay:0.5s]" />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 animate-pulse pointer-events-none" />
-                <div className="relative flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
-                    <ShieldCheck size={18} className="text-white" />
+                <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
+                      <ShieldCheck size={18} className="text-white" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-black uppercase tracking-widest text-indigo-200 mb-1">Patent</p>
+                      <p className="font-black text-white text-base mb-1">응급 AI 특허 출원 <span className="text-sm font-medium text-indigo-200">(2025.09.02)</span></p>
+                      <p className="text-sm text-sky-100 leading-relaxed">출원번호 : <span className="text-white font-medium">10-2025-0123730호</span></p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[11px] font-black uppercase tracking-widest text-indigo-200 mb-1">Patent</p>
-                    <p className="font-black text-white text-base mb-2">응급 AI 특허 출원 중 <span className="text-sm font-medium text-indigo-200">(2025.09.02)</span></p>
-                    <p className="text-sm text-sky-100 leading-relaxed">출원번호 : <span className="text-white font-medium">10-2025-0123730</span></p>
+                  <div className="flex gap-2 shrink-0">
+                    <a href="/assets/특허명세서.PDF" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/15 hover:bg-white/25 border border-white/20 rounded-full text-xs font-bold text-white transition-all">
+                      <Info size={13} /> 특허 명세서 <ExternalLink size={11} className="opacity-60" />
+                    </a>
+                    <a href="/assets/특허증.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/15 hover:bg-white/25 border border-white/20 rounded-full text-xs font-bold text-white transition-all">
+                      <ShieldCheck size={13} /> 특허증 <ExternalLink size={11} className="opacity-60" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -298,7 +308,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 <h3 className="text-sky-400 font-black text-xs uppercase tracking-[0.3em] mb-5">Solo Project · 기여율 100%</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <CheckLine icon={<Database size={16} />} text="DB 의료 데이터 설계 및 연동" />
-                  <CheckLine icon={<BrainCircuit size={16} />} text="LLM 시스템 프롬프트 설계 및 JSON 파싱" />
+                  <CheckLine icon={<BrainCircuit size={16} />} text="LLM 시스템 프롬프트 설계" />
                   <CheckLine icon={<MicVocal size={16} />} text="gTTS + Web Speech API 하이브리드 TTS 구현" />
                   <CheckLine icon={<ShieldCheck size={16} />} text="특허 출원 명세서 작성 참여" />
                   <CheckLine icon={<Sparkles size={16} />} text="보건의료 창업아이디어대회 기획 및 발표" />
